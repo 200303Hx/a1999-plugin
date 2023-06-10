@@ -1,6 +1,5 @@
 import { plugin, sendImage, Messagetype } from 'alemon'
 import path from 'path'
-
 export class showImg extends plugin {
   constructor() {
     super({
