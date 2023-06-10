@@ -1,0 +1,1 @@
+ **安装** `it clone https://gitee.com/fantasy-hx/alemon-plugin-1999.git ./plugins/alemon-plugin-1999/`
