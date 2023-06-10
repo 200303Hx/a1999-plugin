@@ -1,7 +1,6 @@
 import { plugin, sendImage, Messagetype } from 'alemon'
 import path from 'path'
 
-const K_菜单 = path.resolve(__dirname, '../../resources/assets/img/help/菜单.png')
 export class show extends plugin {
   constructor() {
     super({
@@ -15,7 +14,7 @@ export class show extends plugin {
   }
 
   async 菜单(e: Messagetype): Promise<boolean> {
-    e.sendImage(K_菜单)
+    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/help/菜单.png'))
     return false
   }
 }
