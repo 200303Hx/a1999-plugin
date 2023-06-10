@@ -11,5 +11,5 @@
 git clone https://gitee.com/fantasy-hx/alemon-plugin-1999.git ./plugins/alemon-plugin-1999
 ```
 ## <div align="center">功能</div>
-![输入图片说明](resources/assets/img/help/%E8%8F%9C%E5%8D%95.jpg)
-![输入图片说明](resources/assets/img/help/%E5%90%AC%E5%8A%9B%E7%AC%94%E8%AE%B0.jpg)
+![正在更新](resources/assets/img/help/%E8%8F%9C%E5%8D%95.jpg)
+![正在更新](resources/assets/img/help/%E5%90%AC%E5%8A%9B%E7%AC%94%E8%AE%B0.jpg)
