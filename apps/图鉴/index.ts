@@ -103,6 +103,36 @@ export class showImg extends plugin {
         },
 
         //心相图鉴
+
+        {
+          reg: /^\/夜色亵渎者$/,
+          fnc: 'X1'
+        },
+        {
+          reg: /^\/好奇心宝贝$/,
+          fnc: 'X2'
+        },
+        {
+          reg: /^\/必要的记录$/,
+          fnc: 'X3'
+        },
+        {
+          reg: /^\/掌声如雷鸣$/,
+          fnc: 'X4'
+        },
+        {
+          reg: /^\/第二次生命$/,
+          fnc: 'X5'
+        },
+        {
+          reg: /^\/美丽新世界$/,
+          fnc: 'X6'
+        },
+        {
+          reg: /^\/跳房子游戏$/,
+          fnc: 'X7'
+        },
+
         //道具图鉴
 
         {
@@ -239,7 +269,41 @@ export class showImg extends plugin {
     e.sendImage(path.resolve(__dirname, '../../resources/assets/img/图鉴/角色/新巴别塔.jpg'))
     return false
   }
+  //心相图鉴
+  async X1(e: Messagetype): Promise<boolean> {
+    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/图鉴/心相/夜色亵渎者.png'))
+    return false
+  }
 
+  async X2(e: Messagetype): Promise<boolean> {
+    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/图鉴/心相/好奇心宝贝.png'))
+    return false
+  }
+
+  async X3(e: Messagetype): Promise<boolean> {
+    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/图鉴/心相/必要的记录.png'))
+    return false
+  }
+
+  async X4(e: Messagetype): Promise<boolean> {
+    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/图鉴/心相/掌声如雷鸣.png'))
+    return false
+  }
+
+  async X5(e: Messagetype): Promise<boolean> {
+    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/图鉴/心相/第二次生命.png'))
+    return false
+  }
+
+  async X6(e: Messagetype): Promise<boolean> {
+    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/图鉴/心相/美丽新世界.png'))
+    return false
+  }
+
+  async X7(e: Messagetype): Promise<boolean> {
+    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/图鉴/心相/跳房子游戏.png'))
+    return false
+  }
   //道具图鉴
 
   async C1(e: Messagetype): Promise<boolean> {
