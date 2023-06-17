@@ -1,7 +1,7 @@
 import { plugin, sendImage, Messagetype } from 'alemon'
 import path from 'path'
 import fs, { existsSync, mkdirSync, readdirSync } from 'fs'
-import jimp, { read } from 'jimp'
+import jimp from 'jimp'
 
 // 背景图路径
 const backgroundImagePath = path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/bg.png')
@@ -40,17 +40,32 @@ function getRandomOption(options) {
 }
 
 // 从指定路径的文件夹中随机选择一个文件
-function getRandomFileFromFolder(folderPath: fs.PathLike) {
+function getRandomFileFromFolder(folderPath) {
   const files = readdirSync(folderPath)
   const randomIndex = Math.floor(Math.random() * files.length)
   const randomFile = files[randomIndex]
   return `${folderPath}/${randomFile}`
 }
 
+// 计算保底次数
+function calculatePityCount(pulls) {
+  const maxPityCount = 60
+  const pityIncreaseRate = 2.5
+
+  if (pulls <= maxPityCount) {
+    return pulls
+  }
+
+  const extraPulls = pulls - maxPityCount
+  const pityCount = maxPityCount + Math.ceil(extraPulls / 10) * 10
+
+  return pityCount
+}
+
 // 合成图片
-async function compositeImages() {
+async function compositeImages(pulls) {
   try {
-    const backgroundImage = await read(backgroundImagePath)
+    const backgroundImage = await jimp.read(backgroundImagePath)
     backgroundImage.resize(backgroundImageWidth, backgroundImageHeight)
 
     const positions = [
@@ -78,7 +93,7 @@ async function compositeImages() {
       const [x, y] = positions[i]
       const randomFolder = getRandomOption(options)
       const randomImage = getRandomFileFromFolder(randomFolder)
-      const image = await read(randomImage)
+      const image = await jimp.read(randomImage)
 
       // 调整图片尺寸，如果需要的话
       // image.resize(width, height);
@@ -99,6 +114,7 @@ async function compositeImages() {
 }
 
 export class chouka extends plugin {
+  pulls: number
   constructor() {
     super({
       rule: [
@@ -112,7 +128,11 @@ export class chouka extends plugin {
         }
       ]
     })
+
+    // 记录当前抽取的次数
+    this.pulls = 0
   }
+
   async 单抽(e) {
     try {
       const outputFolderPath = path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im')
@@ -126,7 +146,7 @@ export class chouka extends plugin {
 
       const randomFolder = getRandomOption(options)
       const randomImage = getRandomFileFromFolder(randomFolder)
-      const image = await read(randomImage)
+      const image = await jimp.read(randomImage)
 
       // 保存图片到目标文件夹
       const outputFilePath = `${outputFolderPath}/single_draw.jpg`
@@ -138,9 +158,18 @@ export class chouka extends plugin {
     }
   }
 
-  async 十连(e: Messagetype): Promise<boolean> {
+  async 十连(e) {
+    // 增加抽取次数
+    this.pulls += 10
+
     // 执行合成操作
-    await compositeImages()
+    await compositeImages(this.pulls)
+
+    // 重置保底计数
+    if (this.pulls >= 70) {
+      this.pulls = 0
+    }
+
     e.sendImage(path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im/十连.jpg'))
     return false
   }
