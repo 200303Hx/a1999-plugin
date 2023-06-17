@@ -31,9 +31,9 @@ export class entext extends plugin {
       const zh = res.zh
       const en = res.en
       const pic = res.pic
-
-      await e.reply(zh)
-      await e.reply(en)
+      const obj = segment.reply(e.msg.id)
+      await e.reply(zh, obj)
+      await e.reply(en, obj)
       await e.reply(segment.image(pic))
 
       return true

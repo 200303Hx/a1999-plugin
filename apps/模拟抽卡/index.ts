@@ -1,4 +1,4 @@
-import { plugin, sendImage, Messagetype } from 'alemon'
+import { plugin, sendImage, Messagetype, segment } from 'alemon'
 import path from 'path'
 import fs, { existsSync, mkdirSync, readdirSync } from 'fs'
 import jimp, { read } from 'jimp'
@@ -113,7 +113,7 @@ export class chouka extends plugin {
       ]
     })
   }
-  async 单抽(e) {
+  async 单抽(e: Messagetype) {
     try {
       const outputFolderPath = path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im')
       const options = [
@@ -131,7 +131,11 @@ export class chouka extends plugin {
       // 保存图片到目标文件夹
       const outputFilePath = `${outputFolderPath}/single_draw.jpg`
       await image.writeAsync(outputFilePath)
-      e.sendImage(path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im/single_draw.jpg'))
+      //结果
+      await e.sendImage(
+        path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im/single_draw.jpg')
+      )
+      e.reply(`<@!${e.msg.author.id}> `)
       console.log(`单抽图片已保存至 ${outputFilePath}`)
     } catch (error) {
       console.error('发生错误：', error)
@@ -141,7 +145,8 @@ export class chouka extends plugin {
   async 十连(e: Messagetype): Promise<boolean> {
     // 执行合成操作
     await compositeImages()
-    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im/十连.jpg'))
+    await e.sendImage(path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im/十连.jpg'))
+    e.reply(`<@!${e.msg.author.id}> `)
     return false
   }
 }

@@ -1,5 +1,6 @@
-import { plugin, sendImage, Messagetype } from 'alemon'
+import { plugin, sendImage, Messagetype, segment } from 'alemon'
 import path from 'path'
+
 export class showJ extends plugin {
   constructor() {
     super({
@@ -18,12 +19,14 @@ export class showJ extends plugin {
   }
 
   async J1(e: Messagetype): Promise<boolean> {
-    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/剧情/TH.01-1.png'))
+    await e.sendImage(path.resolve(__dirname, '../../resources/assets/img/剧情/TH.01-1.png'))
+    e.reply(`<@!${e.msg.author.id}> `)
     return false
   }
 
   async J2(e: Messagetype): Promise<boolean> {
-    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/剧情/TH.01-2.png'))
+    await e.sendImage(path.resolve(__dirname, '../../resources/assets/img/剧情/TH.01-2.png'))
+    e.reply(`<@!${e.msg.author.id}> `)
     return false
   }
 }

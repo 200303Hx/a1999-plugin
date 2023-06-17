@@ -1,4 +1,4 @@
-import { plugin, sendImage, Messagetype } from 'alemon'
+import { plugin, sendImage, Messagetype, segment } from 'alemon'
 import path from 'path'
 export class show extends plugin {
   constructor() {
@@ -25,8 +25,10 @@ export class show extends plugin {
   }
 
   async 剧情(e: Messagetype): Promise<boolean> {
+    const obj = segment.reply(e.msg.id)
     e.reply(
-      '以下为剧情目录\n只需要复制下方目录命令@Bot就可以获取该小节的中英对照剧情辣！\n/TH.01-1\n/TH.01-2'
+      '以下为剧情目录\n只需要复制下方目录命令@Bot就可以获取该小节的中英对照剧情辣！\n/TH.01-1\n/TH.01-2',
+      obj
     )
     return false
   }
@@ -39,6 +41,7 @@ export class show extends plugin {
     return false
   }
   async 抽卡分析(e: Messagetype): Promise<boolean> {
+    e.reply(`<@!${e.msg.author.id}> `)
     e.reply(
       '〇下面为获取URL教程，at Bot+url即可获取抽卡分析，token失效快建议在单独自频道进行，可以保留数据。'
     )

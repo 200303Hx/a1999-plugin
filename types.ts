@@ -1,2 +1,4 @@
-import { Messagetype } from 'alemon'
-export interface PointMessageType extends Messagetype {}
+import { Messagetype, UserType } from 'alemon'
+export interface PointMessageType extends Messagetype {
+  user: UserType
+}
