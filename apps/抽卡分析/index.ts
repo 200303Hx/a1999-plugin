@@ -1,13 +1,4 @@
-import {
-  plugin,
-  sendImage,
-  Messagetype,
-  createApps,
-  setMessage,
-  BotType,
-  BotConfigType,
-  segment
-} from 'alemon'
+import { plugin, Messagetype, segment } from 'alemon'
 import axios from 'axios'
 import fs from 'fs'
 import path from 'path'
@@ -199,8 +190,6 @@ export class fenxichouka extends plugin {
                     }
                   }
                   const obj = segment.reply(e.msg.id)
-                  // 发送统计结果
-                  e.reply(segment.at(e.msg.user.id))
                   e.reply(result, obj)
                 } else {
                   e.reply('数据格式不正确，无法提取卡池信息。')

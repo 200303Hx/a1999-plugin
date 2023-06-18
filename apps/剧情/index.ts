@@ -1,4 +1,4 @@
-import { plugin, sendImage, Messagetype, segment } from 'alemon'
+import { plugin, Messagetype } from 'alemon'
 import path from 'path'
 
 export class showJ extends plugin {

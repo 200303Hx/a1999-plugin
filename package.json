@@ -1,0 +1,15 @@
+{
+  "name": "alemon-plugin-1999",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">Alemon-Bot 插件</div>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jimp": "^0.22.8"
+  }
+}

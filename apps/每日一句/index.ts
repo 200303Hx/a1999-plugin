@@ -27,7 +27,6 @@ export class entext extends plugin {
       /** 调用接口获取数据 */
       const response = await axios.get(url)
       const res = response.data.data
-
       const zh = res.zh
       const en = res.en
       const pic = res.pic
