@@ -1,12 +1,9 @@
-import { plugin, sendImage, Messagetype, segment } from 'alemon'
+import { plugin, sendImage, Messagetype } from 'alemon'
 import path from 'path'
-import fs, { existsSync, mkdirSync, readdirSync } from 'fs'
+import fs from 'fs'
 import jimp, { read } from 'jimp'
 
-// 背景图路径
 const backgroundImagePath = path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/bg.png')
-
-// 文件夹路径数组
 const folderPaths = [
   path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/6'),
   path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/5'),
@@ -15,15 +12,12 @@ const folderPaths = [
   path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/2')
 ]
 
-// 合成图片保存的文件夹路径
 const outputFolderPath = path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im')
-
+const dbFolderPath = path.resolve(__dirname, '../../db/模拟抽卡/drawCountMap.json')
+const drawCountMapPath = path.resolve(__dirname, '../../db/模拟抽卡/drawCountMap.json')
 // 背景图的宽度和高度
 const backgroundImageWidth = 1500
 const backgroundImageHeight = 800
-
-// 需要生成的图片数量
-const imageCount = 1
 
 // 根据概率从选项数组中随机选择一个
 function getRandomOption(options) {
@@ -40,8 +34,8 @@ function getRandomOption(options) {
 }
 
 // 从指定路径的文件夹中随机选择一个文件
-function getRandomFileFromFolder(folderPath: fs.PathLike) {
-  const files = readdirSync(folderPath)
+function getRandomFileFromFolder(folderPath) {
+  const files = fs.readdirSync(folderPath)
   const randomIndex = Math.floor(Math.random() * files.length)
   const randomFile = files[randomIndex]
   return `${folderPath}/${randomFile}`
@@ -113,9 +107,9 @@ export class chouka extends plugin {
       ]
     })
   }
-  async 单抽(e: Messagetype) {
+
+  async 单抽(e) {
     try {
-      const outputFolderPath = path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im')
       const options = [
         { folderPath: folderPaths[0], probability: 0.015 },
         { folderPath: folderPaths[1], probability: 0.085 },
@@ -131,22 +125,54 @@ export class chouka extends plugin {
       // 保存图片到目标文件夹
       const outputFilePath = `${outputFolderPath}/single_draw.jpg`
       await image.writeAsync(outputFilePath)
-      //结果
-      await e.sendImage(
-        path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im/single_draw.jpg')
-      )
-      e.reply(`<@!${e.msg.author.id}> `)
+
+      // 更新抽卡次数
+      const drawCountMap = loadDrawCountMap()
+      const userId = e.msg.author.id
+      drawCountMap[userId] = (drawCountMap[userId] || 0) + 1
+      saveDrawCountMap(drawCountMap)
+
+      // 发送结果
+      await e.sendImage(outputFilePath)
+      e.reply(`<@!${userId}>，当前卡池：于湖中央\n你已经抽了 ${drawCountMap[userId]} 次。`)
       console.log(`单抽图片已保存至 ${outputFilePath}`)
     } catch (error) {
       console.error('发生错误：', error)
     }
   }
 
-  async 十连(e: Messagetype): Promise<boolean> {
+  async 十连(e) {
     // 执行合成操作
     await compositeImages()
-    await e.sendImage(path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im/十连.jpg'))
-    e.reply(`<@!${e.msg.author.id}> `)
-    return false
+
+    // 更新抽卡次数
+    const drawCountMap = loadDrawCountMap()
+    const userId = e.msg.author.id
+    drawCountMap[userId] = (drawCountMap[userId] || 0) + 10
+    saveDrawCountMap(drawCountMap)
+
+    // 发送结果
+    e.reply('正在抽取中')
+    await e.sendImage(`${outputFolderPath}/十连.jpg`)
+    e.reply(`<@!${userId}>，当前卡池：于湖中央\n你已经抽了 ${drawCountMap[userId]} 次。`)
+    console.log(`十连图片已保存至 ${outputFolderPath}/十连.jpg`)
   }
+}
+
+function loadDrawCountMap() {
+  if (!fs.existsSync(dbFolderPath)) {
+    fs.mkdirSync(dbFolderPath, { recursive: true })
+  }
+
+  const drawCountMapPath = path.resolve(__dirname, '../../db/模拟抽卡/drawCountMap.json')
+  if (!fs.existsSync(drawCountMapPath)) {
+    fs.writeFileSync(drawCountMapPath, '{}')
+  }
+
+  const drawCountMapContent = fs.readFileSync(drawCountMapPath, 'utf8')
+  return JSON.parse(drawCountMapContent)
+}
+
+function saveDrawCountMap(drawCountMap) {
+  fs.writeFileSync(drawCountMapPath, JSON.stringify(drawCountMap))
 }

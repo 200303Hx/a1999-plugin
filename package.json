@@ -7,9 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Fantasy",
   "license": "ISC",
   "dependencies": {
-    "jimp": "^0.22.8"
+    "fs": "^0.0.1-security",
+    "jimp": "^0.22.8",
+    "path": "^0.12.7"
   }
 }

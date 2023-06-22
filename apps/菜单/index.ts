@@ -13,6 +13,10 @@ export class show extends plugin {
           fnc: '剧情'
         },
         {
+          reg: /^\/抽卡帮助$/,
+          fnc: '抽卡帮助'
+        },
+        {
           reg: /^\/听力笔记$/,
           fnc: '听力笔记'
         },
@@ -36,8 +40,12 @@ export class show extends plugin {
     e.sendImage(path.resolve(__dirname, '../../resources/assets/img/help/菜单.png'))
     return false
   }
+  async 抽卡帮助(e: Messagetype): Promise<boolean> {
+    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/help/抽卡帮助.png'))
+    return false
+  }
   async 听力笔记(e: Messagetype): Promise<boolean> {
-    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/help/听力笔记.jpg'))
+    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/help/听力笔记.png'))
     return false
   }
   async 抽卡分析(e: Messagetype): Promise<boolean> {
