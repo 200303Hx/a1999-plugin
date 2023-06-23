@@ -1,5 +1,5 @@
 import { plugin, sendImage, Messagetype, segment } from 'alemon'
-import path from 'path'
+
 export class show extends plugin {
   constructor() {
     super({
@@ -21,6 +21,10 @@ export class show extends plugin {
           fnc: '听力笔记'
         },
         {
+          reg: /^\/攻略$/,
+          fnc: '攻略'
+        },
+        {
           reg: /^\/抽卡分析$/,
           fnc: '抽卡分析'
         }
@@ -36,16 +40,38 @@ export class show extends plugin {
     )
     return false
   }
+
   async help(e: Messagetype): Promise<boolean> {
-    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/help/菜单.png'))
+    e.sendImage(
+      `${process
+        .cwd()
+        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/help/菜单.png`
+    )
     return false
   }
+
   async 抽卡帮助(e: Messagetype): Promise<boolean> {
-    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/help/抽卡帮助.png'))
+    e.sendImage(
+      `${process
+        .cwd()
+        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/help/抽卡帮助.png`
+    )
     return false
   }
   async 听力笔记(e: Messagetype): Promise<boolean> {
-    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/help/听力笔记.png'))
+    e.sendImage(
+      `${process
+        .cwd()
+        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/help/听力笔记.png`
+    )
+    return false
+  }
+  async 攻略(e: Messagetype): Promise<boolean> {
+    e.sendImage(
+      `${process
+        .cwd()
+        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/help/攻略.png`
+    )
     return false
   }
   async 抽卡分析(e: Messagetype): Promise<boolean> {
@@ -54,7 +80,11 @@ export class show extends plugin {
       '〇下面为获取URL教程，at Bot+url即可获取抽卡分析，token失效快建议在单独自频道进行，可以保留数据。',
       obj
     )
-    e.sendImage(path.resolve(__dirname, '../../resources/assets/img/help/抽卡分析.jpg'))
+    e.sendImage(
+      `${process
+        .cwd()
+        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/help/抽卡分析.jpg`
+    )
 
     return false
   }

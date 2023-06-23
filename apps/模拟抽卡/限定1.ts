@@ -3,18 +3,30 @@ import path from 'path'
 import fs from 'fs'
 import jimp from 'jimp'
 
-const backgroundImagePath = path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/bg.png')
+const backgroundImagePath = `${process
+  .cwd()
+  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`
 const folderPaths = [
-  path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/6-lim1'),
-  path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/5-lim1'),
-  path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/4'),
-  path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/3'),
-  path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/2')
+  `${process
+    .cwd()
+    .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/6-lim1`,
+  `${process
+    .cwd()
+    .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/5-lim1`,
+  `${process.cwd().replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
+  `${process.cwd().replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
+  `${process.cwd().replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
 ]
 
-const outputFolderPath = path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im')
-const dbFolderPath = path.resolve(__dirname, '../../db/模拟抽卡/drawCountMap-lim1.json')
-const drawCountMapPath = path.resolve(__dirname, '../../db/模拟抽卡/drawCountMap-lim1.json')
+const outputFolderPath = `${process
+  .cwd()
+  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`
+const dbFolderPath = `${process
+  .cwd()
+  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`
+const drawCountMapPath = `${process
+  .cwd()
+  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`
 // 背景图的宽度和高度
 const backgroundImageWidth = 1500
 const backgroundImageHeight = 800

@@ -1,20 +1,27 @@
 import { plugin, sendImage, Messagetype } from 'alemon'
-import path from 'path'
 import fs from 'fs'
-import jimp, { read } from 'jimp'
+import jimp from 'jimp'
 
-const backgroundImagePath = path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/bg.png')
+const backgroundImagePath = `${process
+  .cwd()
+  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`
 const folderPaths = [
-  path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/6'),
-  path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/5'),
-  path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/4'),
-  path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/3'),
-  path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/2')
+  `${process.cwd().replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/6`,
+  `${process.cwd().replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/5`,
+  `${process.cwd().replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
+  `${process.cwd().replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
+  `${process.cwd().replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
 ]
 
-const outputFolderPath = path.resolve(__dirname, '../../resources/assets/img/模拟抽卡/im')
-const dbFolderPath = path.resolve(__dirname, '../../db/模拟抽卡/drawCountMap.json')
-const drawCountMapPath = path.resolve(__dirname, '../../db/模拟抽卡/drawCountMap.json')
+const outputFolderPath = `${process
+  .cwd()
+  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`
+const dbFolderPath = `${process
+  .cwd()
+  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/模拟抽卡/drawCountMap.json`
+const drawCountMapPath = `${process
+  .cwd()
+  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/模拟抽卡/drawCountMap.json`
 // 背景图的宽度和高度
 const backgroundImageWidth = 1500
 const backgroundImageHeight = 800
@@ -44,7 +51,7 @@ function getRandomFileFromFolder(folderPath) {
 // 合成图片
 async function compositeImages() {
   try {
-    const backgroundImage = await read(backgroundImagePath)
+    const backgroundImage = await jimp.read(backgroundImagePath)
     backgroundImage.resize(backgroundImageWidth, backgroundImageHeight)
 
     const positions = [
@@ -72,7 +79,7 @@ async function compositeImages() {
       const [x, y] = positions[i]
       const randomFolder = getRandomOption(options)
       const randomImage = getRandomFileFromFolder(randomFolder)
-      const image = await read(randomImage)
+      const image = await jimp.read(randomImage)
 
       // 调整图片尺寸，如果需要的话
       // image.resize(width, height);
@@ -120,7 +127,7 @@ export class chouka extends plugin {
 
       const randomFolder = getRandomOption(options)
       const randomImage = getRandomFileFromFolder(randomFolder)
-      const image = await read(randomImage)
+      const image = await jimp.read(randomImage)
 
       // 保存图片到目标文件夹
       const outputFilePath = `${outputFolderPath}/single_draw.jpg`
@@ -164,7 +171,9 @@ function loadDrawCountMap() {
     fs.mkdirSync(dbFolderPath, { recursive: true })
   }
 
-  const drawCountMapPath = path.resolve(__dirname, '../../db/模拟抽卡/drawCountMap.json')
+  const drawCountMapPath = `${process
+    .cwd()
+    .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/模拟抽卡/drawCountMap.json`
   if (!fs.existsSync(drawCountMapPath)) {
     fs.writeFileSync(drawCountMapPath, '{}')
   }

@@ -1,7 +1,8 @@
 import { createApps, setMessage, BotType, BotConfigType } from 'alemon'
 /* 非依赖引用 */
-import { AppName } from './app.config'
-import { PointMessageType } from './types'
+import { AppName } from './app.config.js'
+import { PointMessageType } from './types.js'
+
 declare global {
   //机器人信息
   var robot: BotType
@@ -19,8 +20,10 @@ setMessage(AppName, (e: PointMessageType) => {
   if (cfg.sandbox) console.info(e)
   return e
 })
+
 /** 创建插件应用 */
-createApps(AppName)
+await createApps(AppName)
+
 /**
  * 倘若你有很多同级插件作为你的子插件
  * 你甚至可以手动管理并决定是否创建该插件
