@@ -1,4 +1,4 @@
-# <div align="center"><h1 align="center">重返未来图鉴 插件</h1></div>
+# <div align="center"><h1 align="center">重返未来：1999图鉴 插件</h1></div>
 ## <div align="center">介绍</div>
 
 <div align="center">Alemon-Bot 插件</div>
