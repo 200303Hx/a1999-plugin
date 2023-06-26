@@ -2,7 +2,7 @@
 ## <div align="center">介绍</div>
 
 <div align="center">Alemon-Bot 插件</div>
-
+<div align="center">点击链接体验插件【1999】：https://pd.qq.com/s/dqn6ma5eb</div>
 ## <div align="center">安装</div>
 
 <div align="center">使用Gitee安装，在Alemon-Bot根目录执行</div>
@@ -13,7 +13,7 @@ git clone https://gitee.com/fantasy-hx/alemon-plugin-1999.git ./plugins/alemon-p
 <div align="center">安装依赖，在Alemon-Bot根目录执行</div>
 
 ```sh
-cd plugins/alemon-plugin-1999 && npm i
+npm install
 ```
 ## <div align="center">更新</div>
 
