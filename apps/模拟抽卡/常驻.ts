@@ -1,6 +1,7 @@
 import { plugin, sendImage, Messagetype } from 'alemon'
 import fs from 'fs'
 import jimp from 'jimp'
+import schedule from 'node-schedule'
 
 const backgroundImagePath = `${process
   .cwd()
@@ -113,6 +114,16 @@ export class chouka extends plugin {
         }
       ]
     })
+
+    // Create a scheduled task to delete the draw count map file every night at 12 AM
+    schedule.scheduleJob('0 0 0 * * *', () => {
+      try {
+        fs.unlinkSync(drawCountMapPath)
+        console.log('Draw count map file has been deleted')
+      } catch (error) {
+        console.error('Error occurred while deleting the draw count map file:', error)
+      }
+    })
   }
 
   async 单抽(e) {
@@ -129,17 +140,21 @@ export class chouka extends plugin {
       const randomImage = getRandomFileFromFolder(randomFolder)
       const image = await jimp.read(randomImage)
 
-      // 保存图片到目标文件夹
       const outputFilePath = `${outputFolderPath}/single_draw.jpg`
       await image.writeAsync(outputFilePath)
 
-      // 更新抽卡次数
       const drawCountMap = loadDrawCountMap()
       const userId = e.msg.author.id
-      drawCountMap[userId] = (drawCountMap[userId] || 0) + 1
+
+      // 判断结果是否包含文件夹6，如果是，则重置计数
+      if (randomFolder === folderPaths[0]) {
+        drawCountMap[userId] = 0
+      } else {
+        drawCountMap[userId] = (drawCountMap[userId] || 0) + 1
+      }
+
       saveDrawCountMap(drawCountMap)
 
-      // 发送结果
       await e.sendImage(outputFilePath)
       e.reply(`<@!${userId}>，当前卡池：于湖中央\n你已经抽了 ${drawCountMap[userId]} 次。`)
       console.log(`单抽图片已保存至 ${outputFilePath}`)
@@ -149,39 +164,51 @@ export class chouka extends plugin {
   }
 
   async 十连(e) {
-    // 执行合成操作
-    await compositeImages()
+    try {
+      await compositeImages()
 
-    // 更新抽卡次数
-    const drawCountMap = loadDrawCountMap()
-    const userId = e.msg.author.id
-    drawCountMap[userId] = (drawCountMap[userId] || 0) + 10
-    saveDrawCountMap(drawCountMap)
+      const drawCountMap = loadDrawCountMap()
+      const userId = e.msg.author.id
 
-    // 发送结果
-    e.reply('正在抽取中')
-    await e.sendImage(`${outputFolderPath}/十连.jpg`)
-    e.reply(`<@!${userId}>，当前卡池：于湖中央\n你已经抽了 ${drawCountMap[userId]} 次。`)
-    console.log(`十连图片已保存至 ${outputFolderPath}/十连.jpg`)
+      // 判断合成图片的结果是否包含文件夹6，如果是，则重置计数
+      const imagePaths = fs.readdirSync(outputFolderPath)
+      const isReset = imagePaths.some(imagePath => imagePath.includes('6'))
+
+      if (isReset) {
+        drawCountMap[userId] = 0
+      } else {
+        drawCountMap[userId] = (drawCountMap[userId] || 0) + 10
+      }
+
+      saveDrawCountMap(drawCountMap)
+
+      await e.sendImage(`${outputFolderPath}/十连.jpg`)
+      e.reply(`<@!${userId}>，当前卡池：于湖中央\n你已经抽了 ${drawCountMap[userId]} 次。`)
+      console.log('十连图片已发送')
+    } catch (error) {
+      console.error('发生错误：', error)
+    }
   }
 }
 
+// 读取抽卡计数映射表
 function loadDrawCountMap() {
-  if (!fs.existsSync(dbFolderPath)) {
-    fs.mkdirSync(dbFolderPath, { recursive: true })
+  try {
+    const data = fs.readFileSync(drawCountMapPath, 'utf-8')
+    return JSON.parse(data)
+  } catch (error) {
+    console.error('Error occurred while loading draw count map:', error)
+    return {}
   }
-
-  const drawCountMapPath = `${process
-    .cwd()
-    .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/模拟抽卡/drawCountMap.json`
-  if (!fs.existsSync(drawCountMapPath)) {
-    fs.writeFileSync(drawCountMapPath, '{}')
-  }
-
-  const drawCountMapContent = fs.readFileSync(drawCountMapPath, 'utf8')
-  return JSON.parse(drawCountMapContent)
 }
 
+// 保存抽卡计数映射表
 function saveDrawCountMap(drawCountMap) {
-  fs.writeFileSync(drawCountMapPath, JSON.stringify(drawCountMap))
+  try {
+    const data = JSON.stringify(drawCountMap, null, 2)
+    fs.writeFileSync(drawCountMapPath, data, 'utf-8')
+    console.log('Draw count map has been saved')
+  } catch (error) {
+    console.error('Error occurred while saving draw count map:', error)
+  }
 }

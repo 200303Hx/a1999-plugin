@@ -1,7 +1,7 @@
 import { plugin, sendImage, Messagetype } from 'alemon'
-import path from 'path'
 import fs from 'fs'
 import jimp from 'jimp'
+import schedule from 'node-schedule'
 
 const backgroundImagePath = `${process
   .cwd()
@@ -135,6 +135,12 @@ export class up2 extends plugin {
           fnc: '单抽up2'
         }
       ]
+    })
+
+    // 添加定时任务，在每天晚上12点删除配置文件
+    schedule.scheduleJob('0 0 0 * * *', () => {
+      fs.unlinkSync(dbFolderPath)
+      console.log('配置文件已删除')
     })
   }
 
