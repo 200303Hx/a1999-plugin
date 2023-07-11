@@ -1,4 +1,4 @@
-import { plugin, sendImage, Messagetype } from 'alemon'
+import { plugin, Messagetype } from 'alemon'
 import fs from 'fs'
 import jimp from 'jimp'
 import schedule from 'node-schedule'

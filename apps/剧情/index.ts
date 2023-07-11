@@ -1,5 +1,4 @@
 import { plugin, Messagetype } from 'alemon'
-import path from 'path'
 
 export class showJ extends plugin {
   constructor() {

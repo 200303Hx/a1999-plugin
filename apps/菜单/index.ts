@@ -1,4 +1,4 @@
-import { plugin, sendImage, Messagetype, segment } from 'alemon'
+import { plugin, Messagetype, segment } from 'alemon'
 
 export class show extends plugin {
   constructor() {

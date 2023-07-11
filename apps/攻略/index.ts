@@ -1,4 +1,4 @@
-import { plugin, Messagetype, sendImage } from 'alemon'
+import { plugin, Messagetype } from 'alemon'
 
 export class gonglue extends plugin {
   constructor() {

@@ -1,7 +1,6 @@
 import { plugin, Messagetype, segment } from 'alemon'
 import axios from 'axios'
 import fs from 'fs'
-import path from 'path'
 
 export class fenxichouka extends plugin {
   constructor() {

@@ -1,4 +1,4 @@
-import { plugin, sendImage, Messagetype } from 'alemon'
+import { plugin, Messagetype } from 'alemon'
 import path from 'path'
 export class showI extends plugin {
   constructor() {
