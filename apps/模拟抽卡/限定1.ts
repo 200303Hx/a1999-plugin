@@ -79,13 +79,13 @@ async function compositeImages() {
       {
         folderPath: folderPaths[0],
         probability: 0.015,
-        specificImage: `${folderPaths[0]}/6-12.png`,
+        specificImage: `${folderPaths[0]}/6-10.png`,
         specificImageProbability: 0.5
       },
       {
         folderPath: folderPaths[1],
         probability: 0.085,
-        specificImage: `${folderPaths[1]}/5-12.png`,
+        specificImage: `${folderPaths[1]}/5-5.png`,
         specificImageProbability: 0.5
       },
       { folderPath: folderPaths[2], probability: 0.4 },
@@ -149,13 +149,13 @@ export class up extends plugin {
         {
           folderPath: folderPaths[0],
           probability: 0.015,
-          specificImage: `${folderPaths[0]}/6-12.png`,
+          specificImage: `${folderPaths[0]}/6-10.png`,
           specificImageProbability: 0.5
         },
         {
           folderPath: folderPaths[1],
           probability: 0.085,
-          specificImage: `${folderPaths[1]}/5-12.png`,
+          specificImage: `${folderPaths[1]}/5-5.png`,
           specificImageProbability: 0.5
         },
         { folderPath: folderPaths[2], probability: 0.4 },
@@ -183,7 +183,7 @@ export class up extends plugin {
 
       // 发送结果
       await e.sendImage(outputFilePath)
-      e.reply(`<@!${userId}>，当前卡池：流行即世界\n你已经抽了 ${drawCountMap[userId]} 次。`)
+      e.reply(`<@!${userId}>，当前卡池：弩箭破空而至\n今天已经抽了 ${drawCountMap[userId]} 次。`)
       console.log(`单抽图片已保存至 ${outputFilePath}`)
     } catch (error) {
       console.error('发生错误：', error)
@@ -203,7 +203,7 @@ export class up extends plugin {
     // 发送结果
     e.reply('正在抽取中')
     await e.sendImage(`${outputFolderPath}/十连up.jpg`)
-    e.reply(`<@!${userId}>，当前卡池：流行即世界\n你已经抽了 ${drawCountMap[userId]} 次。`)
+    e.reply(`<@!${userId}>，当前卡池：弩箭破空而至\n今天已经抽了 ${drawCountMap[userId]} 次。`)
     console.log(`十连图片已保存至 ${outputFolderPath}/十连up.jpg`)
   }
 }

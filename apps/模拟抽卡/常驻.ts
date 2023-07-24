@@ -156,7 +156,7 @@ export class chouka extends plugin {
       saveDrawCountMap(drawCountMap)
 
       await e.sendImage(outputFilePath)
-      e.reply(`<@!${userId}>，当前卡池：于湖中央\n你已经抽了 ${drawCountMap[userId]} 次。`)
+      e.reply(`<@!${userId}>，当前卡池：于湖中央\n今天已经抽了 ${drawCountMap[userId]} 次。`)
       console.log(`单抽图片已保存至 ${outputFilePath}`)
     } catch (error) {
       console.error('发生错误：', error)
@@ -181,9 +181,9 @@ export class chouka extends plugin {
       }
 
       saveDrawCountMap(drawCountMap)
-
+      e.reply('正在抽取中')
       await e.sendImage(`${outputFolderPath}/十连.jpg`)
-      e.reply(`<@!${userId}>，当前卡池：于湖中央\n你已经抽了 ${drawCountMap[userId]} 次。`)
+      e.reply(`<@!${userId}>，当前卡池：于湖中央\n今天已经抽了 ${drawCountMap[userId]} 次。`)
       console.log('十连图片已发送')
     } catch (error) {
       console.error('发生错误：', error)

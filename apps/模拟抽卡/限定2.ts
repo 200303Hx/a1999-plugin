@@ -184,7 +184,7 @@ export class up2 extends plugin {
 
       // 发送结果
       await e.sendImage(outputFilePath)
-      e.reply(`<@!${userId}>，当前卡池：牧羊犬如是说\n你已经抽了 ${drawCountMap[userId]} 次。`)
+      e.reply(`<@!${userId}>，当前卡池：牧羊犬如是说\n今天已经抽了 ${drawCountMap[userId]} 次。`)
       console.log(`单抽图片已保存至 ${outputFilePath}`)
     } catch (error) {
       console.error('发生错误：', error)
@@ -204,7 +204,7 @@ export class up2 extends plugin {
     // 发送结果
     e.reply('正在抽取中')
     await e.sendImage(`${outputFolderPath}/十连up2.jpg`)
-    e.reply(`<@!${userId}>，当前卡池：牧羊犬如是说\n你已经抽了 ${drawCountMap[userId]} 次。`)
+    e.reply(`<@!${userId}>，当前卡池：牧羊犬如是说\n今天已经抽了 ${drawCountMap[userId]} 次。`)
     console.log(`十连图片已保存至 ${outputFolderPath}/十连up2.jpg`)
   }
 }
