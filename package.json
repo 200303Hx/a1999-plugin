@@ -11,12 +11,21 @@
   "author": "Fantasy",
   "license": "ISC",
   "dependencies": {
+    "canvas": "^2.11.2",
+    "canvas-constructor": "^7.0.1",
+    "cnpm": "^9.2.0",
     "fs": "^0.0.1-security",
+    "fs-extra": "^11.1.1",
     "jimp": "^0.22.8",
+    "lodash": "^4.17.21",
     "node-schedule": "^2.1.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "sharp": "^0.32.4",
+    "simple-statistics": "^7.8.3"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/lodash": "^4.14.195",
     "@types/node-schedule": "^2.1.0"
   }
 }

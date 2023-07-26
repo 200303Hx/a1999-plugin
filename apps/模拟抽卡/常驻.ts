@@ -1,4 +1,4 @@
-import { plugin, Messagetype } from 'alemon'
+import { plugin, Messagetype, segment } from 'alemon'
 import fs from 'fs'
 import jimp from 'jimp'
 import schedule from 'node-schedule'
@@ -181,7 +181,11 @@ export class chouka extends plugin {
       }
 
       saveDrawCountMap(drawCountMap)
-      e.reply('正在抽取中')
+      e.sendImage(
+        `${process
+          .cwd()
+          .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`
+      )
       await e.sendImage(`${outputFolderPath}/十连.jpg`)
       e.reply(`<@!${userId}>，当前卡池：于湖中央\n今天已经抽了 ${drawCountMap[userId]} 次。`)
       console.log('十连图片已发送')
