@@ -43,7 +43,7 @@ export class fenxichouka2 extends plugin {
     const novicePoolData = processGachaPoolData(newFileData, '新手池（滴一滴雨）')
 
     // 创建 canvas 用于自定义字体绘制
-    const canvas = createCanvas(1414, 20000)
+    const canvas = createCanvas(1414, 2000)
     const ctx = canvas.getContext('2d')
 
     // 设置字体样式
@@ -66,6 +66,7 @@ export class fenxichouka2 extends plugin {
     const textImageBuffer = canvas.toBuffer('image/png')
     textImageStream.write(textImageBuffer)
     textImageStream.end()
+
     // 读取背景图片
     Jimp.read(imageFilePath, async (err, image) => {
       if (err) {
@@ -82,6 +83,7 @@ export class fenxichouka2 extends plugin {
         opacitySource: 1,
         opacityDest: 1
       })
+
       // 保存修改后的图片
       image.write(
         `${process
@@ -89,18 +91,35 @@ export class fenxichouka2 extends plugin {
           .replace(
             /\\/g,
             '/'
-          )}/plugins/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`
+          )}/plugins/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`,
+        writeErr => {
+          if (writeErr) {
+            console.error('Error saving the image:', writeErr)
+            return
+          }
+
+          console.log(
+            '图片已保存：',
+            `${process
+              .cwd()
+              .replace(
+                /\\/g,
+                '/'
+              )}/plugins/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`
+          )
+
+          // 确保没有错误后，再发送图片
+          e.sendImage(
+            `${process
+              .cwd()
+              .replace(
+                /\\/g,
+                '/'
+              )}/plugins/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`
+          )
+        }
       )
     })
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`
-    )
-
     function processGachaPoolData(data, poolName) {
       const poolData = data.find(pool => pool.poolName === poolName)
 
@@ -146,7 +165,6 @@ export class fenxichouka2 extends plugin {
         // 计算6星概率
         const sixStarProbability = (sixStarCount / totalPulls) * 100
         analysisResultText += `抽数:${totalPulls}\n概率:${sixStarProbability.toFixed(2)}%\n`
-
         return analysisResultText
       } else {
         // 如果没有找到对应池子的数据
