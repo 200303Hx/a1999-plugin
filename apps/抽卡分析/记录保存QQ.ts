@@ -67,7 +67,7 @@ const cardNameMap = {
   3063: { name: '皮克勒斯', star: '6星' },
   3064: { name: '挖掘艺术', star: '5星' }
 }
-export class fenxichouka extends plugin {
+export class fenxichoukaq extends plugin {
   constructor() {
     super({
       rule: [
