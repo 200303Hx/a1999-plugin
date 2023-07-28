@@ -80,13 +80,13 @@ async function compositeImages() {
       {
         folderPath: folderPaths[0],
         probability: 0.015,
-        specificImage: `${folderPaths[0]}/6-13.png`,
+        specificImage: `${folderPaths[0]}/6-14.png`,
         specificImageProbability: 0.5
       },
       {
         folderPath: folderPaths[1],
         probability: 0.085,
-        specificImage: `${folderPaths[1]}/5-14.png`,
+        specificImage: `${folderPaths[1]}/5-15.png`,
         specificImageProbability: 0.5
       },
       { folderPath: folderPaths[2], probability: 0.4 },
