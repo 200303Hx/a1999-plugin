@@ -61,7 +61,7 @@ const cardNameMap = {
   3057: { name: '小梅斯梅尔', star: '4星' },
   3058: { name: '埃里克', star: '4星' },
   3059: { name: '门', star: '2星' },
-  3060: { name: '金蜜儿', star: '5星' },
+  3060: { name: '金蜜儿', star: '6星' },
   3061: { name: '', star: '' },
   3062: { name: '梅兰妮', star: '6星' },
   3063: { name: '皮克勒斯', star: '6星' },
@@ -72,21 +72,21 @@ export class fenxichouka extends plugin {
     super({
       rule: [
         {
-          reg: /^抽卡记录\s+([\S]+)/,
-          fnc: 'fenxi'
+          reg: /^q服抽卡记录\s+([\S]+)/,
+          fnc: 'fenxiq'
         }
       ]
     })
   }
 
-  async fenxi(e: Messagetype) {
+  async fenxiq(e: Messagetype) {
     // 使用正则表达式匹配并提取链接的一部分
     const urlRegex = /^抽卡记录\s+([\S]+)/
     const match = e.cmd_msg.match(urlRegex)
 
     if (match && match[1]) {
       const partOfUrl = match[1] // 用户发送的链接的一部分
-      const completeUrl = `https://game-re-service.sl916.com/query/summon?${partOfUrl}`
+      const completeUrl = `https://game-re-qq-service.sl916.com/query/summon?${partOfUrl}`
       const decodedUrl = completeUrl.replace(/&amp;/g, '&')
       const userId = e.msg.author.id // 获取用户唯一标识
       const jsonFileName = `${process

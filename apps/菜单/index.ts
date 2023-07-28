@@ -1,5 +1,4 @@
 import { plugin, Messagetype, segment } from 'alemon'
-
 export class show extends plugin {
   constructor() {
     super({
@@ -70,16 +69,12 @@ export class show extends plugin {
     e.sendImage(
       `${process
         .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/help/攻略.png`
+        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/help/攻略.jpg`
     )
     return false
   }
   async 抽卡分析(e: Messagetype): Promise<boolean> {
     const obj = segment.reply(e.msg.id)
-    e.reply(
-      '〇下面为获取URL教程，at Bot+url即可获取抽卡分析，token失效快建议在单独自频道进行，可以保留数据。',
-      obj
-    )
     e.sendImage(
       `${process
         .cwd()

@@ -150,13 +150,13 @@ export class up2 extends plugin {
         {
           folderPath: folderPaths[0],
           probability: 0.015,
-          specificImage: `${folderPaths[0]}/6-13.png`,
+          specificImage: `${folderPaths[0]}/6-14.png`,
           specificImageProbability: 0.5
         },
         {
           folderPath: folderPaths[1],
           probability: 0.085,
-          specificImage: `${folderPaths[1]}/5-14.png`,
+          specificImage: `${folderPaths[1]}/5-15.png`,
           specificImageProbability: 0.5
         },
         { folderPath: folderPaths[2], probability: 0.4 },
@@ -184,7 +184,7 @@ export class up2 extends plugin {
 
       // 发送结果
       await e.sendImage(outputFilePath)
-      e.reply(`<@!${userId}>，当前卡池：牧羊犬如是说\n今天已经抽了 ${drawCountMap[userId]} 次。`)
+      e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n今天已经抽了 ${drawCountMap[userId]} 次。`)
       console.log(`单抽图片已保存至 ${outputFilePath}`)
     } catch (error) {
       console.error('发生错误：', error)
@@ -208,7 +208,7 @@ export class up2 extends plugin {
         .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`
     )
     await e.sendImage(`${outputFolderPath}/十连up2.jpg`)
-    e.reply(`<@!${userId}>，当前卡池：牧羊犬如是说\n今天已经抽了 ${drawCountMap[userId]} 次。`)
+    e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n今天已经抽了 ${drawCountMap[userId]} 次。`)
     console.log(`十连图片已保存至 ${outputFolderPath}/十连up2.jpg`)
   }
 }
