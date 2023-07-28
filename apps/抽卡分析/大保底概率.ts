@@ -60,6 +60,10 @@ export class fenxichouka1 extends plugin {
             specialSixStar = '皮克勒斯'
           } else if (poolName === '深林的絮语') {
             specialSixStar = '槲寄生'
+          } else if (poolName === '弩箭破空而至') {
+            specialSixStar = '红弩箭'
+          } else if (poolName === '仙子振翅入夜') {
+            specialSixStar = '牙仙'
           }
 
           let hasSixStarInPool = false
