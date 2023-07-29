@@ -42,7 +42,7 @@ export class gonglue extends plugin {
         },
         {
           reg: /^Buff$/,
-          fnc: 'G0'
+          fnc: 'G10'
         }
       ]
     })
