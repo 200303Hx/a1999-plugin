@@ -141,10 +141,7 @@ export class gonglue extends plugin {
     await e.sendImage(
       `${process
         .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-19.jpg`
+        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/攻略/Buff.jpg`
     )
     e.reply(`<@!${e.msg.author.id}> `)
     return false
