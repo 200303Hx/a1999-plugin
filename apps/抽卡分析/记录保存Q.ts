@@ -81,7 +81,7 @@ export class fenxichoukaq extends plugin {
 
   async fenxiq(e: Messagetype) {
     // 使用正则表达式匹配并提取链接的一部分
-    const urlRegex = /^抽卡记录\s+([\S]+)/
+    const urlRegex = /^q服抽卡记录\s+([\S]+)/
     const match = e.cmd_msg.match(urlRegex)
 
     if (match && match[1]) {

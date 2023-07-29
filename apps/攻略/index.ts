@@ -39,6 +39,10 @@ export class gonglue extends plugin {
         {
           reg: /^旧齿与陈痕-19$/,
           fnc: 'G9'
+        },
+        {
+          reg: /^Buff$/,
+          fnc: 'G0'
         }
       ]
     })
@@ -121,6 +125,19 @@ export class gonglue extends plugin {
     return false
   }
   async G9(e: Messagetype): Promise<boolean> {
+    await e.sendImage(
+      `${process
+        .cwd()
+        .replace(
+          /\\/g,
+          '/'
+        )}/plugins/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-19.jpg`
+    )
+    e.reply(`<@!${e.msg.author.id}> `)
+    return false
+  }
+
+  async G10(e: Messagetype): Promise<boolean> {
     await e.sendImage(
       `${process
         .cwd()

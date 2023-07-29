@@ -115,14 +115,10 @@ export class chouka extends plugin {
       ]
     })
 
-    // Create a scheduled task to delete the draw count map file every night at 12 AM
+    // 添加定时任务，在每天晚上12点删除配置文件
     schedule.scheduleJob('0 0 0 * * *', () => {
-      try {
-        fs.unlinkSync(drawCountMapPath)
-        console.log('Draw count map file has been deleted')
-      } catch (error) {
-        console.error('Error occurred while deleting the draw count map file:', error)
-      }
+      fs.unlinkSync(dbFolderPath)
+      console.log('配置文件已删除')
     })
   }
 
