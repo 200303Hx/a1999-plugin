@@ -115,13 +115,15 @@ export class chouka extends plugin {
       ]
     })
 
-    // 添加定时任务，在每天晚上12点删除配置文件
-    schedule.scheduleJob('0 0 0 * * *', () => {
-      fs.unlinkSync(dbFolderPath)
-      console.log('配置文件已删除')
+    // 添加定时任务，在每天晚上12点执行图片合成
+    schedule.scheduleJob('58 21 * * *', () => {
+      this.un() // 调用 compositeImages 函数
     })
   }
-
+  un() {
+    fs.unlinkSync(dbFolderPath)
+    console.log('配置文件已删除')
+  }
   async 单抽(e) {
     try {
       const options = [
