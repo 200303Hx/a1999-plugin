@@ -116,7 +116,7 @@ export class chouka extends plugin {
     })
 
     // 添加定时任务，在每天晚上12点执行图片合成
-    schedule.scheduleJob('58 21 * * *', () => {
+    schedule.scheduleJob('0 0 0 * * *', () => {
       this.un() // 调用 compositeImages 函数
     })
   }
