@@ -61,7 +61,7 @@ const cardNameMap = {
   3057: { name: '小梅斯梅尔', star: '4星' },
   3058: { name: '埃里克', star: '4星' },
   3059: { name: '门', star: '2星' },
-  3060: { name: '金蜜儿', star: '6星' },
+  3060: { name: '金蜜儿', star: '5星' },
   3061: { name: '', star: '' },
   3062: { name: '梅兰妮', star: '6星' },
   3063: { name: '皮克勒斯', star: '6星' },
