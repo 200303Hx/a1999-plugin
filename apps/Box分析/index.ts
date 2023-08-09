@@ -8,17 +8,17 @@ export class Box extends plugin {
     super({
       rule: [
         {
-          reg: /^百度api\s'(.*)'/,
+          reg: /^配队分析2\s+'(.*)'/,
           fnc: 'Box'
         },
         {
           reg: /^百度TK\s+([\S]+)/,
-          fnc: 'Box2'
+          fnc: 'Box3'
         }
       ]
     })
   }
-  async Box2(e: Messagetype) {
+  async Box3(e: Messagetype) {
     const TK = /^百度TK\s+([\S]+)/
     const match = e.cmd_msg.match(TK)
     const partOfUrl = match[1]

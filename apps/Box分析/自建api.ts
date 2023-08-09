@@ -9,7 +9,7 @@ export class Box1 extends plugin {
     super({
       rule: [
         {
-          reg: /^自建api\s'(.*)'/,
+          reg: /^配队分析\s+'(.*)'/,
           fnc: 'Box1'
         },
         {
