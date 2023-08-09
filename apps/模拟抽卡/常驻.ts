@@ -1,7 +1,179 @@
 import { plugin, Messagetype, segment } from 'alemon'
 import fs from 'fs'
 import jimp from 'jimp'
-import schedule from 'node-schedule'
+
+export class chouka extends plugin {
+  constructor() {
+    super({
+      rule: [
+        {
+          reg: /^\/十连$/,
+          fnc: '十连'
+        },
+        {
+          reg: /^\/单抽$/,
+          fnc: '单抽'
+        }
+      ]
+    })
+  }
+  async 单抽(e) {
+    try {
+      const options = [
+        { folderPath: folderPaths[0], probability: 0.015 },
+        { folderPath: folderPaths[1], probability: 0.085 },
+        { folderPath: folderPaths[2], probability: 0.4 },
+        { folderPath: folderPaths[3], probability: 0.45 },
+        { folderPath: folderPaths[4], probability: 0.05 }
+      ]
+
+      const drawCountMap = loadDrawCountMap()
+      const userId = e.msg.author.id
+
+      // 单抽的逻辑，包括随机选择和处理抽卡结果
+      const { randomFolder, randomImage } = await 单抽Logic(e)
+      const image = await jimp.read(randomImage)
+      const outputFilePath = `${outputFolderPath}/single_draw.jpg`
+      await image.writeAsync(outputFilePath)
+
+      // 添加抽到的文件名到抽卡次数映射中
+      drawCountMap[userId] = drawCountMap[userId] || []
+      drawCountMap[userId].push(randomImage)
+
+      // 检查是否抽到了文件夹6的文件，如果是，重置抽卡次数并返回之前的抽卡次数
+      if (randomFolder === folderPaths[0]) {
+        const previousDrawCount = drawCountMap[userId].length
+        drawCountMap[userId] = [randomImage]
+        const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage)
+        drawCountMap[userId] = previousFolder6Draws
+
+        saveDrawCountMap(drawCountMap)
+
+        await e.sendImage(outputFilePath)
+        e.reply(`<@!${userId}>，当前卡池：于湖中央\n抽到了6星，所用抽数 ${previousDrawCount} 抽`)
+        console.log(`单抽图片已保存至 ${outputFilePath}`)
+      } else {
+        saveDrawCountMap(drawCountMap)
+
+        await e.sendImage(outputFilePath)
+        e.reply(
+          `<@!${userId}>，当前卡池：于湖中央\n目前已经抽了 ${drawCountMap[userId].length} 次。`
+        )
+        console.log(`单抽图片已保存至 ${outputFilePath}`)
+      }
+    } catch (error) {
+      console.error('发生错误：', error)
+    }
+  }
+
+  async 十连(e) {
+    const positions = [
+      [160, 0],
+      [310, 0],
+      [460, 0],
+      [610, 0],
+      [760, 0],
+      [590, 400],
+      [740, 400],
+      [890, 400],
+      [1040, 400],
+      [1190, 400]
+    ]
+
+    try {
+      const drawCountMap = loadDrawCountMap()
+      const userId = e.msg.author.id
+      let folder6DrawCount = 0 // 记录抽到文件夹6的抽数
+      const imagePaths = [] // 用于保存十连的文件名
+      // 添加抽到的文件名到抽卡次数映射中
+      drawCountMap[userId] = drawCountMap[userId] || []
+
+      for (let i = 0; i < 10; i++) {
+        const { randomFolder, randomImage } = await 单抽Logic(e)
+        drawCountMap[userId].push(randomImage)
+        imagePaths.push(randomImage)
+
+        // 检查是否抽到了文件夹6的文件
+        if (randomFolder === folderPaths[0]) {
+          folder6DrawCount = drawCountMap[userId].length
+          drawCountMap[userId] = [randomImage]
+          const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage)
+          drawCountMap[userId] = previousFolder6Draws
+        }
+      }
+
+      saveDrawCountMap(drawCountMap)
+
+      const backgroundImage = await jimp.read(backgroundImagePath)
+      backgroundImage.resize(backgroundImageWidth, backgroundImageHeight)
+
+      for (let i = 0; i < imagePaths.length; i++) {
+        const randomImage = imagePaths[i]
+        const image = await jimp.read(randomImage)
+
+        // 叠加图片
+        const [x, y] = positions[i]
+        backgroundImage.composite(image, x, y)
+      }
+
+      // 保存合成后的图片
+      const outputFilePath = `${outputFolderPath}/十连.jpg`
+      await backgroundImage.writeAsync(outputFilePath)
+      console.log(`图片已保存至 ${outputFilePath}`)
+
+      console.log('图片合成完成！')
+      e.sendImage(
+        `${process
+          .cwd()
+          .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`
+      )
+      await e.sendImage(outputFilePath)
+
+      if (folder6DrawCount > 0) {
+        e.reply(`<@!${userId}>，当前卡池：于湖中央\n抽到了6星，所用抽数：${folder6DrawCount} 抽`)
+      } else {
+        e.reply(`<@!${userId}>，当前卡池：于湖中央\n目前已经抽了 ${drawCountMap[userId].length} 次`)
+      }
+    } catch (error) {
+      console.error('发生错误：', error)
+    }
+  }
+}
+
+function loadDrawCountMap() {
+  try {
+    const json = fs.readFileSync(dbFolderPath, 'utf-8')
+    return JSON.parse(json)
+  } catch (error) {
+    saveDrawCountMap({}) // 创建一个空的抽卡次数映射文件
+    console.error('读取抽卡次数映射文件失败:', error)
+    return {}
+  }
+}
+
+function saveDrawCountMap(drawCountMap) {
+  try {
+    const json = JSON.stringify(drawCountMap, null, 2)
+    fs.writeFileSync(drawCountMapPath, json, 'utf-8')
+  } catch (error) {
+    console.error('保存抽卡次数映射文件失败:', error)
+  }
+}
+
+async function 单抽Logic(e) {
+  const options = [
+    { folderPath: folderPaths[0], probability: 0.015 },
+    { folderPath: folderPaths[1], probability: 0.085 },
+    { folderPath: folderPaths[2], probability: 0.4 },
+    { folderPath: folderPaths[3], probability: 0.45 },
+    { folderPath: folderPaths[4], probability: 0.05 }
+  ]
+
+  const randomFolder = getRandomOption(options)
+  const randomImage = getRandomFileFromFolder(randomFolder)
+
+  return { randomFolder, randomImage }
+}
 
 const backgroundImagePath = `${process
   .cwd()
@@ -47,170 +219,4 @@ function getRandomFileFromFolder(folderPath) {
   const randomIndex = Math.floor(Math.random() * files.length)
   const randomFile = files[randomIndex]
   return `${folderPath}/${randomFile}`
-}
-
-// 合成图片
-async function compositeImages() {
-  try {
-    const backgroundImage = await jimp.read(backgroundImagePath)
-    backgroundImage.resize(backgroundImageWidth, backgroundImageHeight)
-
-    const positions = [
-      [160, 0],
-      [310, 0],
-      [460, 0],
-      [610, 0],
-      [760, 0],
-      [590, 400],
-      [740, 400],
-      [890, 400],
-      [1040, 400],
-      [1190, 400]
-    ]
-
-    const options = [
-      { folderPath: folderPaths[0], probability: 0.015 },
-      { folderPath: folderPaths[1], probability: 0.085 },
-      { folderPath: folderPaths[2], probability: 0.4 },
-      { folderPath: folderPaths[3], probability: 0.45 },
-      { folderPath: folderPaths[4], probability: 0.05 }
-    ]
-
-    for (let i = 0; i < positions.length; i++) {
-      const [x, y] = positions[i]
-      const randomFolder = getRandomOption(options)
-      const randomImage = getRandomFileFromFolder(randomFolder)
-      const image = await jimp.read(randomImage)
-
-      // 调整图片尺寸，如果需要的话
-      // image.resize(width, height);
-
-      // 叠加图片
-      backgroundImage.composite(image, x, y)
-    }
-
-    // 保存合成后的图片
-    const outputFilePath = `${outputFolderPath}/十连.jpg`
-    await backgroundImage.writeAsync(outputFilePath)
-    console.log(`图片已保存至 ${outputFilePath}`)
-
-    console.log('图片合成完成！')
-  } catch (error) {
-    console.error('发生错误：', error)
-  }
-}
-
-export class chouka extends plugin {
-  constructor() {
-    super({
-      rule: [
-        {
-          reg: /^\/十连$/,
-          fnc: '十连'
-        },
-        {
-          reg: /^\/单抽$/,
-          fnc: '单抽'
-        }
-      ]
-    })
-
-    // 添加定时任务，在每天晚上12点执行图片合成
-    schedule.scheduleJob('0 0 0 * * *', () => {
-      this.un() // 调用 compositeImages 函数
-    })
-  }
-  un() {
-    fs.unlinkSync(dbFolderPath)
-    console.log('配置文件已删除')
-  }
-  async 单抽(e) {
-    try {
-      const options = [
-        { folderPath: folderPaths[0], probability: 0.015 },
-        { folderPath: folderPaths[1], probability: 0.085 },
-        { folderPath: folderPaths[2], probability: 0.4 },
-        { folderPath: folderPaths[3], probability: 0.45 },
-        { folderPath: folderPaths[4], probability: 0.05 }
-      ]
-
-      const randomFolder = getRandomOption(options)
-      const randomImage = getRandomFileFromFolder(randomFolder)
-      const image = await jimp.read(randomImage)
-
-      const outputFilePath = `${outputFolderPath}/single_draw.jpg`
-      await image.writeAsync(outputFilePath)
-
-      const drawCountMap = loadDrawCountMap()
-      const userId = e.msg.author.id
-
-      // 判断结果是否包含文件夹6，如果是，则重置计数
-      if (randomFolder === folderPaths[0]) {
-        drawCountMap[userId] = 0
-      } else {
-        drawCountMap[userId] = (drawCountMap[userId] || 0) + 1
-      }
-
-      saveDrawCountMap(drawCountMap)
-
-      await e.sendImage(outputFilePath)
-      e.reply(`<@!${userId}>，当前卡池：于湖中央\n今天已经抽了 ${drawCountMap[userId]} 次。`)
-      console.log(`单抽图片已保存至 ${outputFilePath}`)
-    } catch (error) {
-      console.error('发生错误：', error)
-    }
-  }
-
-  async 十连(e) {
-    try {
-      await compositeImages()
-
-      const drawCountMap = loadDrawCountMap()
-      const userId = e.msg.author.id
-
-      // 判断合成图片的结果是否包含文件夹6，如果是，则重置计数
-      const imagePaths = fs.readdirSync(outputFolderPath)
-      const isReset = imagePaths.some(imagePath => imagePath.includes('6'))
-
-      if (isReset) {
-        drawCountMap[userId] = 0
-      } else {
-        drawCountMap[userId] = (drawCountMap[userId] || 0) + 10
-      }
-
-      saveDrawCountMap(drawCountMap)
-      e.sendImage(
-        `${process
-          .cwd()
-          .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`
-      )
-      await e.sendImage(`${outputFolderPath}/十连.jpg`)
-      e.reply(`<@!${userId}>，当前卡池：于湖中央\n今天已经抽了 ${drawCountMap[userId]} 次。`)
-      console.log('十连图片已发送')
-    } catch (error) {
-      console.error('发生错误：', error)
-    }
-  }
-}
-
-// 读取抽卡计数映射表
-function loadDrawCountMap() {
-  try {
-    const data = fs.readFileSync(drawCountMapPath, 'utf-8')
-    return JSON.parse(data)
-  } catch (error) {
-    console.error('Error occurred while loading draw count map:', error)
-    return {}
-  }
-}
-
-// 保存抽卡计数映射表
-function saveDrawCountMap(drawCountMap) {
-  try {
-    const data = JSON.stringify(drawCountMap, null, 2)
-    fs.writeFileSync(drawCountMapPath, data, 'utf-8')
-    console.log('Draw count map has been saved')
-  } catch (error) {
-    console.error('Error occurred while saving draw count map:', error)
-  }
 }
