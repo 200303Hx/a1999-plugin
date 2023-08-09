@@ -26,7 +26,7 @@ export class Box extends plugin {
 
     const yamlFileName = `${process
       .cwd()
-      .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/config/OCR.yaml`
+      .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/config/TK.yaml`
     fs.writeFileSync(yamlFileName, JSON.stringify(yamlData, null, 2), 'utf-8')
     console.log('TK已保存')
     e.reply('TK已保存')
