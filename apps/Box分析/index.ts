@@ -8,7 +8,7 @@ export class Box extends plugin {
     super({
       rule: [
         {
-          reg: /^配队分析2\s+'(.*)'/,
+          reg: '配队分析2(.*)',
           fnc: 'Box'
         },
         {
