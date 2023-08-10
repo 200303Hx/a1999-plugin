@@ -248,7 +248,7 @@ export class Box extends plugin {
         for (const teamName in teamsData) {
           const teamCharacters = teamsData[teamName].配队
           const foundCharacters = teamCharacters.filter(name => names.includes(name))
-          if (foundCharacters.length >= 3) {
+          if (foundCharacters.length === 4) {
             matchingTeams.push({
               [teamName]: {
                 配队: foundCharacters,
@@ -265,7 +265,7 @@ export class Box extends plugin {
 
       const formattedResult = matchingTeams
         .map(team => JSON.stringify(team, null, 0).replace(/[{}[\]""]/g, ''))
-        .join('\n')
+        .join('\n \n')
 
       console.log('匹配的队伍数据：\n', formattedResult)
       e.reply('【配队推荐】：\n' + formattedResult)
