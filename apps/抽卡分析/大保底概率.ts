@@ -9,6 +9,7 @@ import {
 import fs, { existsSync } from 'fs'
 import jimp from 'jimp'
 import { createCanvas, registerFont } from 'canvas'
+import path from 'path'
 
 export class fenxichouka1 extends plugin {
   constructor() {
@@ -289,7 +290,15 @@ export class fenxichouka1 extends plugin {
           const gradeImageFileName = await selectGradeImage(
             overallMisfitProbability
           )
-          const gradeImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/评级`
+          const gradeImagePath = path.join(
+            `${process
+              .cwd()
+              .replace(
+                /\\/g,
+                '/'
+              )}/application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/评级`,
+            gradeImageFileName
+          )
 
           // 使用 Jimp 读取评级图片
           const gradeImage = await jimp.read(gradeImagePath)

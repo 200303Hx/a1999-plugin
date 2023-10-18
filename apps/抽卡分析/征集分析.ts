@@ -46,7 +46,7 @@ export class fenxichouka2 extends plugin {
         )}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`
 
       if (!existsSync(newFilePath)) {
-        e.reply('不存在')
+        e.reply('记录不存在')
         return
       }
 

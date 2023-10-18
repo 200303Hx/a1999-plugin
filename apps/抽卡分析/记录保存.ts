@@ -107,7 +107,7 @@ export class fenxichouka extends plugin {
         console.log('JSON文件保存成功！')
 
         const filePath = `./application/alemon-plugin-1999/db/抽卡分析/${userId}.json`
-        //抽卡记录1
+        // 抽卡记录1
         try {
           // 从文件中读取JSON数据
           const jsonData = fs.readFileSync(filePath, 'utf-8')
@@ -141,39 +141,45 @@ export class fenxichouka extends plugin {
               // 获取当前记录的所有id
               const gainIds = record.gainIds
 
-              // 遍历所有id
               for (const gainId of gainIds) {
                 const cardInfo = cardNameMap[gainId]
-                const star = cardInfo.star ? `(${cardInfo.star})` : ''
-                position++
+                if (cardInfo) {
+                  const star = cardInfo.star ? `(${cardInfo.star})` : ''
+                  position++
 
-                const cardResult = `${cardInfo.name}${star} - 第${position}抽`
+                  const cardResult = `${cardInfo.name}${star} - 第${position}抽`
 
-                // 将当前卡片结果添加到抽卡池结果数组
-                poolResults.push(cardResult)
+                  // 将当前卡片结果添加到抽卡池结果数组
+                  poolResults.push(cardResult)
+                } else {
+                  // 如果找不到卡片信息，可以添加一个默认值或者忽略当前卡片
+                  poolResults.push(`未知卡片 - 第${position}抽`)
+                  // 或者不做任何操作
+                }
               }
             }
 
             // 将当前抽卡池的结果保存为一个对象
             const poolResultObject = {
-              poolName: poolName,
+              poolName,
               results: poolResults
             }
 
             // 将当前抽卡池的结果对象添加到最终结果数组
             result.push(poolResultObject)
           }
-
-          // 将所有抽卡池结果合并，并创建回复消息
-          const replyMessage = result.join('\n')
-
           // 将结果保存为 JSON 字符串格式
           const jsonResult = JSON.stringify(result, null, 2)
 
           // 保存 JSON 字符串到文件
-          const saveFilePath = `./application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`
+          const saveFilePath = `${process
+            .cwd()
+            .replace(
+              /\\/g,
+              '/'
+            )}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`
           fs.writeFileSync(saveFilePath, jsonResult, 'utf-8')
-          //抽卡记录2
+          // 抽卡记录2
           try {
             // 从文件中读取JSON数据
             const jsonData = fs.readFileSync(filePath, 'utf-8')
@@ -236,27 +242,27 @@ export class fenxichouka extends plugin {
 
               // 初始化一个数组来存储当前抽卡池的结果
               const poolResults = []
-
-              // 遍历当前抽卡池的倒序记录
+              // 记录当前的抽卡序号
               for (const record of poolRecords) {
                 // 获取当前记录的所有id
                 const gainIds = record.gainIds
 
-                // 遍历所有id
                 for (const gainId of gainIds) {
                   const cardInfo = cardNameMap[gainId]
-                  const star = cardInfo.star ? `(${cardInfo.star})` : ''
+                  if (cardInfo) {
+                    const star = cardInfo.star1 ? `(${cardInfo.star})` : ''
+                    const position = poolResults.length + 1
 
-                  // 获取当前抽卡池的抽卡序号
-                  const position = poolResults.length + 1
-
-                  const cardResult = `${cardInfo.name}${star} - 第${position}抽出`
-
-                  // 将当前卡片结果添加到抽卡池结果数组
-                  poolResults.push(cardResult)
+                    const cardResult = `${cardInfo.name}${star} - 第${position}抽`
+                    poolResults.push(cardResult)
+                  } else {
+                    const position = poolResults.length + 1
+                    // 如果找不到卡片信息，可以添加一个默认值或者忽略当前卡片
+                    poolResults.push(`未知卡片 - 第${position}抽`)
+                    // 或者不做任何操作
+                  }
                 }
               }
-
               // 将当前抽卡池的结果保存到对应的池子对象中
               if (pool.poolName === '第一滴雨') {
                 novicePoolResult.results = poolResults
@@ -282,33 +288,34 @@ export class fenxichouka extends plugin {
                 // 获取当前记录的所有id
                 const gainIds = record.gainIds
 
-                // 遍历所有id
                 for (const gainId of gainIds) {
                   const cardInfo = cardNameMap[gainId]
-                  const star = cardInfo.star ? `(${cardInfo.star})` : ''
-
-                  // 获取全局抽卡序号
-                  const position = limitedPoolResult.results.length + 1
-
-                  const cardResult = `${cardInfo.name}${star} - 第${position}抽`
-
-                  // 将当前卡片结果添加到限定池的结果数组
-                  limitedPoolResult.results.push(cardResult)
+                  if (cardInfo) {
+                    const star = cardInfo.star ? `(${cardInfo.star})` : ''
+                    const position = limitedPoolResult.results.length + 1
+                    const cardResult = `${cardInfo.name}${star} - 第${position}抽`
+                    limitedPoolResult.results.push(cardResult)
+                  } else {
+                    const position = limitedPoolResult.results.length + 1
+                    limitedPoolResult.results.push(`未知卡片 - 第${position}抽`)
+                    // 如果找不到卡片信息，可以添加一个默认值或者忽略当前卡片
+                  }
                 }
               }
 
-              // 将限定池的结果保存到最终结果数组
+              // 在遍历结束后将限定池的结果添加到最终结果数组
               result.push(limitedPoolResult)
             }
-
-            // 将所有抽卡池结果合并，并创建回复消息
-            const replyMessage = result.join('\n')
-
             // 将结果保存为 JSON 字符串格式
             const jsonResult = JSON.stringify(result, null, 2)
 
             // 保存 JSON 字符串到文件
-            const saveFilePath = `./application/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`
+            const saveFilePath = `${process
+              .cwd()
+              .replace(
+                /\\/g,
+                '/'
+              )}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`
             fs.writeFileSync(saveFilePath, jsonResult, 'utf-8')
 
             // 发送回复消息
@@ -331,7 +338,4 @@ export class fenxichouka extends plugin {
       }
     }
   }
-}
-function getIdFromResult(a: any) {
-  throw new Error('Function not implemented.')
 }

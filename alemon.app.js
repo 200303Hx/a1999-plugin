@@ -3,6 +3,7 @@ import axios from 'axios';
 import fs, { existsSync } from 'fs';
 import jimp from 'jimp';
 import { createCanvas, registerFont } from 'canvas';
+import path from 'path';
 import _ from 'lodash';
 
 class c extends plugin {
@@ -266,33 +267,6 @@ class Box extends plugin {
     }
 }
 
-class showJ extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^\/TH.01-1$/,
-                    fnc: 'J1'
-                },
-                {
-                    reg: /^\/TH.01-2$/,
-                    fnc: 'J2'
-                }
-            ]
-        });
-    }
-    async J1(e) {
-        await e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-1.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async J2(e) {
-        await e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-2.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-}
-
 class showI extends plugin {
     constructor() {
         super({
@@ -414,636 +388,31 @@ class showI extends plugin {
     }
 }
 
-class gonglue extends plugin {
+class showJ extends plugin {
     constructor() {
         super({
             rule: [
                 {
-                    reg: /^共鸣攻略上$/,
-                    fnc: 'G1'
+                    reg: /^\/TH.01-1$/,
+                    fnc: 'J1'
                 },
                 {
-                    reg: /^共鸣攻略中$/,
-                    fnc: 'G2'
-                },
-                {
-                    reg: /^共鸣攻略下$/,
-                    fnc: 'G3'
-                },
-                {
-                    reg: /^主线解谜$/,
-                    fnc: 'G4'
-                },
-                {
-                    reg: /^4-6电路解谜$/,
-                    fnc: 'G5'
-                },
-                {
-                    reg: /^3-12线路图$/,
-                    fnc: 'G6'
-                },
-                {
-                    reg: /^2-4送传单$/,
-                    fnc: 'G7'
-                },
-                {
-                    reg: /^旧齿与陈痕-20$/,
-                    fnc: 'G8'
-                },
-                {
-                    reg: /^旧齿与陈痕-19$/,
-                    fnc: 'G9'
-                },
-                {
-                    reg: /^Buff$/,
-                    fnc: 'G10'
+                    reg: /^\/TH.01-2$/,
+                    fnc: 'J2'
                 }
             ]
         });
     }
-    async G1(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略上.png`));
+    async J1(e) {
+        await e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-1.png`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
-    async G2(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略中.png`));
+    async J2(e) {
+        await e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-2.png`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
-    async G3(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略下.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G4(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/文字解谜.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G5(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/4-6电路解谜.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G6(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/3-12线路图.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G7(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/2-4送传单.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G8(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-20.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G9(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-19.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G10(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/Buff.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-}
-
-class chouka extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^\/十连$/,
-                    fnc: '十连'
-                },
-                {
-                    reg: /^\/单抽$/,
-                    fnc: '单抽'
-                }
-            ]
-        });
-    }
-    async 单抽(e) {
-        try {
-            const options = [
-                { folderPath: folderPaths$2[0], probability: 0.015 },
-                { folderPath: folderPaths$2[1], probability: 0.085 },
-                { folderPath: folderPaths$2[2], probability: 0.4 },
-                { folderPath: folderPaths$2[3], probability: 0.45 },
-                { folderPath: folderPaths$2[4], probability: 0.05 }
-            ];
-            const drawCountMap = loadDrawCountMap$2();
-            const userId = e.user_id;
-            const { randomFolder, randomImage } = await 单抽Logic$2(e);
-            const image = await jimp.read(randomImage);
-            const outputFilePath = `${outputFolderPath$2}/single_draw.jpg`;
-            await image.writeAsync(outputFilePath);
-            drawCountMap[userId] = drawCountMap[userId] || [];
-            drawCountMap[userId].push(randomImage);
-            if (randomFolder === folderPaths$2[0]) {
-                const previousDrawCount = drawCountMap[userId].length;
-                drawCountMap[userId] = [randomImage];
-                const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
-                drawCountMap[userId] = previousFolder6Draws;
-                saveDrawCountMap$2(drawCountMap);
-                await e.reply(getPathBuffer(outputFilePath));
-                e.reply(`<@!${userId}>，当前卡池：于湖中央\n抽到了6星，所用抽数 ${previousDrawCount} 抽`);
-                console.log(`单抽图片已保存至 ${outputFilePath}`);
-            }
-            else {
-                saveDrawCountMap$2(drawCountMap);
-                await e.reply(getPathBuffer(outputFilePath));
-                e.reply(`<@!${userId}>，当前卡池：于湖中央\n目前已经抽了 ${drawCountMap[userId].length} 次。`);
-                console.log(`单抽图片已保存至 ${outputFilePath}`);
-            }
-        }
-        catch (error) {
-            console.error('发生错误：', error);
-        }
-    }
-    async 十连(e) {
-        const positions = [
-            [160, 0],
-            [310, 0],
-            [460, 0],
-            [610, 0],
-            [760, 0],
-            [590, 400],
-            [740, 400],
-            [890, 400],
-            [1040, 400],
-            [1190, 400]
-        ];
-        try {
-            const drawCountMap = loadDrawCountMap$2();
-            const userId = e.user_id;
-            let folder6DrawCount = 0;
-            const imagePaths = [];
-            drawCountMap[userId] = drawCountMap[userId] || [];
-            for (let i = 0; i < 10; i++) {
-                const { randomFolder, randomImage } = await 单抽Logic$2(e);
-                drawCountMap[userId].push(randomImage);
-                imagePaths.push(randomImage);
-                if (randomFolder === folderPaths$2[0]) {
-                    folder6DrawCount = drawCountMap[userId].length;
-                    drawCountMap[userId] = [randomImage];
-                    const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
-                    drawCountMap[userId] = previousFolder6Draws;
-                }
-            }
-            saveDrawCountMap$2(drawCountMap);
-            const backgroundImage = await jimp.read(backgroundImagePath$2);
-            backgroundImage.resize(backgroundImageWidth$2, backgroundImageHeight$2);
-            for (let i = 0; i < imagePaths.length; i++) {
-                const randomImage = imagePaths[i];
-                const image = await jimp.read(randomImage);
-                const [x, y] = positions[i];
-                backgroundImage.composite(image, x, y);
-            }
-            const outputFilePath = `${outputFolderPath$2}/十连.jpg`;
-            await backgroundImage.writeAsync(outputFilePath);
-            console.log(`图片已保存至 ${outputFilePath}`);
-            console.log('图片合成完成！');
-            await e.reply('', getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
-            await e.reply(getPathBuffer(outputFilePath));
-            if (folder6DrawCount > 0) {
-                e.reply(`<@!${userId}>，当前卡池：于湖中央\n抽到了6星，所用抽数：${folder6DrawCount} 抽`);
-            }
-            else {
-                e.reply(`<@!${userId}>，当前卡池：于湖中央\n目前已经抽了 ${drawCountMap[userId].length} 次`);
-            }
-        }
-        catch (error) {
-            console.error('发生错误：', error);
-        }
-    }
-}
-function loadDrawCountMap$2() {
-    try {
-        const json = fs.readFileSync(dbFolderPath$2, 'utf-8');
-        return JSON.parse(json);
-    }
-    catch (error) {
-        saveDrawCountMap$2({});
-        console.error('读取抽卡次数映射文件失败:', error);
-        return {};
-    }
-}
-function saveDrawCountMap$2(drawCountMap) {
-    try {
-        const json = JSON.stringify(drawCountMap, null, 2);
-        fs.writeFileSync(drawCountMapPath$2, json, 'utf-8');
-    }
-    catch (error) {
-        console.error('保存抽卡次数映射文件失败:', error);
-    }
-}
-async function 单抽Logic$2(e) {
-    const options = [
-        { folderPath: folderPaths$2[0], probability: 0.015 },
-        { folderPath: folderPaths$2[1], probability: 0.085 },
-        { folderPath: folderPaths$2[2], probability: 0.4 },
-        { folderPath: folderPaths$2[3], probability: 0.45 },
-        { folderPath: folderPaths$2[4], probability: 0.05 }
-    ];
-    const randomFolder = getRandomOption$2(options);
-    const randomImage = getRandomFileFromFolder$2(randomFolder);
-    return { randomFolder, randomImage };
-}
-const backgroundImagePath$2 = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`;
-const folderPaths$2 = [
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/6`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/5`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
-];
-const outputFolderPath$2 = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`;
-const dbFolderPath$2 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap.json`;
-const drawCountMapPath$2 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap.json`;
-const backgroundImageWidth$2 = 1500;
-const backgroundImageHeight$2 = 800;
-function getRandomOption$2(options) {
-    const totalProbability = options.reduce((sum, option) => sum + option.probability, 0);
-    let random = Math.random() * totalProbability;
-    for (let i = 0; i < options.length; i++) {
-        const option = options[i];
-        if (random < option.probability) {
-            return option.folderPath;
-        }
-        random -= option.probability;
-    }
-}
-function getRandomFileFromFolder$2(folderPath) {
-    const files = fs.readdirSync(folderPath);
-    const randomIndex = Math.floor(Math.random() * files.length);
-    const randomFile = files[randomIndex];
-    return `${folderPath}/${randomFile}`;
-}
-
-class up2 extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^\/十连up2$/,
-                    fnc: '十连up2'
-                },
-                {
-                    reg: /^\/单抽up2$/,
-                    fnc: '单抽up2'
-                }
-            ]
-        });
-    }
-    async 单抽up2(e) {
-        try {
-            const drawCountMap = loadDrawCountMap$1();
-            const userId = e.user_id;
-            const { randomFolder, randomImage } = await 单抽Logic$1();
-            const image = await jimp.read(randomImage);
-            const outputFilePath = `${outputFolderPath$1}/single_draw.jpg-up2`;
-            await image.writeAsync(outputFilePath);
-            drawCountMap[userId] = drawCountMap[userId] || [];
-            drawCountMap[userId].push(randomImage);
-            if (randomFolder.folderPath === folderPaths$1[0]) {
-                const previousDrawCount = drawCountMap[userId].length;
-                drawCountMap[userId] = [randomImage];
-                const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
-                drawCountMap[userId] = previousFolder6Draws;
-                saveDrawCountMap$1(drawCountMap);
-                await e.reply(getPathBuffer(outputFilePath));
-                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n抽到了6星，所用抽数 ${previousDrawCount} 抽`);
-                console.log(`单抽图片已保存至 ${outputFilePath}`);
-            }
-            else {
-                saveDrawCountMap$1(drawCountMap);
-                await e.reply(getPathBuffer(outputFilePath));
-                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n目前已经抽了 ${drawCountMap[userId].length} 次。`);
-                console.log(`单抽图片已保存至 ${outputFilePath}`);
-            }
-        }
-        catch (error) {
-            console.error('发生错误：', error);
-        }
-    }
-    async 十连up2(e) {
-        const positions = [
-            [160, 0],
-            [310, 0],
-            [460, 0],
-            [610, 0],
-            [760, 0],
-            [590, 400],
-            [740, 400],
-            [890, 400],
-            [1040, 400],
-            [1190, 400]
-        ];
-        try {
-            const drawCountMap = loadDrawCountMap$1();
-            const userId = e.user_id;
-            let folder6DrawCount = 0;
-            const imagePaths = [];
-            const { randomFolder, randomImage } = await 单抽Logic$1();
-            drawCountMap[userId] = drawCountMap[userId] || [];
-            for (let i = 0; i < 10; i++) {
-                const { randomFolder, randomImage } = await 单抽Logic$1();
-                drawCountMap[userId].push(randomImage);
-                imagePaths.push(randomImage);
-                if (randomFolder.folderPath === folderPaths$1[0]) {
-                    folder6DrawCount = drawCountMap[userId].length;
-                    drawCountMap[userId] = [randomImage];
-                    const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
-                    drawCountMap[userId] = previousFolder6Draws;
-                }
-            }
-            saveDrawCountMap$1(drawCountMap);
-            const backgroundImage = await jimp.read(backgroundImagePath$1);
-            backgroundImage.resize(backgroundImageWidth$1, backgroundImageHeight$1);
-            for (let i = 0; i < imagePaths.length; i++) {
-                const randomImage = imagePaths[i];
-                const image = await jimp.read(randomImage);
-                const [x, y] = positions[i];
-                backgroundImage.composite(image, x, y);
-            }
-            const outputFilePath = `${outputFolderPath$1}/十连up2.jpg`;
-            await e.reply('', getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
-            await backgroundImage.writeAsync(outputFilePath);
-            console.log(`图片已保存至 ${outputFilePath}`);
-            console.log('图片合成完成！');
-            await e.reply(getPathBuffer(outputFilePath));
-            if (folder6DrawCount > 0) {
-                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n抽到了6星，所用抽数：${folder6DrawCount} 抽`);
-            }
-            else {
-                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n目前已经抽了 ${drawCountMap[userId].length} 次`);
-            }
-        }
-        catch (error) {
-            console.error('发生错误：', error);
-        }
-    }
-}
-function loadDrawCountMap$1() {
-    try {
-        const json = fs.readFileSync(dbFolderPath$1, 'utf-8');
-        return JSON.parse(json);
-    }
-    catch (error) {
-        saveDrawCountMap$1({});
-        console.error('读取抽卡次数映射文件失败:', error);
-        return {};
-    }
-}
-function saveDrawCountMap$1(drawCountMap) {
-    try {
-        const json = JSON.stringify(drawCountMap, null, 2);
-        fs.writeFileSync(drawCountMapPath$1, json, 'utf-8');
-    }
-    catch (error) {
-        console.error('保存抽卡次数映射文件失败:', error);
-    }
-}
-async function 单抽Logic$1() {
-    const options = [
-        {
-            folderPath: folderPaths$1[0],
-            probability: 0.015,
-            specificImage: `${folderPaths$1[0]}/6-14.png`,
-            specificImageProbability: 0.5
-        },
-        {
-            folderPath: folderPaths$1[1],
-            probability: 0.085,
-            specificImage: `${folderPaths$1[1]}/5-15.png`,
-            specificImageProbability: 0.5
-        },
-        { folderPath: folderPaths$1[2], probability: 0.4 },
-        { folderPath: folderPaths$1[3], probability: 0.45 },
-        { folderPath: folderPaths$1[4], probability: 0.05 }
-    ];
-    const randomFolder = getRandomOption$1(options);
-    const randomImage = getRandomFileFromFolder$1(randomFolder.folderPath, randomFolder.specificImage, randomFolder.specificImageProbability);
-    return { randomFolder, randomImage };
-}
-const backgroundImagePath$1 = `/application/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`;
-const folderPaths$1 = [
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/6-lim2`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/5-lim2`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
-];
-const outputFolderPath$1 = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`;
-const dbFolderPath$1 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim2.json`;
-const drawCountMapPath$1 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim2.json`;
-const backgroundImageWidth$1 = 1500;
-const backgroundImageHeight$1 = 800;
-function getRandomOption$1(options) {
-    const totalProbability = options.reduce((sum, option) => sum + option.probability, 0);
-    let random = Math.random() * totalProbability;
-    for (let i = 0; i < options.length; i++) {
-        const option = options[i];
-        if (random < option.probability) {
-            return option;
-        }
-        random -= option.probability;
-    }
-}
-function getRandomFileFromFolder$1(folderPath, specificImage, specificImageProbability) {
-    if (specificImage && Math.random() < specificImageProbability) {
-        return specificImage;
-    }
-    const files = fs.readdirSync(folderPath);
-    const randomIndex = Math.floor(Math.random() * files.length);
-    const randomFile = files[randomIndex];
-    return `${folderPath}/${randomFile}`;
-}
-
-class up extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^\/十连up$/,
-                    fnc: '十连up'
-                },
-                {
-                    reg: /^\/单抽up$/,
-                    fnc: '单抽up'
-                }
-            ]
-        });
-    }
-    async 单抽up(e) {
-        try {
-            const drawCountMap = loadDrawCountMap();
-            const userId = e.user_id;
-            const { randomFolder, randomImage } = await 单抽Logic();
-            const image = await jimp.read(randomImage);
-            const outputFilePath = `${outputFolderPath}/single_draw.jpg`;
-            await image.writeAsync(outputFilePath);
-            drawCountMap[userId] = drawCountMap[userId] || [];
-            drawCountMap[userId].push(randomImage);
-            if (randomFolder.folderPath === folderPaths[0]) {
-                const previousDrawCount = drawCountMap[userId].length;
-                drawCountMap[userId] = [randomImage];
-                const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
-                drawCountMap[userId] = previousFolder6Draws;
-                saveDrawCountMap(drawCountMap);
-                await e.reply(getPathBuffer(outputFilePath));
-                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n抽到了6星，所用抽数 ${previousDrawCount} 抽`);
-                console.log(`单抽图片已保存至 ${outputFilePath}`);
-            }
-            else {
-                saveDrawCountMap(drawCountMap);
-                await e.reply(getPathBuffer(outputFilePath));
-                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n目前已经抽了 ${drawCountMap[userId].length} 次。`);
-                console.log(`单抽图片已保存至 ${outputFilePath}`);
-            }
-        }
-        catch (error) {
-            console.error('发生错误：', error);
-        }
-    }
-    async 十连up(e) {
-        const positions = [
-            [160, 0],
-            [310, 0],
-            [460, 0],
-            [610, 0],
-            [760, 0],
-            [590, 400],
-            [740, 400],
-            [890, 400],
-            [1040, 400],
-            [1190, 400]
-        ];
-        try {
-            const drawCountMap = loadDrawCountMap();
-            const userId = e.user_id;
-            let folder6DrawCount = 0;
-            const imagePaths = [];
-            const { randomFolder, randomImage } = await 单抽Logic();
-            drawCountMap[userId] = drawCountMap[userId] || [];
-            for (let i = 0; i < 10; i++) {
-                const { randomFolder, randomImage } = await 单抽Logic();
-                drawCountMap[userId].push(randomImage);
-                imagePaths.push(randomImage);
-                if (randomFolder.folderPath === folderPaths[0]) {
-                    folder6DrawCount = drawCountMap[userId].length;
-                    drawCountMap[userId] = [randomImage];
-                    const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
-                    drawCountMap[userId] = previousFolder6Draws;
-                }
-            }
-            saveDrawCountMap(drawCountMap);
-            const backgroundImage = await jimp.read(backgroundImagePath);
-            backgroundImage.resize(backgroundImageWidth, backgroundImageHeight);
-            for (let i = 0; i < imagePaths.length; i++) {
-                const randomImage = imagePaths[i];
-                const image = await jimp.read(randomImage);
-                const [x, y] = positions[i];
-                backgroundImage.composite(image, x, y);
-            }
-            const outputFilePath = `${outputFolderPath}/十连.jpg`;
-            await e.reply('', getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
-            await backgroundImage.writeAsync(outputFilePath);
-            console.log(`图片已保存至 ${outputFilePath}`);
-            console.log('图片合成完成！');
-            await e.reply(getPathBuffer(outputFilePath));
-            if (folder6DrawCount > 0) {
-                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n抽到了6星，所用抽数：${folder6DrawCount} 抽`);
-            }
-            else {
-                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n目前已经抽了 ${drawCountMap[userId].length} 次`);
-            }
-        }
-        catch (error) {
-            console.error('发生错误：', error);
-        }
-    }
-}
-function loadDrawCountMap() {
-    try {
-        const json = fs.readFileSync(dbFolderPath, 'utf-8');
-        return JSON.parse(json);
-    }
-    catch (error) {
-        saveDrawCountMap({});
-        console.error('读取抽卡次数映射文件失败:', error);
-        return {};
-    }
-}
-function saveDrawCountMap(drawCountMap) {
-    try {
-        const json = JSON.stringify(drawCountMap, null, 2);
-        fs.writeFileSync(drawCountMapPath, json, 'utf-8');
-    }
-    catch (error) {
-        console.error('保存抽卡次数映射文件失败:', error);
-    }
-}
-async function 单抽Logic() {
-    const options = [
-        {
-            folderPath: folderPaths[0],
-            probability: 0.015,
-            specificImage: `${folderPaths[0]}/6-6.png`,
-            specificImageProbability: 0.5
-        },
-        {
-            folderPath: folderPaths[1],
-            probability: 0.085,
-            specificImage: `${folderPaths[1]}/5-8.png`,
-            specificImageProbability: 0.5
-        },
-        { folderPath: folderPaths[2], probability: 0.4 },
-        { folderPath: folderPaths[3], probability: 0.45 },
-        { folderPath: folderPaths[4], probability: 0.05 }
-    ];
-    const randomFolder = getRandomOption(options);
-    const randomImage = getRandomFileFromFolder(randomFolder.folderPath, randomFolder.specificImage, randomFolder.specificImageProbability);
-    return { randomFolder, randomImage };
-}
-const backgroundImagePath = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`;
-const folderPaths = [
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/6-lim1`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/5-lim1`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
-];
-const outputFolderPath = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`;
-const dbFolderPath = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`;
-const drawCountMapPath = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`;
-const backgroundImageWidth = 1500;
-const backgroundImageHeight = 800;
-function getRandomOption(options) {
-    const totalProbability = options.reduce((sum, option) => sum + option.probability, 0);
-    let random = Math.random() * totalProbability;
-    for (let i = 0; i < options.length; i++) {
-        const option = options[i];
-        if (random < option.probability) {
-            return option;
-        }
-        random -= option.probability;
-    }
-}
-function getRandomFileFromFolder(folderPath, specificImage, specificImageProbability) {
-    if (specificImage && Math.random() < specificImageProbability) {
-        return specificImage;
-    }
-    const files = fs.readdirSync(folderPath);
-    const randomIndex = Math.floor(Math.random() * files.length);
-    const randomFile = files[randomIndex];
-    return `${folderPath}/${randomFile}`;
 }
 
 class showImg2 extends plugin {
@@ -1616,10 +985,15 @@ class fenxichouka1 extends plugin {
         const userId = e.user_id;
         analyzeAndDisplayStats();
         async function analyzeAndDisplayStats() {
-            const filePath = `${process
+            const newFilePath = `${process
                 .cwd()
                 .replace(/\\/g, '/')}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`;
-            const file2Data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            if (!existsSync(newFilePath)) {
+                e.reply('记录不存在');
+                return;
+            }
+            const data = fs.readFileSync(newFilePath, 'utf8');
+            const file2Data = JSON.parse(data);
             const isSpecialSixStarNotWhale = true;
             file2Data.reverse();
             let sixStarPullsOverall = 0;
@@ -1793,7 +1167,9 @@ class fenxichouka1 extends plugin {
                 try {
                     const backgroundImage = await jimp.read(backgroundImagePath);
                     const gradeImageFileName = await selectGradeImage(overallMisfitProbability);
-                    const gradeImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/评级`;
+                    const gradeImagePath = path.join(`${process
+                        .cwd()
+                        .replace(/\\/g, '/')}/application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/评级`, gradeImageFileName);
                     const gradeImage = await jimp.read(gradeImagePath);
                     const gradeImageX = 966.2;
                     const gradeImageY = 1583.7;
@@ -1809,6 +1185,237 @@ class fenxichouka1 extends plugin {
                 catch (error) {
                     console.error('图片合成失败：', error);
                 }
+            }
+        }
+    }
+}
+
+const cardNameMap$1 = {
+    3003: { name: '槲寄生', star: '6星' },
+    3004: { name: '红弩箭', star: '6星' },
+    3005: { name: '尼克·波顿', star: '4星' },
+    3006: { name: '小春雀儿', star: '4星' },
+    3007: { name: '未锈铠', star: '6星' },
+    3008: { name: '勿忘我', star: '' },
+    3009: { name: '苏芙比', star: '6星' },
+    3010: { name: 'X', star: '5星' },
+    3011: { name: '玛丽莲', star: '5星' },
+    3012: { name: '弄臣', star: '3星' },
+    3013: { name: '冬', star: '4星' },
+    3014: { name: '芭妮芭妮', star: '4星' },
+    3015: { name: '狼群', star: '4星' },
+    3016: { name: '婴儿蓝', star: '5星' },
+    3017: { name: '夏利', star: '5星' },
+    3018: { name: '雾行者', star: '4星' },
+    3019: { name: '', star: '' },
+    3020: { name: '柏林以东', star: '5星' },
+    3021: { name: '', star: '' },
+    3022: { name: '帕米埃', star: '5星' },
+    3023: { name: '十四行诗', star: '5星' },
+    3024: { name: '气球派对', star: '5星' },
+    3025: { name: '星锑', star: '6星' },
+    3026: { name: '红斗篷', star: '4星' },
+    3027: { name: '无线电小姐', star: '2星' },
+    3028: { name: 'APPLe', star: '4星' },
+    3029: { name: '斯奈德', star: '5星' },
+    3030: { name: '拉拉泉', star: '3星' },
+    3031: { name: '铅玻璃', star: '4星' },
+    3032: { name: '百夫长', star: '6星' },
+    3033: { name: 'TTT', star: '4星' },
+    3034: { name: '星之眼', star: '3星' },
+    3035: { name: '莉拉妮', star: '3星' },
+    3036: { name: '约翰·提托', star: '3星' },
+    3037: { name: '讣告人', star: '5星' },
+    3038: { name: '五色月', star: '5星' },
+    3039: { name: '泥鯭的士', star: '6星' },
+    3040: { name: '丽莎&路易斯', star: '3星' },
+    3041: { name: '玛蒂尔达', star: '5星' },
+    3042: { name: '爱宠', star: '4星' },
+    3043: { name: '坦南特', star: '5星' },
+    3044: { name: '莫桑女士', star: '4星' },
+    3045: { name: '贝蒂', star: '3星' },
+    3046: { name: '吵闹鬼', star: '4星' },
+    3047: { name: '兔毛手袋', star: '6星' },
+    3048: { name: '远旅', star: '6星' },
+    3049: { name: '喀嚓喀嚓', star: '5星' },
+    3050: { name: '哒哒达利', star: '3星' },
+    3051: { name: '温妮弗雷德', star: '6星' },
+    3052: { name: '新巴别塔', star: '6星' },
+    3053: { name: '牙仙', star: '6星' },
+    3054: { name: '洋葱头', star: '3星' },
+    3055: { name: '斯普特尼克', star: '3星' },
+    3056: { name: '', star: '' },
+    3057: { name: '小梅斯梅尔', star: '4星' },
+    3058: { name: '埃里克', star: '4星' },
+    3059: { name: '门', star: '2星' },
+    3060: { name: '金蜜儿', star: '5星' },
+    3061: { name: '', star: '' },
+    3062: { name: '梅兰妮', star: '6星' },
+    3063: { name: '皮克勒斯', star: '6星' },
+    3064: { name: '挖掘艺术', star: '5星' }
+};
+class fenxichouka extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^征集记录\s+([\S]+)/,
+                    fnc: 'fenxi'
+                }
+            ]
+        });
+    }
+    async fenxi(e) {
+        const urlRegex = /^征集记录\s+([\S]+)/;
+        const match = e.msg.match(urlRegex);
+        if (match && match[1]) {
+            const partOfUrl = match[1];
+            const completeUrl = `https://game-re-service.sl916.com/query/summon?${partOfUrl}`;
+            const decodedUrl = completeUrl.replace(/&amp;/g, '&');
+            const userId = e.user_id;
+            const jsonFileName = `./application/alemon-plugin-1999/db/抽卡分析/${userId}.json`;
+            try {
+                const response = await axios.get(decodedUrl);
+                const html = response.data;
+                fs.writeFileSync(jsonFileName, JSON.stringify(html), 'utf-8');
+                console.log('JSON文件保存成功！');
+                const filePath = `./application/alemon-plugin-1999/db/抽卡分析/${userId}.json`;
+                try {
+                    const jsonData = fs.readFileSync(filePath, 'utf-8');
+                    const data = JSON.parse(jsonData);
+                    const pools = data.data.pageData;
+                    const cardPools = _.groupBy(pools, 'poolName');
+                    const result = [];
+                    for (const poolName in cardPools) {
+                        const poolRecords = cardPools[poolName];
+                        const reversedRecords = poolRecords.reverse();
+                        const poolResults = [];
+                        let position = 0;
+                        for (const record of reversedRecords) {
+                            const gainIds = record.gainIds;
+                            for (const gainId of gainIds) {
+                                const cardInfo = cardNameMap$1[gainId];
+                                if (cardInfo) {
+                                    const star = cardInfo.star ? `(${cardInfo.star})` : '';
+                                    position++;
+                                    const cardResult = `${cardInfo.name}${star} - 第${position}抽`;
+                                    poolResults.push(cardResult);
+                                }
+                                else {
+                                    poolResults.push(`未知卡片 - 第${position}抽`);
+                                }
+                            }
+                        }
+                        const poolResultObject = {
+                            poolName,
+                            results: poolResults
+                        };
+                        result.push(poolResultObject);
+                    }
+                    const jsonResult = JSON.stringify(result, null, 2);
+                    const saveFilePath = `${process
+                        .cwd()
+                        .replace(/\\/g, '/')}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`;
+                    fs.writeFileSync(saveFilePath, jsonResult, 'utf-8');
+                    try {
+                        const jsonData = fs.readFileSync(filePath, 'utf-8');
+                        const data = JSON.parse(jsonData);
+                        const pools = data.data.pageData;
+                        const limitedPoolRecords = [];
+                        for (const pool of pools) {
+                            const isLimitedPool = pool.poolName !== '第一滴雨' && pool.poolName !== '于湖中央';
+                            if (isLimitedPool) {
+                                limitedPoolRecords.push(pool);
+                            }
+                        }
+                        limitedPoolRecords.sort((a, b) => new Date(a.createTime).getTime() -
+                            new Date(b.createTime).getTime());
+                        const novicePoolResult = {
+                            poolName: '新手池（滴一滴雨）',
+                            results: []
+                        };
+                        const residentPoolResult = {
+                            poolName: '常驻池（于湖中央）',
+                            results: []
+                        };
+                        const result = [];
+                        for (const pool of pools) {
+                            const isLimitedPool = pool.poolName !== '第一滴雨' && pool.poolName !== '于湖中央';
+                            if (isLimitedPool) {
+                                continue;
+                            }
+                            const poolRecords = pools
+                                .filter(p => p.poolName === pool.poolName)
+                                .reverse();
+                            const poolResults = [];
+                            for (const record of poolRecords) {
+                                const gainIds = record.gainIds;
+                                for (const gainId of gainIds) {
+                                    const cardInfo = cardNameMap$1[gainId];
+                                    if (cardInfo) {
+                                        const star = cardInfo.star1 ? `(${cardInfo.star})` : '';
+                                        const position = poolResults.length + 1;
+                                        const cardResult = `${cardInfo.name}${star} - 第${position}抽`;
+                                        poolResults.push(cardResult);
+                                    }
+                                    else {
+                                        const position = poolResults.length + 1;
+                                        poolResults.push(`未知卡片 - 第${position}抽`);
+                                    }
+                                }
+                            }
+                            if (pool.poolName === '第一滴雨') {
+                                novicePoolResult.results = poolResults;
+                            }
+                            else if (pool.poolName === '于湖中央') {
+                                residentPoolResult.results = poolResults;
+                            }
+                        }
+                        result.push(novicePoolResult);
+                        result.push(residentPoolResult);
+                        if (limitedPoolRecords.length > 0) {
+                            const limitedPoolResult = {
+                                poolName: '限定池（其余卡池）',
+                                results: []
+                            };
+                            for (const record of limitedPoolRecords) {
+                                const gainIds = record.gainIds;
+                                for (const gainId of gainIds) {
+                                    const cardInfo = cardNameMap$1[gainId];
+                                    if (cardInfo) {
+                                        const star = cardInfo.star ? `(${cardInfo.star})` : '';
+                                        const position = limitedPoolResult.results.length + 1;
+                                        const cardResult = `${cardInfo.name}${star} - 第${position}抽`;
+                                        limitedPoolResult.results.push(cardResult);
+                                    }
+                                    else {
+                                        const position = limitedPoolResult.results.length + 1;
+                                        limitedPoolResult.results.push(`未知卡片 - 第${position}抽`);
+                                    }
+                                }
+                            }
+                            result.push(limitedPoolResult);
+                        }
+                        const jsonResult = JSON.stringify(result, null, 2);
+                        const saveFilePath = `${process
+                            .cwd()
+                            .replace(/\\/g, '/')}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`;
+                        fs.writeFileSync(saveFilePath, jsonResult, 'utf-8');
+                        e.reply('记录已保存！');
+                    }
+                    catch (error) {
+                        console.error('读取JSON文件失败:', error);
+                        e.reply('读取JSON文件失败，请确认是否已进行抽卡分析或稍后再试。');
+                    }
+                    return false;
+                }
+                catch (error) {
+                    console.error('请求或保存JSON文件出错:', error);
+                    e.reply('token已过期/输入不规范');
+                }
+            }
+            catch (error) {
+                console.error('保存JSON文件出错:', error);
             }
         }
     }
@@ -1840,7 +1447,7 @@ class fenxichouka2 extends plugin {
                 .cwd()
                 .replace(/\\/g, '/')}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`;
             if (!existsSync(newFilePath)) {
-                e.reply('不存在');
+                e.reply('记录不存在');
                 return;
             }
             const data = fs.readFileSync(newFilePath, 'utf8');
@@ -1955,218 +1562,6 @@ class fenxichouka2 extends plugin {
                 }
             }
         });
-    }
-}
-
-const cardNameMap$1 = {
-    3003: { name: '槲寄生', star: '6星' },
-    3004: { name: '红弩箭', star: '6星' },
-    3005: { name: '尼克·波顿', star: '4星' },
-    3006: { name: '小春雀儿', star: '4星' },
-    3007: { name: '未锈铠', star: '6星' },
-    3008: { name: '勿忘我', star: '' },
-    3009: { name: '苏芙比', star: '6星' },
-    3010: { name: 'X', star: '5星' },
-    3011: { name: '玛丽莲', star: '5星' },
-    3012: { name: '弄臣', star: '3星' },
-    3013: { name: '冬', star: '4星' },
-    3014: { name: '芭妮芭妮', star: '4星' },
-    3015: { name: '狼群', star: '4星' },
-    3016: { name: '婴儿蓝', star: '5星' },
-    3017: { name: '夏利', star: '5星' },
-    3018: { name: '雾行者', star: '4星' },
-    3019: { name: '', star: '' },
-    3020: { name: '柏林以东', star: '5星' },
-    3021: { name: '', star: '' },
-    3022: { name: '帕米埃', star: '5星' },
-    3023: { name: '十四行诗', star: '5星' },
-    3024: { name: '气球派对', star: '5星' },
-    3025: { name: '星锑', star: '6星' },
-    3026: { name: '红斗篷', star: '4星' },
-    3027: { name: '无线电小姐', star: '2星' },
-    3028: { name: 'APPLe', star: '4星' },
-    3029: { name: '斯奈德', star: '5星' },
-    3030: { name: '拉拉泉', star: '3星' },
-    3031: { name: '铅玻璃', star: '4星' },
-    3032: { name: '百夫长', star: '6星' },
-    3033: { name: 'TTT', star: '4星' },
-    3034: { name: '星之眼', star: '3星' },
-    3035: { name: '莉拉妮', star: '3星' },
-    3036: { name: '约翰·提托', star: '3星' },
-    3037: { name: '讣告人', star: '5星' },
-    3038: { name: '五色月', star: '5星' },
-    3039: { name: '泥鯭的士', star: '6星' },
-    3040: { name: '丽莎&路易斯', star: '3星' },
-    3041: { name: '玛蒂尔达', star: '5星' },
-    3042: { name: '爱宠', star: '4星' },
-    3043: { name: '坦南特', star: '5星' },
-    3044: { name: '莫桑女士', star: '4星' },
-    3045: { name: '贝蒂', star: '3星' },
-    3046: { name: '吵闹鬼', star: '4星' },
-    3047: { name: '兔毛手袋', star: '6星' },
-    3048: { name: '远旅', star: '6星' },
-    3049: { name: '喀嚓喀嚓', star: '5星' },
-    3050: { name: '哒哒达利', star: '3星' },
-    3051: { name: '温妮弗雷德', star: '6星' },
-    3052: { name: '新巴别塔', star: '6星' },
-    3053: { name: '牙仙', star: '6星' },
-    3054: { name: '洋葱头', star: '3星' },
-    3055: { name: '斯普特尼克', star: '3星' },
-    3056: { name: '', star: '' },
-    3057: { name: '小梅斯梅尔', star: '4星' },
-    3058: { name: '埃里克', star: '4星' },
-    3059: { name: '门', star: '2星' },
-    3060: { name: '金蜜儿', star: '5星' },
-    3061: { name: '', star: '' },
-    3062: { name: '梅兰妮', star: '6星' },
-    3063: { name: '皮克勒斯', star: '6星' },
-    3064: { name: '挖掘艺术', star: '5星' }
-};
-class fenxichouka extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^征集记录\s+([\S]+)/,
-                    fnc: 'fenxi'
-                }
-            ]
-        });
-    }
-    async fenxi(e) {
-        const urlRegex = /^征集记录\s+([\S]+)/;
-        const match = e.msg.match(urlRegex);
-        if (match && match[1]) {
-            const partOfUrl = match[1];
-            const completeUrl = `https://game-re-service.sl916.com/query/summon?${partOfUrl}`;
-            const decodedUrl = completeUrl.replace(/&amp;/g, '&');
-            const userId = e.user_id;
-            const jsonFileName = `./application/alemon-plugin-1999/db/抽卡分析/${userId}.json`;
-            try {
-                const response = await axios.get(decodedUrl);
-                const html = response.data;
-                fs.writeFileSync(jsonFileName, JSON.stringify(html), 'utf-8');
-                console.log('JSON文件保存成功！');
-                const filePath = `./application/alemon-plugin-1999/db/抽卡分析/${userId}.json`;
-                try {
-                    const jsonData = fs.readFileSync(filePath, 'utf-8');
-                    const data = JSON.parse(jsonData);
-                    const pools = data.data.pageData;
-                    const cardPools = _.groupBy(pools, 'poolName');
-                    const result = [];
-                    for (const poolName in cardPools) {
-                        const poolRecords = cardPools[poolName];
-                        const reversedRecords = poolRecords.reverse();
-                        const poolResults = [];
-                        let position = 0;
-                        for (const record of reversedRecords) {
-                            const gainIds = record.gainIds;
-                            for (const gainId of gainIds) {
-                                const cardInfo = cardNameMap$1[gainId];
-                                const star = cardInfo.star ? `(${cardInfo.star})` : '';
-                                position++;
-                                const cardResult = `${cardInfo.name}${star} - 第${position}抽`;
-                                poolResults.push(cardResult);
-                            }
-                        }
-                        const poolResultObject = {
-                            poolName: poolName,
-                            results: poolResults
-                        };
-                        result.push(poolResultObject);
-                    }
-                    const replyMessage = result.join('\n');
-                    const jsonResult = JSON.stringify(result, null, 2);
-                    const saveFilePath = `./application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`;
-                    fs.writeFileSync(saveFilePath, jsonResult, 'utf-8');
-                    try {
-                        const jsonData = fs.readFileSync(filePath, 'utf-8');
-                        const data = JSON.parse(jsonData);
-                        const pools = data.data.pageData;
-                        const limitedPoolRecords = [];
-                        for (const pool of pools) {
-                            const isLimitedPool = pool.poolName !== '第一滴雨' && pool.poolName !== '于湖中央';
-                            if (isLimitedPool) {
-                                limitedPoolRecords.push(pool);
-                            }
-                        }
-                        limitedPoolRecords.sort((a, b) => new Date(a.createTime).getTime() -
-                            new Date(b.createTime).getTime());
-                        const novicePoolResult = {
-                            poolName: '新手池（滴一滴雨）',
-                            results: []
-                        };
-                        const residentPoolResult = {
-                            poolName: '常驻池（于湖中央）',
-                            results: []
-                        };
-                        const result = [];
-                        for (const pool of pools) {
-                            const isLimitedPool = pool.poolName !== '第一滴雨' && pool.poolName !== '于湖中央';
-                            if (isLimitedPool) {
-                                continue;
-                            }
-                            const poolRecords = pools
-                                .filter(p => p.poolName === pool.poolName)
-                                .reverse();
-                            const poolResults = [];
-                            for (const record of poolRecords) {
-                                const gainIds = record.gainIds;
-                                for (const gainId of gainIds) {
-                                    const cardInfo = cardNameMap$1[gainId];
-                                    const star = cardInfo.star ? `(${cardInfo.star})` : '';
-                                    const position = poolResults.length + 1;
-                                    const cardResult = `${cardInfo.name}${star} - 第${position}抽出`;
-                                    poolResults.push(cardResult);
-                                }
-                            }
-                            if (pool.poolName === '第一滴雨') {
-                                novicePoolResult.results = poolResults;
-                            }
-                            else if (pool.poolName === '于湖中央') {
-                                residentPoolResult.results = poolResults;
-                            }
-                        }
-                        result.push(novicePoolResult);
-                        result.push(residentPoolResult);
-                        if (limitedPoolRecords.length > 0) {
-                            const limitedPoolResult = {
-                                poolName: '限定池（其余卡池）',
-                                results: []
-                            };
-                            for (const record of limitedPoolRecords) {
-                                const gainIds = record.gainIds;
-                                for (const gainId of gainIds) {
-                                    const cardInfo = cardNameMap$1[gainId];
-                                    const star = cardInfo.star ? `(${cardInfo.star})` : '';
-                                    const position = limitedPoolResult.results.length + 1;
-                                    const cardResult = `${cardInfo.name}${star} - 第${position}抽`;
-                                    limitedPoolResult.results.push(cardResult);
-                                }
-                            }
-                            result.push(limitedPoolResult);
-                        }
-                        const replyMessage = result.join('\n');
-                        const jsonResult = JSON.stringify(result, null, 2);
-                        const saveFilePath = `./application/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`;
-                        fs.writeFileSync(saveFilePath, jsonResult, 'utf-8');
-                        e.reply('记录已保存！');
-                    }
-                    catch (error) {
-                        console.error('读取JSON文件失败:', error);
-                        e.reply('读取JSON文件失败，请确认是否已进行抽卡分析或稍后再试。');
-                    }
-                    return false;
-                }
-                catch (error) {
-                    console.error('请求或保存JSON文件出错:', error);
-                    e.reply('token已过期/输入不规范');
-                }
-            }
-            catch (error) {
-                console.error('保存JSON文件出错:', error);
-            }
-        }
     }
 }
 
@@ -2380,6 +1775,638 @@ class fenxichoukaq extends plugin {
             }
         }
     }
+}
+
+class gonglue extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^共鸣攻略上$/,
+                    fnc: 'G1'
+                },
+                {
+                    reg: /^共鸣攻略中$/,
+                    fnc: 'G2'
+                },
+                {
+                    reg: /^共鸣攻略下$/,
+                    fnc: 'G3'
+                },
+                {
+                    reg: /^主线解谜$/,
+                    fnc: 'G4'
+                },
+                {
+                    reg: /^4-6电路解谜$/,
+                    fnc: 'G5'
+                },
+                {
+                    reg: /^3-12线路图$/,
+                    fnc: 'G6'
+                },
+                {
+                    reg: /^2-4送传单$/,
+                    fnc: 'G7'
+                },
+                {
+                    reg: /^旧齿与陈痕-20$/,
+                    fnc: 'G8'
+                },
+                {
+                    reg: /^旧齿与陈痕-19$/,
+                    fnc: 'G9'
+                },
+                {
+                    reg: /^Buff$/,
+                    fnc: 'G10'
+                }
+            ]
+        });
+    }
+    async G1(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略上.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G2(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略中.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G3(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略下.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G4(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/文字解谜.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G5(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/4-6电路解谜.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G6(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/3-12线路图.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G7(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/2-4送传单.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G8(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-20.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G9(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-19.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G10(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/Buff.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+}
+
+class chouka extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^\/十连$/,
+                    fnc: '十连'
+                },
+                {
+                    reg: /^\/单抽$/,
+                    fnc: '单抽'
+                }
+            ]
+        });
+    }
+    async 单抽(e) {
+        try {
+            const options = [
+                { folderPath: folderPaths$2[0], probability: 0.015 },
+                { folderPath: folderPaths$2[1], probability: 0.085 },
+                { folderPath: folderPaths$2[2], probability: 0.4 },
+                { folderPath: folderPaths$2[3], probability: 0.45 },
+                { folderPath: folderPaths$2[4], probability: 0.05 }
+            ];
+            const drawCountMap = loadDrawCountMap$2();
+            const userId = e.user_id;
+            const { randomFolder, randomImage } = await 单抽Logic$2(e);
+            const image = await jimp.read(randomImage);
+            const outputFilePath = `${outputFolderPath$2}/single_draw.jpg`;
+            await image.writeAsync(outputFilePath);
+            drawCountMap[userId] = drawCountMap[userId] || [];
+            drawCountMap[userId].push(randomImage);
+            if (randomFolder === folderPaths$2[0]) {
+                const previousDrawCount = drawCountMap[userId].length;
+                drawCountMap[userId] = [randomImage];
+                const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
+                drawCountMap[userId] = previousFolder6Draws;
+                saveDrawCountMap$2(drawCountMap);
+                await e.reply(getPathBuffer(outputFilePath));
+                e.reply(`<@!${userId}>，当前卡池：于湖中央\n抽到了6星，所用抽数 ${previousDrawCount} 抽`);
+                console.log(`单抽图片已保存至 ${outputFilePath}`);
+            }
+            else {
+                saveDrawCountMap$2(drawCountMap);
+                await e.reply(getPathBuffer(outputFilePath));
+                e.reply(`<@!${userId}>，当前卡池：于湖中央\n目前已经抽了 ${drawCountMap[userId].length} 次。`);
+                console.log(`单抽图片已保存至 ${outputFilePath}`);
+            }
+        }
+        catch (error) {
+            console.error('发生错误：', error);
+        }
+    }
+    async 十连(e) {
+        const positions = [
+            [160, 0],
+            [310, 0],
+            [460, 0],
+            [610, 0],
+            [760, 0],
+            [590, 400],
+            [740, 400],
+            [890, 400],
+            [1040, 400],
+            [1190, 400]
+        ];
+        try {
+            const drawCountMap = loadDrawCountMap$2();
+            const userId = e.user_id;
+            let folder6DrawCount = 0;
+            const imagePaths = [];
+            drawCountMap[userId] = drawCountMap[userId] || [];
+            for (let i = 0; i < 10; i++) {
+                const { randomFolder, randomImage } = await 单抽Logic$2(e);
+                drawCountMap[userId].push(randomImage);
+                imagePaths.push(randomImage);
+                if (randomFolder === folderPaths$2[0]) {
+                    folder6DrawCount = drawCountMap[userId].length;
+                    drawCountMap[userId] = [randomImage];
+                    const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
+                    drawCountMap[userId] = previousFolder6Draws;
+                }
+            }
+            saveDrawCountMap$2(drawCountMap);
+            const backgroundImage = await jimp.read(backgroundImagePath$2);
+            backgroundImage.resize(backgroundImageWidth$2, backgroundImageHeight$2);
+            for (let i = 0; i < imagePaths.length; i++) {
+                const randomImage = imagePaths[i];
+                const image = await jimp.read(randomImage);
+                const [x, y] = positions[i];
+                backgroundImage.composite(image, x, y);
+            }
+            const outputFilePath = `${outputFolderPath$2}/十连.jpg`;
+            await backgroundImage.writeAsync(outputFilePath);
+            console.log(`图片已保存至 ${outputFilePath}`);
+            console.log('图片合成完成！');
+            await e.reply('', getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
+            await e.reply(getPathBuffer(outputFilePath));
+            if (folder6DrawCount > 0) {
+                e.reply(`<@!${userId}>，当前卡池：于湖中央\n抽到了6星，所用抽数：${folder6DrawCount} 抽`);
+            }
+            else {
+                e.reply(`<@!${userId}>，当前卡池：于湖中央\n目前已经抽了 ${drawCountMap[userId].length} 次`);
+            }
+        }
+        catch (error) {
+            console.error('发生错误：', error);
+        }
+    }
+}
+function loadDrawCountMap$2() {
+    try {
+        const json = fs.readFileSync(dbFolderPath$2, 'utf-8');
+        return JSON.parse(json);
+    }
+    catch (error) {
+        saveDrawCountMap$2({});
+        console.error('读取抽卡次数映射文件失败:', error);
+        return {};
+    }
+}
+function saveDrawCountMap$2(drawCountMap) {
+    try {
+        const json = JSON.stringify(drawCountMap, null, 2);
+        fs.writeFileSync(drawCountMapPath$2, json, 'utf-8');
+    }
+    catch (error) {
+        console.error('保存抽卡次数映射文件失败:', error);
+    }
+}
+async function 单抽Logic$2(e) {
+    const options = [
+        { folderPath: folderPaths$2[0], probability: 0.015 },
+        { folderPath: folderPaths$2[1], probability: 0.085 },
+        { folderPath: folderPaths$2[2], probability: 0.4 },
+        { folderPath: folderPaths$2[3], probability: 0.45 },
+        { folderPath: folderPaths$2[4], probability: 0.05 }
+    ];
+    const randomFolder = getRandomOption$2(options);
+    const randomImage = getRandomFileFromFolder$2(randomFolder);
+    return { randomFolder, randomImage };
+}
+const backgroundImagePath$2 = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`;
+const folderPaths$2 = [
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/6`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/5`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
+];
+const outputFolderPath$2 = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`;
+const dbFolderPath$2 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap.json`;
+const drawCountMapPath$2 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap.json`;
+const backgroundImageWidth$2 = 1500;
+const backgroundImageHeight$2 = 800;
+function getRandomOption$2(options) {
+    const totalProbability = options.reduce((sum, option) => sum + option.probability, 0);
+    let random = Math.random() * totalProbability;
+    for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        if (random < option.probability) {
+            return option.folderPath;
+        }
+        random -= option.probability;
+    }
+}
+function getRandomFileFromFolder$2(folderPath) {
+    const files = fs.readdirSync(folderPath);
+    const randomIndex = Math.floor(Math.random() * files.length);
+    const randomFile = files[randomIndex];
+    return `${folderPath}/${randomFile}`;
+}
+
+class up extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^\/十连up$/,
+                    fnc: '十连up'
+                },
+                {
+                    reg: /^\/单抽up$/,
+                    fnc: '单抽up'
+                }
+            ]
+        });
+    }
+    async 单抽up(e) {
+        try {
+            const drawCountMap = loadDrawCountMap$1();
+            const userId = e.user_id;
+            const { randomFolder, randomImage } = await 单抽Logic$1();
+            const image = await jimp.read(randomImage);
+            const outputFilePath = `${outputFolderPath$1}/single_draw.jpg`;
+            await image.writeAsync(outputFilePath);
+            drawCountMap[userId] = drawCountMap[userId] || [];
+            drawCountMap[userId].push(randomImage);
+            if (randomFolder.folderPath === folderPaths$1[0]) {
+                const previousDrawCount = drawCountMap[userId].length;
+                drawCountMap[userId] = [randomImage];
+                const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
+                drawCountMap[userId] = previousFolder6Draws;
+                saveDrawCountMap$1(drawCountMap);
+                await e.reply(getPathBuffer(outputFilePath));
+                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n抽到了6星，所用抽数 ${previousDrawCount} 抽`);
+                console.log(`单抽图片已保存至 ${outputFilePath}`);
+            }
+            else {
+                saveDrawCountMap$1(drawCountMap);
+                await e.reply(getPathBuffer(outputFilePath));
+                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n目前已经抽了 ${drawCountMap[userId].length} 次。`);
+                console.log(`单抽图片已保存至 ${outputFilePath}`);
+            }
+        }
+        catch (error) {
+            console.error('发生错误：', error);
+        }
+    }
+    async 十连up(e) {
+        const positions = [
+            [160, 0],
+            [310, 0],
+            [460, 0],
+            [610, 0],
+            [760, 0],
+            [590, 400],
+            [740, 400],
+            [890, 400],
+            [1040, 400],
+            [1190, 400]
+        ];
+        try {
+            const drawCountMap = loadDrawCountMap$1();
+            const userId = e.user_id;
+            let folder6DrawCount = 0;
+            const imagePaths = [];
+            const { randomFolder, randomImage } = await 单抽Logic$1();
+            drawCountMap[userId] = drawCountMap[userId] || [];
+            for (let i = 0; i < 10; i++) {
+                const { randomFolder, randomImage } = await 单抽Logic$1();
+                drawCountMap[userId].push(randomImage);
+                imagePaths.push(randomImage);
+                if (randomFolder.folderPath === folderPaths$1[0]) {
+                    folder6DrawCount = drawCountMap[userId].length;
+                    drawCountMap[userId] = [randomImage];
+                    const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
+                    drawCountMap[userId] = previousFolder6Draws;
+                }
+            }
+            saveDrawCountMap$1(drawCountMap);
+            const backgroundImage = await jimp.read(backgroundImagePath$1);
+            backgroundImage.resize(backgroundImageWidth$1, backgroundImageHeight$1);
+            for (let i = 0; i < imagePaths.length; i++) {
+                const randomImage = imagePaths[i];
+                const image = await jimp.read(randomImage);
+                const [x, y] = positions[i];
+                backgroundImage.composite(image, x, y);
+            }
+            const outputFilePath = `${outputFolderPath$1}/十连.jpg`;
+            await e.reply('', getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
+            await backgroundImage.writeAsync(outputFilePath);
+            console.log(`图片已保存至 ${outputFilePath}`);
+            console.log('图片合成完成！');
+            await e.reply(getPathBuffer(outputFilePath));
+            if (folder6DrawCount > 0) {
+                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n抽到了6星，所用抽数：${folder6DrawCount} 抽`);
+            }
+            else {
+                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n目前已经抽了 ${drawCountMap[userId].length} 次`);
+            }
+        }
+        catch (error) {
+            console.error('发生错误：', error);
+        }
+    }
+}
+function loadDrawCountMap$1() {
+    try {
+        const json = fs.readFileSync(dbFolderPath$1, 'utf-8');
+        return JSON.parse(json);
+    }
+    catch (error) {
+        saveDrawCountMap$1({});
+        console.error('读取抽卡次数映射文件失败:', error);
+        return {};
+    }
+}
+function saveDrawCountMap$1(drawCountMap) {
+    try {
+        const json = JSON.stringify(drawCountMap, null, 2);
+        fs.writeFileSync(drawCountMapPath$1, json, 'utf-8');
+    }
+    catch (error) {
+        console.error('保存抽卡次数映射文件失败:', error);
+    }
+}
+async function 单抽Logic$1() {
+    const options = [
+        {
+            folderPath: folderPaths$1[0],
+            probability: 0.015,
+            specificImage: `${folderPaths$1[0]}/6-6.png`,
+            specificImageProbability: 0.5
+        },
+        {
+            folderPath: folderPaths$1[1],
+            probability: 0.085,
+            specificImage: `${folderPaths$1[1]}/5-8.png`,
+            specificImageProbability: 0.5
+        },
+        { folderPath: folderPaths$1[2], probability: 0.4 },
+        { folderPath: folderPaths$1[3], probability: 0.45 },
+        { folderPath: folderPaths$1[4], probability: 0.05 }
+    ];
+    const randomFolder = getRandomOption$1(options);
+    const randomImage = getRandomFileFromFolder$1(randomFolder.folderPath, randomFolder.specificImage, randomFolder.specificImageProbability);
+    return { randomFolder, randomImage };
+}
+const backgroundImagePath$1 = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`;
+const folderPaths$1 = [
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/6-lim1`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/5-lim1`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
+];
+const outputFolderPath$1 = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`;
+const dbFolderPath$1 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`;
+const drawCountMapPath$1 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`;
+const backgroundImageWidth$1 = 1500;
+const backgroundImageHeight$1 = 800;
+function getRandomOption$1(options) {
+    const totalProbability = options.reduce((sum, option) => sum + option.probability, 0);
+    let random = Math.random() * totalProbability;
+    for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        if (random < option.probability) {
+            return option;
+        }
+        random -= option.probability;
+    }
+}
+function getRandomFileFromFolder$1(folderPath, specificImage, specificImageProbability) {
+    if (specificImage && Math.random() < specificImageProbability) {
+        return specificImage;
+    }
+    const files = fs.readdirSync(folderPath);
+    const randomIndex = Math.floor(Math.random() * files.length);
+    const randomFile = files[randomIndex];
+    return `${folderPath}/${randomFile}`;
+}
+
+class up2 extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^\/十连up2$/,
+                    fnc: '十连up2'
+                },
+                {
+                    reg: /^\/单抽up2$/,
+                    fnc: '单抽up2'
+                }
+            ]
+        });
+    }
+    async 单抽up2(e) {
+        try {
+            const drawCountMap = loadDrawCountMap();
+            const userId = e.user_id;
+            const { randomFolder, randomImage } = await 单抽Logic();
+            const image = await jimp.read(randomImage);
+            const outputFilePath = `${outputFolderPath}/single_draw.jpg-up2`;
+            await image.writeAsync(outputFilePath);
+            drawCountMap[userId] = drawCountMap[userId] || [];
+            drawCountMap[userId].push(randomImage);
+            if (randomFolder.folderPath === folderPaths[0]) {
+                const previousDrawCount = drawCountMap[userId].length;
+                drawCountMap[userId] = [randomImage];
+                const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
+                drawCountMap[userId] = previousFolder6Draws;
+                saveDrawCountMap(drawCountMap);
+                await e.reply(getPathBuffer(outputFilePath));
+                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n抽到了6星，所用抽数 ${previousDrawCount} 抽`);
+                console.log(`单抽图片已保存至 ${outputFilePath}`);
+            }
+            else {
+                saveDrawCountMap(drawCountMap);
+                await e.reply(getPathBuffer(outputFilePath));
+                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n目前已经抽了 ${drawCountMap[userId].length} 次。`);
+                console.log(`单抽图片已保存至 ${outputFilePath}`);
+            }
+        }
+        catch (error) {
+            console.error('发生错误：', error);
+        }
+    }
+    async 十连up2(e) {
+        const positions = [
+            [160, 0],
+            [310, 0],
+            [460, 0],
+            [610, 0],
+            [760, 0],
+            [590, 400],
+            [740, 400],
+            [890, 400],
+            [1040, 400],
+            [1190, 400]
+        ];
+        try {
+            const drawCountMap = loadDrawCountMap();
+            const userId = e.user_id;
+            let folder6DrawCount = 0;
+            const imagePaths = [];
+            const { randomFolder, randomImage } = await 单抽Logic();
+            drawCountMap[userId] = drawCountMap[userId] || [];
+            for (let i = 0; i < 10; i++) {
+                const { randomFolder, randomImage } = await 单抽Logic();
+                drawCountMap[userId].push(randomImage);
+                imagePaths.push(randomImage);
+                if (randomFolder.folderPath === folderPaths[0]) {
+                    folder6DrawCount = drawCountMap[userId].length;
+                    drawCountMap[userId] = [randomImage];
+                    const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage);
+                    drawCountMap[userId] = previousFolder6Draws;
+                }
+            }
+            saveDrawCountMap(drawCountMap);
+            const backgroundImage = await jimp.read(backgroundImagePath);
+            backgroundImage.resize(backgroundImageWidth, backgroundImageHeight);
+            for (let i = 0; i < imagePaths.length; i++) {
+                const randomImage = imagePaths[i];
+                const image = await jimp.read(randomImage);
+                const [x, y] = positions[i];
+                backgroundImage.composite(image, x, y);
+            }
+            const outputFilePath = `${outputFolderPath}/十连up2.jpg`;
+            await e.reply('', getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
+            await backgroundImage.writeAsync(outputFilePath);
+            console.log(`图片已保存至 ${outputFilePath}`);
+            console.log('图片合成完成！');
+            await e.reply(getPathBuffer(outputFilePath));
+            if (folder6DrawCount > 0) {
+                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n抽到了6星，所用抽数：${folder6DrawCount} 抽`);
+            }
+            else {
+                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n目前已经抽了 ${drawCountMap[userId].length} 次`);
+            }
+        }
+        catch (error) {
+            console.error('发生错误：', error);
+        }
+    }
+}
+function loadDrawCountMap() {
+    try {
+        const json = fs.readFileSync(dbFolderPath, 'utf-8');
+        return JSON.parse(json);
+    }
+    catch (error) {
+        saveDrawCountMap({});
+        console.error('读取抽卡次数映射文件失败:', error);
+        return {};
+    }
+}
+function saveDrawCountMap(drawCountMap) {
+    try {
+        const json = JSON.stringify(drawCountMap, null, 2);
+        fs.writeFileSync(drawCountMapPath, json, 'utf-8');
+    }
+    catch (error) {
+        console.error('保存抽卡次数映射文件失败:', error);
+    }
+}
+async function 单抽Logic() {
+    const options = [
+        {
+            folderPath: folderPaths[0],
+            probability: 0.015,
+            specificImage: `${folderPaths[0]}/6-14.png`,
+            specificImageProbability: 0.5
+        },
+        {
+            folderPath: folderPaths[1],
+            probability: 0.085,
+            specificImage: `${folderPaths[1]}/5-15.png`,
+            specificImageProbability: 0.5
+        },
+        { folderPath: folderPaths[2], probability: 0.4 },
+        { folderPath: folderPaths[3], probability: 0.45 },
+        { folderPath: folderPaths[4], probability: 0.05 }
+    ];
+    const randomFolder = getRandomOption(options);
+    const randomImage = getRandomFileFromFolder(randomFolder.folderPath, randomFolder.specificImage, randomFolder.specificImageProbability);
+    return { randomFolder, randomImage };
+}
+const backgroundImagePath = `/application/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`;
+const folderPaths = [
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/6-lim2`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/5-lim2`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
+    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
+];
+const outputFolderPath = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`;
+const dbFolderPath = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim2.json`;
+const drawCountMapPath = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim2.json`;
+const backgroundImageWidth = 1500;
+const backgroundImageHeight = 800;
+function getRandomOption(options) {
+    const totalProbability = options.reduce((sum, option) => sum + option.probability, 0);
+    let random = Math.random() * totalProbability;
+    for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        if (random < option.probability) {
+            return option;
+        }
+        random -= option.probability;
+    }
+}
+function getRandomFileFromFolder(folderPath, specificImage, specificImageProbability) {
+    if (specificImage && Math.random() < specificImageProbability) {
+        return specificImage;
+    }
+    const files = fs.readdirSync(folderPath);
+    const randomIndex = Math.floor(Math.random() * files.length);
+    const randomFile = files[randomIndex];
+    return `${folderPath}/${randomFile}`;
 }
 
 class entext extends plugin {
