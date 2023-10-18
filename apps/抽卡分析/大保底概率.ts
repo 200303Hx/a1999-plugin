@@ -6,7 +6,7 @@ import {
   getPathBuffer,
   getPluginHelp
 } from 'alemonjs'
-import fs from 'fs'
+import fs, { existsSync } from 'fs'
 import jimp from 'jimp'
 import { createCanvas, registerFont } from 'canvas'
 
@@ -27,14 +27,21 @@ export class fenxichouka1 extends plugin {
     analyzeAndDisplayStats()
 
     async function analyzeAndDisplayStats() {
-      const filePath = `${process
+      const newFilePath = `${process
         .cwd()
         .replace(
           /\\/g,
           '/'
         )}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`
-      const file2Data = JSON.parse(fs.readFileSync(filePath, 'utf8'))
 
+      if (!existsSync(newFilePath)) {
+        e.reply('记录不存在')
+        return
+      }
+
+      const data = fs.readFileSync(newFilePath, 'utf8')
+
+      const file2Data = JSON.parse(data)
       const isSpecialSixStarNotWhale = true
       let hasSixStar = false
 
