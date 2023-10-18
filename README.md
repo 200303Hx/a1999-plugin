@@ -13,7 +13,7 @@
 
  **<div align="center">|使用Gitee安装，在almonb根目录执行|</div>** 
 ```sh
-git clone https://gitee.com/fantasy-hx/alemon-plugin-1999.git ./application/alemon-plugin-1999
+git clone https://gitee.com/fantasy-hx/a1999-plugin.git ./application/a1999-plugin
 ```
 ## <div align="center">依赖</div> 
  
