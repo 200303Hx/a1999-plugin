@@ -20,8 +20,7 @@ git clone https://gitee.com/fantasy-hx/alemon-plugin-1999.git ./application/alem
  **<div align="center">|安装依赖，在Alemon-bot根目录执行|</div>** 
 
 ```sh
-#使用npm安装依赖即可
-cd application/alemon-plugin-1999 && npm i
+npm i
 ```
 
 ## <div align="center">更新</div>
