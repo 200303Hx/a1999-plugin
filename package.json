@@ -1,31 +1,20 @@
 {
-  "name": "alemon-plugin-1999",
+  "name": "1999-plugin",
   "version": "1.0.0",
-  "description": "<div align=\"center\">Alemon-Bot 插件</div>",
+  "description": "Alemon",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "module",
   "keywords": [],
-  "author": "Fantasy",
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "canvas": "^2.11.2",
-    "canvas-constructor": "^7.0.1",
-    "cnpm": "^9.2.0",
-    "fs": "^0.0.1-security",
-    "fs-extra": "^11.1.1",
-    "jimp": "^0.22.8",
-    "lodash": "^4.17.21",
-    "node-schedule": "^2.1.1",
-    "path": "^0.12.7",
-    "sharp": "^0.32.4",
-    "simple-statistics": "^7.8.3"
-  },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.1",
-    "@types/lodash": "^4.14.195",
-    "@types/node-schedule": "^2.1.0"
+    "axios": "^1.5.1",
+    "canvas": "^2.11.2",
+    "jimp": "^0.22.10",
+    "lodash": "^4.17.21",
+    "node-schedule": "^2.1.1"
   }
 }

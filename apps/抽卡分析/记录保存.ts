@@ -1,4 +1,11 @@
-import { plugin, Messagetype, segment } from 'alemon'
+import {
+  plugin,
+  AMessage,
+  getUrlbuffer,
+  createQrcode,
+  getPathBuffer,
+  getPluginHelp
+} from 'alemonjs'
 import axios from 'axios'
 import fs from 'fs'
 import _ from 'lodash'
@@ -72,26 +79,24 @@ export class fenxichouka extends plugin {
     super({
       rule: [
         {
-          reg: /^抽卡记录\s+([\S]+)/,
+          reg: /^征集记录\s+([\S]+)/,
           fnc: 'fenxi'
         }
       ]
     })
   }
 
-  async fenxi(e: Messagetype) {
+  async fenxi(e: AMessage) {
     // 使用正则表达式匹配并提取链接的一部分
-    const urlRegex = /^抽卡记录\s+([\S]+)/
-    const match = e.cmd_msg.match(urlRegex)
+    const urlRegex = /^征集记录\s+([\S]+)/
+    const match = e.msg.match(urlRegex)
 
     if (match && match[1]) {
       const partOfUrl = match[1] // 用户发送的链接的一部分
       const completeUrl = `https://game-re-service.sl916.com/query/summon?${partOfUrl}`
       const decodedUrl = completeUrl.replace(/&amp;/g, '&')
-      const userId = e.msg.author.id // 获取用户唯一标识
-      const jsonFileName = `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/抽卡分析/${userId}.json` // 以用户UID为后缀的JSON文件名
+      const userId = e.user_id // 获取用户唯一标识
+      const jsonFileName = `./application/alemon-plugin-1999/db/抽卡分析/${userId}.json` // 以用户UID为后缀的JSON文件名
 
       // 发送GET请求获取网页内容
       try {
@@ -101,9 +106,7 @@ export class fenxichouka extends plugin {
         fs.writeFileSync(jsonFileName, JSON.stringify(html), 'utf-8')
         console.log('JSON文件保存成功！')
 
-        const filePath = `${process
-          .cwd()
-          .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/抽卡分析/${userId}.json`
+        const filePath = `./application/alemon-plugin-1999/db/抽卡分析/${userId}.json`
         //抽卡记录1
         try {
           // 从文件中读取JSON数据
@@ -168,9 +171,7 @@ export class fenxichouka extends plugin {
           const jsonResult = JSON.stringify(result, null, 2)
 
           // 保存 JSON 字符串到文件
-          const saveFilePath = `${process
-            .cwd()
-            .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`
+          const saveFilePath = `./application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`
           fs.writeFileSync(saveFilePath, jsonResult, 'utf-8')
           //抽卡记录2
           try {
@@ -187,7 +188,8 @@ export class fenxichouka extends plugin {
             // 遍历每个抽卡池
             for (const pool of pools) {
               // 判断当前抽卡池是否为限定池
-              const isLimitedPool = pool.poolName !== '第一滴雨' && pool.poolName !== '于湖中央'
+              const isLimitedPool =
+                pool.poolName !== '第一滴雨' && pool.poolName !== '于湖中央'
 
               // 如果是限定池，将记录添加到限定池的数组中
               if (isLimitedPool) {
@@ -197,7 +199,9 @@ export class fenxichouka extends plugin {
 
             // 对限定池记录按照时间升序排序，确保按照id出现的时间顺序排列
             limitedPoolRecords.sort(
-              (a, b) => new Date(a.createTime).getTime() - new Date(b.createTime).getTime()
+              (a, b) =>
+                new Date(a.createTime).getTime() -
+                new Date(b.createTime).getTime()
             )
 
             // 初始化三大卡池的结果对象
@@ -217,7 +221,8 @@ export class fenxichouka extends plugin {
             // 遍历每个抽卡池
             for (const pool of pools) {
               // 判断当前抽卡池是否为限定池
-              const isLimitedPool = pool.poolName !== '第一滴雨' && pool.poolName !== '于湖中央'
+              const isLimitedPool =
+                pool.poolName !== '第一滴雨' && pool.poolName !== '于湖中央'
 
               // 如果是限定池，直接跳过，因为限定池的记录已经在前面处理过了
               if (isLimitedPool) {
@@ -225,7 +230,9 @@ export class fenxichouka extends plugin {
               }
 
               // 获取当前抽卡池的记录并将其倒序排列，以便按时间降序显示
-              const poolRecords = pools.filter(p => p.poolName === pool.poolName).reverse()
+              const poolRecords = pools
+                .filter(p => p.poolName === pool.poolName)
+                .reverse()
 
               // 初始化一个数组来存储当前抽卡池的结果
               const poolResults = []
@@ -301,9 +308,7 @@ export class fenxichouka extends plugin {
             const jsonResult = JSON.stringify(result, null, 2)
 
             // 保存 JSON 字符串到文件
-            const saveFilePath = `${process
-              .cwd()
-              .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`
+            const saveFilePath = `./application/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`
             fs.writeFileSync(saveFilePath, jsonResult, 'utf-8')
 
             // 发送回复消息

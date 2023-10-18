@@ -1,4 +1,10 @@
-import { plugin, Messagetype } from 'alemon'
+import {
+  plugin,
+  AMessage,
+  createQrcode,
+  getPathBuffer,
+  getPluginHelp
+} from 'alemonjs'
 import path from 'path'
 export class showI extends plugin {
   constructor() {
@@ -65,128 +71,128 @@ export class showI extends plugin {
     })
   }
 
-  async T1(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day1-1.jpg`
+  async T1(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day1-1.jpg`
+      )
     )
     return false
   }
 
-  async T2(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day1-2.jpg`
+  async T2(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day1-2.jpg`
+      )
     )
     return false
   }
 
-  async T3(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day1-3.jpg`
+  async T3(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day1-3.jpg`
+      )
     )
     return false
   }
 
-  async T4(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day2-1.jpg`
+  async T4(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day2-1.jpg`
+      )
     )
     return false
   }
 
-  async T5(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day2-2.jpg`
+  async T5(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day2-2.jpg`
+      )
     )
     return false
   }
 
-  async T6(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day2-3.jpg`
+  async T6(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day2-3.jpg`
+      )
     )
     return false
   }
 
-  async T7(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day3-1.jpg`
+  async T7(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day3-1.jpg`
+      )
     )
     return false
   }
 
-  async T8(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day3-2.jpg`
+  async T8(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day3-2.jpg`
+      )
     )
     return false
   }
 
-  async T9(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day4-1.jpg`
+  async T9(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day4-1.jpg`
+      )
     )
     return false
   }
 
-  async T10(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day4-2.jpg`
+  async T10(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day4-2.jpg`
+      )
     )
     return false
   }
 
-  async T11(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day4-3.jpg`
+  async T11(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day4-3.jpg`
+      )
     )
     return false
   }
 
-  async T12(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day4-4.jpg`
+  async T12(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day4-4.jpg`
+      )
     )
     return false
   }
 
-  async T13(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day5-1.jpg`
+  async T13(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day5-1.jpg`
+      )
     )
     return false
   }
 
-  async T14(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/听力/day5-2.jpg`
+  async T14(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/听力/day5-2.jpg`
+      )
     )
     return false
   }

@@ -1,8 +1,14 @@
-import { plugin, Messagetype } from 'alemon'
+import {
+  plugin,
+  AMessage,
+  getUrlbuffer,
+  createQrcode,
+  getPathBuffer,
+  getPluginHelp
+} from 'alemonjs'
 import fs from 'fs'
 import jimp from 'jimp'
 import { createCanvas, registerFont } from 'canvas'
-import path from 'path'
 
 export class fenxichouka1 extends plugin {
   constructor() {
@@ -16,21 +22,28 @@ export class fenxichouka1 extends plugin {
     })
   }
 
-  async fenxi1(e: Messagetype) {
-    const userId = e.msg.author.id // 获取用户唯一标识
+  async fenxi1(e: AMessage) {
+    const userId = e.user_id // 获取用户唯一标识
     analyzeAndDisplayStats()
 
     async function analyzeAndDisplayStats() {
       const filePath = `${process
         .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`
+        .replace(
+          /\\/g,
+          '/'
+        )}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`
       const file2Data = JSON.parse(fs.readFileSync(filePath, 'utf8'))
 
       const isSpecialSixStarNotWhale = true
       let hasSixStar = false
 
       const poolStats: {
-        [key: string]: { totalPulls: number; sixStarPulls: number; misfitPulls: number }
+        [key: string]: {
+          totalPulls: number
+          sixStarPulls: number
+          misfitPulls: number
+        }
       } = {}
 
       file2Data.reverse() // 从最下方的卡池开始遍历
@@ -81,7 +94,11 @@ export class fenxichouka1 extends plugin {
               sixStarPullsInPool++
 
               // 对其他卡池的特殊6星情况进行标记
-              if (specialSixStar && result.includes(specialSixStar) && isSpecialSixStarNotWhale) {
+              if (
+                specialSixStar &&
+                result.includes(specialSixStar) &&
+                isSpecialSixStarNotWhale
+              ) {
                 console.log(`正在分析`)
               } else {
                 misfitPullsInPool++
@@ -109,31 +126,44 @@ export class fenxichouka1 extends plugin {
       // 判断首尾六星是否歪了
       const firstPull = file2Data[0].results[0]
       const lastPull = file2Data[file2Data.length - 1].results[0]
+      let isFirstMisfit = false
+      let isLastMisfit = false
 
-      const isFirstMisfit = firstPull.includes('6星') && !firstPull.includes(specialSixStar)
-      const isLastMisfit = lastPull.includes('6星') && !lastPull.includes(specialSixStar)
+      if (lastPull && lastPull.includes) {
+        isFirstMisfit =
+          firstPull.includes('6星') && !firstPull.includes(specialSixStar)
+        isLastMisfit =
+          lastPull.includes('6星') && !lastPull.includes(specialSixStar)
+      } else {
+        e.reply('未保存记录')
+        return false
+      }
 
       // 根据不同情况计算歪卡的概率
       let overallMisfitProbability = 0
       if (isFirstMisfit && isLastMisfit) {
         if (misfitCount <= notMisfitCount) {
-          overallMisfitProbability = misfitCount / (sixStarPullsOverall - misfitCount + 1)
+          overallMisfitProbability =
+            misfitCount / (sixStarPullsOverall - misfitCount + 1)
         } else {
           overallMisfitProbability = 1
         }
       } else if (isFirstMisfit && !isLastMisfit) {
         if (misfitCount < notMisfitCount) {
-          overallMisfitProbability = misfitCount / (sixStarPullsOverall - misfitCount)
+          overallMisfitProbability =
+            misfitCount / (sixStarPullsOverall - misfitCount)
         } else {
           overallMisfitProbability = 1
         }
       } else if (!isFirstMisfit && isLastMisfit) {
         if (misfitCount < notMisfitCount) {
-          overallMisfitProbability = misfitCount / (sixStarPullsOverall - misfitCount)
+          overallMisfitProbability =
+            misfitCount / (sixStarPullsOverall - misfitCount)
         }
       } else {
         if (misfitCount < notMisfitCount || misfitCount > notMisfitCount) {
-          overallMisfitProbability = misfitCount / (sixStarPullsOverall - misfitCount)
+          overallMisfitProbability =
+            misfitCount / (sixStarPullsOverall - misfitCount)
         } else {
           overallMisfitProbability = 1
         }
@@ -143,24 +173,9 @@ export class fenxichouka1 extends plugin {
 
         // 合成图片并发送
         const textToPrint = `${overallMisfitProbability.toFixed(2)}%`
-        const backgroundImagePath = `${process
-          .cwd()
-          .replace(
-            /\\/g,
-            '/'
-          )}/plugins/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/dbd.jpg` // 替换为背景图片路径
-        const ttffontPath = `${process
-          .cwd()
-          .replace(
-            /\\/g,
-            '/'
-          )}/plugins/alemon-plugin-1999/resources/assets/ttf/SourceHanSerifSC-VF.ttf` // 替换为外部字体文件的路径
-        const outputImagePath = `${process
-          .cwd()
-          .replace(
-            /\\/g,
-            '/'
-          )}/plugins/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/baodi.jpg`
+        const backgroundImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/dbd.jpg` // 替换为背景图片路径
+        const ttffontPath = `./application/alemon-plugin-1999/resources/assets/ttf/SourceHanSerifSC-VF.ttf` // 替换为外部字体文件的路径
+        const outputImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/baodi.jpg`
         await addTextAndSpecialImagesToBackground(
           textToPrint,
           backgroundImagePath,
@@ -168,7 +183,7 @@ export class fenxichouka1 extends plugin {
           outputImagePath
         )
 
-        e.sendImage(outputImagePath)
+        e.reply(getPathBuffer(outputImagePath))
       }
       /*
 
@@ -212,19 +227,40 @@ export class fenxichouka1 extends plugin {
         let gradeImage
         if (overallMisfitProbability >= 0 && overallMisfitProbability < 10) {
           gradeImage = gradeImageMap['SS']
-        } else if (overallMisfitProbability >= 10 && overallMisfitProbability < 20) {
+        } else if (
+          overallMisfitProbability >= 10 &&
+          overallMisfitProbability < 20
+        ) {
           gradeImage = gradeImageMap['S']
-        } else if (overallMisfitProbability >= 20 && overallMisfitProbability < 30) {
+        } else if (
+          overallMisfitProbability >= 20 &&
+          overallMisfitProbability < 30
+        ) {
           gradeImage = gradeImageMap['A+']
-        } else if (overallMisfitProbability >= 30 && overallMisfitProbability < 40) {
+        } else if (
+          overallMisfitProbability >= 30 &&
+          overallMisfitProbability < 40
+        ) {
           gradeImage = gradeImageMap['A']
-        } else if (overallMisfitProbability >= 40 && overallMisfitProbability < 50) {
+        } else if (
+          overallMisfitProbability >= 40 &&
+          overallMisfitProbability < 50
+        ) {
           gradeImage = gradeImageMap['B+']
-        } else if (overallMisfitProbability >= 50 && overallMisfitProbability < 60) {
+        } else if (
+          overallMisfitProbability >= 50 &&
+          overallMisfitProbability < 60
+        ) {
           gradeImage = gradeImageMap['B']
-        } else if (overallMisfitProbability >= 60 && overallMisfitProbability < 70) {
+        } else if (
+          overallMisfitProbability >= 60 &&
+          overallMisfitProbability < 70
+        ) {
           gradeImage = gradeImageMap['C+']
-        } else if (overallMisfitProbability >= 70 && overallMisfitProbability < 100) {
+        } else if (
+          overallMisfitProbability >= 70 &&
+          overallMisfitProbability < 100
+        ) {
           gradeImage = gradeImageMap['C']
         } else {
           // 默认情况，当大保底概率超出映射表的范围时，默认为C.png
@@ -243,16 +279,10 @@ export class fenxichouka1 extends plugin {
           // 使用 Jimp 读取背景图片
           const backgroundImage = await jimp.read(backgroundImagePath)
           // 根据大保底概率选择合适的图片路径
-          const gradeImageFileName = await selectGradeImage(overallMisfitProbability)
-          const gradeImagePath = path.join(
-            `${process
-              .cwd()
-              .replace(
-                /\\/g,
-                '/'
-              )}/plugins/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/评级`,
-            gradeImageFileName
+          const gradeImageFileName = await selectGradeImage(
+            overallMisfitProbability
           )
+          const gradeImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/评级`
 
           // 使用 Jimp 读取评级图片
           const gradeImage = await jimp.read(gradeImagePath)
@@ -265,7 +295,12 @@ export class fenxichouka1 extends plugin {
           backgroundImage.composite(gradeImage, gradeImageX, gradeImageY)
 
           // 生成包含文字的图片
-          const textImageBuffer = await generateTextImage(text, fontPath, 1069, 400)
+          const textImageBuffer = await generateTextImage(
+            text,
+            fontPath,
+            1069,
+            400
+          )
 
           // 使用 Jimp 读取文字图片
           const textImage = await jimp.read(textImageBuffer)

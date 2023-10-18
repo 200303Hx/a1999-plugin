@@ -1,4 +1,10 @@
-import { Messagetype, plugin, segment } from 'alemon'
+import {
+  plugin,
+  AMessage,
+  createQrcode,
+  getPathBuffer,
+  getPluginHelp
+} from 'alemonjs'
 import axios from 'axios'
 
 export class entext extends plugin {
@@ -20,7 +26,7 @@ export class entext extends plugin {
    * @param e 消息对象
    * @returns
    */
-  async en(e: Messagetype) {
+  async en(e: AMessage) {
     const url = 'https://api.vvhan.com/api/en?type=sj'
 
     try {
@@ -30,10 +36,9 @@ export class entext extends plugin {
       const zh = res.zh
       const en = res.en
       const pic = res.pic
-      const obj = segment.reply(e.msg.id)
-      await e.reply(zh, obj)
-      await e.reply(en, obj)
-      await e.reply(segment.image(pic))
+      await e.reply(zh)
+      await e.reply(en)
+      await e.reply(pic)
 
       return true
     } catch (error) {

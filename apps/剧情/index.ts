@@ -1,5 +1,10 @@
-import { plugin, Messagetype } from 'alemon'
-
+import {
+  plugin,
+  AMessage,
+  createQrcode,
+  getPathBuffer,
+  getPluginHelp
+} from 'alemonjs'
 export class showJ extends plugin {
   constructor() {
     super({
@@ -17,23 +22,23 @@ export class showJ extends plugin {
     })
   }
 
-  async J1(e: Messagetype): Promise<boolean> {
-    await e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/剧情/TH.01-1.png`
+  async J1(e: AMessage): Promise<boolean> {
+    await e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-1.png`
+      )
     )
-    e.reply(`<@!${e.msg.author.id}> `)
+    e.reply(`<@!${e.msg_id}> `)
     return false
   }
 
-  async J2(e: Messagetype): Promise<boolean> {
-    await e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/剧情/TH.01-2.png`
+  async J2(e: AMessage): Promise<boolean> {
+    await e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-2.png`
+      )
     )
-    e.reply(`<@!${e.msg.author.id}> `)
+    e.reply(`<@!${e.msg_id}> `)
     return false
   }
 }

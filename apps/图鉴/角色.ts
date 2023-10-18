@@ -1,4 +1,10 @@
-import { plugin, Messagetype } from 'alemon'
+import {
+  plugin,
+  AMessage,
+  createQrcode,
+  getPathBuffer,
+  getPluginHelp
+} from 'alemonjs'
 export class showImg extends plugin {
   constructor() {
     super({
@@ -109,253 +115,226 @@ export class showImg extends plugin {
   }
 
   //角色图鉴
-  async A1(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/喀嚓喀嚓.jpg`
+  async A1(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/喀嚓喀嚓.jpg`
+      )
     )
     return false
   }
 
-  async A2(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/柏林以东.jpg`
+  async A2(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/柏林以东.jpg`
+      )
     )
     return false
   }
 
-  async A3(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/五色月.jpg`
+  async A3(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/五色月.jpg`
+      )
     )
     return false
   }
 
-  async A4(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/玛丽莲.jpg`
+  async A4(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/玛丽莲.jpg`
+      )
     )
     return false
   }
 
-  async A5(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/帕米埃.jpg`
+  async A5(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/帕米埃.jpg`
+      )
     )
     return false
   }
 
-  async A6(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/坦南特.jpg`
+  async A6(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/坦南特.jpg`
+      )
     )
     return false
   }
 
-  async A7(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/玛蒂尔达.jpg`
+  async A7(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/玛蒂尔达.jpg`
+      )
     )
     return false
   }
 
-  async A8(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/夏利.jpg`
+  async A8(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/夏利.jpg`
+      )
     )
     return false
   }
 
-  async A9(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/婴儿蓝.jpg`
+  async A9(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/婴儿蓝.jpg`
+      )
     )
     return false
   }
 
-  async A10(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/讣告人.jpg`
+  async A10(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/讣告人.jpg`
+      )
     )
     return false
   }
 
-  async A11(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/气球派对.jpg`
+  async A11(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/气球派对.jpg`
+      )
     )
     return false
   }
 
-  async A12(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/十四行诗.jpg`
+  async A12(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/十四行诗.jpg`
+      )
     )
     return false
   }
 
-  async A13(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/X.jpg`
+  async A13(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/X.jpg`
+      )
     )
     return false
   }
 
-  async A14(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/未锈铠.jpg`
+  async A14(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/未锈铠.jpg`
+      )
     )
     return false
   }
 
-  async A15(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/槲寄生.jpg`
+  async A15(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/槲寄生.jpg`
+      )
     )
     return false
   }
 
-  async A16(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/泥鯭的士.jpg`
+  async A16(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/泥鯭的士.jpg`
+      )
     )
     return false
   }
 
-  async A17(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/苏芙比.jpg`
+  async A17(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/苏芙比.jpg`
+      )
     )
     return false
   }
 
-  async A18(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/百夫长.jpg`
+  async A18(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/百夫长.jpg`
+      )
     )
     return false
   }
 
-  async A19(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/兔毛手袋.jpg`
+  async A19(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/兔毛手袋.jpg`
+      )
     )
     return false
   }
 
-  async A20(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/红弩箭.jpg`
+  async A20(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/红弩箭.jpg`
+      )
     )
     return false
   }
 
-  async A21(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/星锑.jpg`
+  async A21(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/星锑.jpg`
+      )
     )
     return false
   }
 
-  async A22(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/远旅.jpg`
+  async A22(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/远旅.jpg`
+      )
     )
     return false
   }
 
-  async A23(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/温妮弗雷德.jpg`
+  async A23(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/温妮弗雷德.jpg`
+      )
     )
     return false
   }
 
-  async A24(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/新巴别塔.jpg`
+  async A24(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/新巴别塔.jpg`
+      )
     )
     return false
   }
-  async A25(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/角色/梅兰妮.jpg`
+  async A25(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/梅兰妮.jpg`
+      )
     )
     return false
   }

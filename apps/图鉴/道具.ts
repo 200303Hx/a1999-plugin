@@ -1,4 +1,10 @@
-import { plugin, Messagetype } from 'alemon'
+import {
+  plugin,
+  AMessage,
+  createQrcode,
+  getPathBuffer,
+  getPluginHelp
+} from 'alemonjs'
 export class showImg3 extends plugin {
   constructor() {
     super({
@@ -114,298 +120,239 @@ export class showImg3 extends plugin {
   }
 
   //道具图鉴
-  async C1(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/不腐猴爪.png`
+  async C1(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/不腐猴爪.png`
+      )
+    )
+
+    return false
+  }
+
+  async C2(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/分别善恶之果.png`
+      )
+    )
+
+    return false
+  }
+
+  async C3(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/双头形骨架.png`
+      )
+    )
+
+    return false
+  }
+
+  async C4(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/啮咬盒.png`
+      )
+    )
+
+    return false
+  }
+
+  async C5(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/幸运咒语.png`
+      )
     )
     return false
   }
 
-  async C2(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/分别善恶之果.png`
+  async C6(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/幼龙骨标本.png`
+      )
     )
     return false
   }
 
-  async C3(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/双头形骨架.png`
+  async C7(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/床下怪物.png`
+      )
     )
     return false
   }
 
-  async C4(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/啮咬盒.png`
+  async C8(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/未知种根骨.png`
+      )
     )
     return false
   }
 
-  async C5(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/幸运咒语.png`
+  async C9(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/液化战栗.png`
+      )
     )
     return false
   }
 
-  async C6(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/幼龙骨标本.png`
+  async C10(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/清扫咒.png`
+      )
     )
     return false
   }
 
-  async C7(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/床下怪物.png`
+  async C11(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/狂人絮语.png`
+      )
     )
     return false
   }
 
-  async C8(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/未知种根骨.png`
+  async C12(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/百灵百验鸟.png`
+      )
     )
     return false
   }
 
-  async C9(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/液化战栗.png`
+  async C13(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/盐封曼德拉.png`
+      )
     )
     return false
   }
 
-  async C10(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/清扫咒.png`
+  async C14(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/破碎骨片.png`
+      )
     )
     return false
   }
 
-  async C11(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/狂人絮语.png`
+  async C15(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/祝圣秘银.png`
+      )
     )
     return false
   }
 
-  async C12(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/百灵百验鸟.png`
+  async C16(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/粗糙银锭.png`
+      )
     )
     return false
   }
 
-  async C13(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/盐封曼德拉.png`
+  async C17(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/精磨苦盐.png`
+      )
     )
     return false
   }
 
-  async C14(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/破碎骨片.png`
+  async C18(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/罗马金币.png`
+      )
     )
     return false
   }
 
-  async C15(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/祝圣秘银.png`
+  async C19(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/苦盐簇.png`
+      )
     )
     return false
   }
 
-  async C16(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/粗糙银锭.png`
+  async C20(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/金爪灵摆.png`
+      )
     )
     return false
   }
 
-  async C17(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/精磨苦盐.png`
+  async C21(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/金羊毛.png`
+      )
     )
     return false
   }
 
-  async C18(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/罗马金币.png`
+  async C22(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/铂金通灵板.png`
+      )
     )
     return false
   }
 
-  async C19(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/苦盐簇.png`
+  async C23(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/银光子弹.png`
+      )
     )
     return false
   }
 
-  async C20(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/金爪灵摆.png`
+  async C24(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/银矿原石.png`
+      )
     )
     return false
   }
 
-  async C21(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/金羊毛.png`
+  async C25(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/长青剑.png`
+      )
     )
     return false
   }
-
-  async C22(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/铂金通灵板.png`
-    )
-    return false
-  }
-
-  async C23(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/银光子弹.png`
-    )
-    return false
-  }
-
-  async C24(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/银矿原石.png`
-    )
-    return false
-  }
-
-  async C25(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/长青剑.png`
-    )
-    return false
-  }
-  async C26(e: Messagetype): Promise<boolean> {
-    e.sendImage(
-      `${process
-        .cwd()
-        .replace(
-          /\\/g,
-          '/'
-        )}/plugins/alemon-plugin-1999/resources/assets/img/图鉴/道具/颤颤之齿.png`
+  async C26(e: AMessage): Promise<boolean> {
+    e.reply(
+      getPathBuffer(
+        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/颤颤之齿.png`
+      )
     )
     return false
   }

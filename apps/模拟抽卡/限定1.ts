@@ -1,4 +1,10 @@
-import { plugin, Messagetype } from 'alemon'
+import {
+  plugin,
+  AMessage,
+  createQrcode,
+  getPathBuffer,
+  getPluginHelp
+} from 'alemonjs'
 import fs from 'fs'
 import jimp from 'jimp'
 
@@ -20,7 +26,7 @@ export class up extends plugin {
   async 单抽up(e) {
     try {
       const drawCountMap = loadDrawCountMap()
-      const userId = e.msg.author.id
+      const userId = e.user_id
 
       // 单抽的逻辑，包括随机选择和处理抽卡结果
       const { randomFolder, randomImage } = await 单抽Logic()
@@ -36,17 +42,20 @@ export class up extends plugin {
       if (randomFolder.folderPath === folderPaths[0]) {
         const previousDrawCount = drawCountMap[userId].length
         drawCountMap[userId] = [randomImage]
-        const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage)
+        const previousFolder6Draws = drawCountMap[userId].filter(
+          file => file !== randomImage
+        )
         drawCountMap[userId] = previousFolder6Draws
 
         saveDrawCountMap(drawCountMap)
-        await e.sendImage(outputFilePath)
-        e.reply(`<@!${userId}>，当前卡池：自由摇摆\n抽到了6星，所用抽数 ${previousDrawCount} 抽`)
+        await e.reply(getPathBuffer(outputFilePath))
+        e.reply(
+          `<@!${userId}>，当前卡池：自由摇摆\n抽到了6星，所用抽数 ${previousDrawCount} 抽`
+        )
         console.log(`单抽图片已保存至 ${outputFilePath}`)
       } else {
         saveDrawCountMap(drawCountMap)
-
-        await e.sendImage(outputFilePath)
+        await e.reply(getPathBuffer(outputFilePath))
         e.reply(
           `<@!${userId}>，当前卡池：自由摇摆\n目前已经抽了 ${drawCountMap[userId].length} 次。`
         )
@@ -73,7 +82,7 @@ export class up extends plugin {
 
     try {
       const drawCountMap = loadDrawCountMap()
-      const userId = e.msg.author.id
+      const userId = e.user_id
       let folder6DrawCount = 0 // 记录抽到文件夹6的抽数
       const imagePaths = [] // 用于保存十连的文件名
       const { randomFolder, randomImage } = await 单抽Logic()
@@ -89,7 +98,9 @@ export class up extends plugin {
         if (randomFolder.folderPath === folderPaths[0]) {
           folder6DrawCount = drawCountMap[userId].length
           drawCountMap[userId] = [randomImage]
-          const previousFolder6Draws = drawCountMap[userId].filter(file => file !== randomImage)
+          const previousFolder6Draws = drawCountMap[userId].filter(
+            file => file !== randomImage
+          )
           drawCountMap[userId] = previousFolder6Draws
         }
       }
@@ -110,21 +121,27 @@ export class up extends plugin {
 
       // 保存合成后的图片
       const outputFilePath = `${outputFolderPath}/十连.jpg`
-      e.sendImage(
-        `${process
-          .cwd()
-          .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`
+      await e.reply(
+        '',
+        getPathBuffer(
+          `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`
+        ),
+        '抽取中.gif'
       )
       await backgroundImage.writeAsync(outputFilePath)
       console.log(`图片已保存至 ${outputFilePath}`)
 
       console.log('图片合成完成！')
-      await e.sendImage(outputFilePath)
+      await e.reply(getPathBuffer(outputFilePath))
 
       if (folder6DrawCount > 0) {
-        e.reply(`<@!${userId}>，当前卡池：自由摇摆\n抽到了6星，所用抽数：${folder6DrawCount} 抽`)
+        e.reply(
+          `<@!${userId}>，当前卡池：自由摇摆\n抽到了6星，所用抽数：${folder6DrawCount} 抽`
+        )
       } else {
-        e.reply(`<@!${userId}>，当前卡池：自由摇摆\n目前已经抽了 ${drawCountMap[userId].length} 次`)
+        e.reply(
+          `<@!${userId}>，当前卡池：自由摇摆\n目前已经抽了 ${drawCountMap[userId].length} 次`
+        )
       }
     } catch (error) {
       console.error('发生错误：', error)
@@ -179,37 +196,28 @@ async function 单抽Logic() {
   return { randomFolder, randomImage }
 }
 
-const backgroundImagePath = `${process
-  .cwd()
-  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`
+const backgroundImagePath = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`
 const folderPaths = [
-  `${process
-    .cwd()
-    .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/6-lim1`,
-  `${process
-    .cwd()
-    .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/5-lim1`,
-  `${process.cwd().replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
-  `${process.cwd().replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
-  `${process.cwd().replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
+  `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/6-lim1`,
+  `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/5-lim1`,
+  `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
+  `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
+  `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
 ]
 
-const outputFolderPath = `${process
-  .cwd()
-  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`
-const dbFolderPath = `${process
-  .cwd()
-  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`
-const drawCountMapPath = `${process
-  .cwd()
-  .replace(/\\/g, '/')}/plugins/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`
+const outputFolderPath = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`
+const dbFolderPath = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`
+const drawCountMapPath = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`
 // 背景图的宽度和高度
 const backgroundImageWidth = 1500
 const backgroundImageHeight = 800
 
 // 根据概率从选项数组中随机选择一个
 function getRandomOption(options) {
-  const totalProbability = options.reduce((sum, option) => sum + option.probability, 0)
+  const totalProbability = options.reduce(
+    (sum, option) => sum + option.probability,
+    0
+  )
   let random = Math.random() * totalProbability
 
   for (let i = 0; i < options.length; i++) {
@@ -222,7 +230,11 @@ function getRandomOption(options) {
 }
 
 // 从指定路径的文件夹中随机选择一个文件
-function getRandomFileFromFolder(folderPath, specificImage, specificImageProbability) {
+function getRandomFileFromFolder(
+  folderPath,
+  specificImage,
+  specificImageProbability
+) {
   if (specificImage && Math.random() < specificImageProbability) {
     return specificImage
   }
