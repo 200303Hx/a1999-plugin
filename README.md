@@ -21,7 +21,7 @@ git clone https://gitee.com/fantasy-hx/alemon-plugin-1999.git ./application/alem
 
 ```sh
 #使用npm安装依赖即可
-git clone https://gitee.com/fantasy-hx/alemon-plugin-1999.git ./application/alemon-plugin-1999
+cd application/alemon-plugin-1999 && npm i
 ```
 
 ## <div align="center">更新</div>
