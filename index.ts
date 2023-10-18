@@ -7,4 +7,4 @@ const hello = await buildTools(
 const apps = createApps(import.meta.url)
 apps.component(hello)
 apps.mount()
-console.log('[APP] 测试插件 启动')
+console.log('[APP] a1999 启动')
