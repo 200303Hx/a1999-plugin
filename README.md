@@ -1,9 +1,9 @@
 ![111](https://preview.cloud.189.cn/image/imageAction?param=684CF81AC8AE187D88456B443F3300BB1D0D6D0B02F072623DB29544FA7E58F2A49C959F4EC31219D80EAF5D26DC6DC437E6B17C42CAC87BDD3AC4CC1B022B93809E8039292D4207339E2DBAB5D48362A7FEB4A5255C549EB96B49461573ECE4A91E8DC31F913F645DAE39BCC7502D309A43464B)
 
 # <div align="center"><h1 align="center">重返未来：1999 插件</h1></div>
-## <div align="center">_🌈基于 Alemon-Bot 的功能插件🌈_</div>
+## <div align="center">_🌈基于AlemonJS框架开发的的功能应用🌈_</div>
 ## <div align="center">介绍</div>
-**<div>✨本插件为Alemon-Bot插件，新人作者，bug可能有点多，欢迎PR😋</div>** 
+**<div>✨新人作者，bug可能有点多，欢迎PR😋</div>** 
 **<div>✨重返未来：1999相关功能（图鉴，分析，娱乐，查询）</div>** 
 **<div>✨如果您对这个项目感到满意并认为它对你有所帮助，请给我一个Star！</div>** 
 **<div>✨您的认可是我持续更新的动力~非常感谢您的支持！</div>** 
@@ -11,25 +11,18 @@
 
 ## <div align="center">安装</div> 
 
- **<div align="center">|使用Gitee安装，在Alemon-bot根目录执行|</div>** 
+ **<div align="center">|使用Gitee安装，在almonb根目录执行|</div>** 
 ```sh
 git clone https://gitee.com/fantasy-hx/alemon-plugin-1999.git ./application/alemon-plugin-1999
 ```
 ## <div align="center">依赖</div> 
  
- **<div align="center">|安装依赖，在Alemon-bot根目录执行|</div>** 
+ **<div align="center">|安装依赖，在almonb根目录执行|</div>** 
 
 ```sh
 npm i
 ```
 
-## <div align="center">更新</div>
-
- **<div align="center">|在Alemon-bot根目录执行|</div>** 
-
-```sh
-cd application/alemon-plugin-1999 && git pull
-```
 ## <div align="center">功能</div>
 <details>
 <summary>帮助菜单-功能一览</summary>
