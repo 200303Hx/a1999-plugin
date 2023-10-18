@@ -74,7 +74,7 @@ export class showI extends plugin {
   async T1(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day1-1.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day1-1.jpg`
       )
     )
     return false
@@ -83,7 +83,7 @@ export class showI extends plugin {
   async T2(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day1-2.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day1-2.jpg`
       )
     )
     return false
@@ -92,7 +92,7 @@ export class showI extends plugin {
   async T3(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day1-3.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day1-3.jpg`
       )
     )
     return false
@@ -101,7 +101,7 @@ export class showI extends plugin {
   async T4(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day2-1.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day2-1.jpg`
       )
     )
     return false
@@ -110,7 +110,7 @@ export class showI extends plugin {
   async T5(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day2-2.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day2-2.jpg`
       )
     )
     return false
@@ -119,7 +119,7 @@ export class showI extends plugin {
   async T6(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day2-3.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day2-3.jpg`
       )
     )
     return false
@@ -128,7 +128,7 @@ export class showI extends plugin {
   async T7(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day3-1.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day3-1.jpg`
       )
     )
     return false
@@ -137,7 +137,7 @@ export class showI extends plugin {
   async T8(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day3-2.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day3-2.jpg`
       )
     )
     return false
@@ -146,7 +146,7 @@ export class showI extends plugin {
   async T9(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day4-1.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day4-1.jpg`
       )
     )
     return false
@@ -155,7 +155,7 @@ export class showI extends plugin {
   async T10(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day4-2.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day4-2.jpg`
       )
     )
     return false
@@ -164,7 +164,7 @@ export class showI extends plugin {
   async T11(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day4-3.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day4-3.jpg`
       )
     )
     return false
@@ -173,7 +173,7 @@ export class showI extends plugin {
   async T12(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day4-4.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day4-4.jpg`
       )
     )
     return false
@@ -182,7 +182,7 @@ export class showI extends plugin {
   async T13(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day5-1.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day5-1.jpg`
       )
     )
     return false
@@ -191,7 +191,7 @@ export class showI extends plugin {
   async T14(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/听力/day5-2.jpg`
+        `./application/a1999-plugin/resources/assets/img/听力/day5-2.jpg`
       )
     )
     return false

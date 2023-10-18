@@ -1,10 +1,10 @@
 import { plugin, getPathBuffer } from 'alemonjs';
 import axios from 'axios';
 import fs, { existsSync } from 'fs';
+import _ from 'lodash';
 import jimp from 'jimp';
 import { createCanvas, registerFont } from 'canvas';
 import path from 'path';
-import _ from 'lodash';
 
 class c extends plugin {
     constructor() {
@@ -20,6 +20,33 @@ class c extends plugin {
     async c(e) {
         const a = e.msg.channel_id;
         e.reply(a);
+    }
+}
+
+class showJ extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^\/TH.01-1$/,
+                    fnc: 'J1'
+                },
+                {
+                    reg: /^\/TH.01-2$/,
+                    fnc: 'J2'
+                }
+            ]
+        });
+    }
+    async J1(e) {
+        await e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-1.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async J2(e) {
+        await e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-2.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
     }
 }
 
@@ -384,33 +411,6 @@ class showI extends plugin {
     }
     async T14(e) {
         e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day5-2.jpg`));
-        return false;
-    }
-}
-
-class showJ extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^\/TH.01-1$/,
-                    fnc: 'J1'
-                },
-                {
-                    reg: /^\/TH.01-2$/,
-                    fnc: 'J2'
-                }
-            ]
-        });
-    }
-    async J1(e) {
-        await e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-1.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async J2(e) {
-        await e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-2.png`));
-        e.reply(`<@!${e.msg_id}> `);
         return false;
     }
 }
@@ -970,226 +970,6 @@ class showImg3 extends plugin {
     }
 }
 
-class fenxichouka1 extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^大保底概率/,
-                    fnc: 'fenxi1'
-                }
-            ]
-        });
-    }
-    async fenxi1(e) {
-        const userId = e.user_id;
-        analyzeAndDisplayStats();
-        async function analyzeAndDisplayStats() {
-            const newFilePath = `${process
-                .cwd()
-                .replace(/\\/g, '/')}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`;
-            if (!existsSync(newFilePath)) {
-                e.reply('记录不存在');
-                return;
-            }
-            const data = fs.readFileSync(newFilePath, 'utf8');
-            const file2Data = JSON.parse(data);
-            const isSpecialSixStarNotWhale = true;
-            file2Data.reverse();
-            let sixStarPullsOverall = 0;
-            let misfitPullsOverall = 0;
-            const specialSixStar = '';
-            file2Data.forEach(pool => {
-                const poolName = pool.poolName;
-                if (poolName !== '第一滴雨' && poolName !== '于湖中央') {
-                    const results = pool.results;
-                    let specialSixStar = '';
-                    if (poolName === '星的栖居') {
-                        specialSixStar = '远旅';
-                    }
-                    else if (poolName === '剑与盔的撕鸣') {
-                        specialSixStar = '未锈铠';
-                    }
-                    else if (poolName === '望族与隐士') {
-                        specialSixStar = '苏芙比';
-                    }
-                    else if (poolName === '流行即世界') {
-                        specialSixStar = '梅兰妮';
-                    }
-                    else if (poolName === '牧羊犬如是说') {
-                        specialSixStar = '皮克勒斯';
-                    }
-                    else if (poolName === '深林的絮语') {
-                        specialSixStar = '槲寄生';
-                    }
-                    else if (poolName === '弩箭破空而至') {
-                        specialSixStar = '红弩箭';
-                    }
-                    else if (poolName === '仙子振翅入夜') {
-                        specialSixStar = '牙仙';
-                    }
-                    let sixStarPullsInPool = 0;
-                    let misfitPullsInPool = 0;
-                    results.forEach(result => {
-                        if (result.includes('6星')) {
-                            sixStarPullsInPool++;
-                            if (specialSixStar &&
-                                result.includes(specialSixStar) &&
-                                isSpecialSixStarNotWhale) {
-                                console.log(`正在分析`);
-                            }
-                            else {
-                                misfitPullsInPool++;
-                            }
-                        }
-                    });
-                    sixStarPullsOverall += sixStarPullsInPool;
-                    misfitPullsOverall += misfitPullsInPool;
-                }
-            });
-            const misfitCount = misfitPullsOverall;
-            const notMisfitCount = sixStarPullsOverall - misfitPullsOverall;
-            const firstPull = file2Data[0].results[0];
-            const lastPull = file2Data[file2Data.length - 1].results[0];
-            let isFirstMisfit = false;
-            let isLastMisfit = false;
-            if (lastPull && lastPull.includes) {
-                isFirstMisfit =
-                    firstPull.includes('6星') && !firstPull.includes(specialSixStar);
-                isLastMisfit =
-                    lastPull.includes('6星') && !lastPull.includes(specialSixStar);
-            }
-            else {
-                e.reply('未保存记录');
-                return false;
-            }
-            let overallMisfitProbability = 0;
-            if (isFirstMisfit && isLastMisfit) {
-                if (misfitCount <= notMisfitCount) {
-                    overallMisfitProbability =
-                        misfitCount / (sixStarPullsOverall - misfitCount + 1);
-                }
-                else {
-                    overallMisfitProbability = 1;
-                }
-            }
-            else if (isFirstMisfit && !isLastMisfit) {
-                if (misfitCount < notMisfitCount) {
-                    overallMisfitProbability =
-                        misfitCount / (sixStarPullsOverall - misfitCount);
-                }
-                else {
-                    overallMisfitProbability = 1;
-                }
-            }
-            else if (!isFirstMisfit && isLastMisfit) {
-                if (misfitCount < notMisfitCount) {
-                    overallMisfitProbability =
-                        misfitCount / (sixStarPullsOverall - misfitCount);
-                }
-            }
-            else {
-                if (misfitCount < notMisfitCount || misfitCount > notMisfitCount) {
-                    overallMisfitProbability =
-                        misfitCount / (sixStarPullsOverall - misfitCount);
-                }
-                else {
-                    overallMisfitProbability = 1;
-                }
-                overallMisfitProbability *= 100;
-                const textToPrint = `${overallMisfitProbability.toFixed(2)}%`;
-                const backgroundImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/dbd.jpg`;
-                const ttffontPath = `./application/alemon-plugin-1999/resources/assets/ttf/SourceHanSerifSC-VF.ttf`;
-                const outputImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/baodi.jpg`;
-                await addTextAndSpecialImagesToBackground(textToPrint, backgroundImagePath, ttffontPath, outputImagePath);
-                e.reply(getPathBuffer(outputImagePath));
-            }
-            async function generateTextImage(text, ttffontPath, width, height) {
-                const canvas = createCanvas(width, height);
-                const ctx = canvas.getContext('2d');
-                registerFont(ttffontPath, { family: 'MyFont' });
-                ctx.font = '264.67px MyFont';
-                ctx.fillStyle = '#545454';
-                ctx.textAlign = 'center';
-                ctx.fillText(text, width / 2, height / 2);
-                const buffer = canvas.toBuffer();
-                return buffer;
-            }
-            async function selectGradeImage(overallMisfitProbability) {
-                const gradeImageMap = {
-                    'SS': 'SS.png',
-                    'S': 'S.png',
-                    'A+': 'A+.png',
-                    'A': 'A.png',
-                    'B+': 'B+.png',
-                    'B': 'B.png',
-                    'C+': 'C+.png',
-                    'C': 'C.png'
-                };
-                let gradeImage;
-                if (overallMisfitProbability >= 0 && overallMisfitProbability < 10) {
-                    gradeImage = gradeImageMap['SS'];
-                }
-                else if (overallMisfitProbability >= 10 &&
-                    overallMisfitProbability < 20) {
-                    gradeImage = gradeImageMap['S'];
-                }
-                else if (overallMisfitProbability >= 20 &&
-                    overallMisfitProbability < 30) {
-                    gradeImage = gradeImageMap['A+'];
-                }
-                else if (overallMisfitProbability >= 30 &&
-                    overallMisfitProbability < 40) {
-                    gradeImage = gradeImageMap['A'];
-                }
-                else if (overallMisfitProbability >= 40 &&
-                    overallMisfitProbability < 50) {
-                    gradeImage = gradeImageMap['B+'];
-                }
-                else if (overallMisfitProbability >= 50 &&
-                    overallMisfitProbability < 60) {
-                    gradeImage = gradeImageMap['B'];
-                }
-                else if (overallMisfitProbability >= 60 &&
-                    overallMisfitProbability < 70) {
-                    gradeImage = gradeImageMap['C+'];
-                }
-                else if (overallMisfitProbability >= 70 &&
-                    overallMisfitProbability < 100) {
-                    gradeImage = gradeImageMap['C'];
-                }
-                else {
-                    gradeImage = gradeImageMap['C'];
-                }
-                return gradeImage;
-            }
-            async function addTextAndSpecialImagesToBackground(text, backgroundImagePath, fontPath, outputImagePath) {
-                try {
-                    const backgroundImage = await jimp.read(backgroundImagePath);
-                    const gradeImageFileName = await selectGradeImage(overallMisfitProbability);
-                    const gradeImagePath = path.join(`${process
-                        .cwd()
-                        .replace(/\\/g, '/')}/application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/评级`, gradeImageFileName);
-                    const gradeImage = await jimp.read(gradeImagePath);
-                    const gradeImageX = 966.2;
-                    const gradeImageY = 1583.7;
-                    backgroundImage.composite(gradeImage, gradeImageX, gradeImageY);
-                    const textImageBuffer = await generateTextImage(text, fontPath, 1069, 400);
-                    const textImage = await jimp.read(textImageBuffer);
-                    const textImageX = 217;
-                    const textImageY = 500;
-                    backgroundImage.composite(textImage, textImageX, textImageY);
-                    await backgroundImage.writeAsync(outputImagePath);
-                    console.log('图片合成成功！');
-                }
-                catch (error) {
-                    console.error('图片合成失败：', error);
-                }
-            }
-        }
-    }
-}
-
 const cardNameMap$1 = {
     3003: { name: '槲寄生', star: '6星' },
     3004: { name: '红弩箭', star: '6星' },
@@ -1416,6 +1196,226 @@ class fenxichouka extends plugin {
             }
             catch (error) {
                 console.error('保存JSON文件出错:', error);
+            }
+        }
+    }
+}
+
+class fenxichouka1 extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^大保底概率/,
+                    fnc: 'fenxi1'
+                }
+            ]
+        });
+    }
+    async fenxi1(e) {
+        const userId = e.user_id;
+        analyzeAndDisplayStats();
+        async function analyzeAndDisplayStats() {
+            const newFilePath = `${process
+                .cwd()
+                .replace(/\\/g, '/')}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`;
+            if (!existsSync(newFilePath)) {
+                e.reply('记录不存在');
+                return;
+            }
+            const data = fs.readFileSync(newFilePath, 'utf8');
+            const file2Data = JSON.parse(data);
+            const isSpecialSixStarNotWhale = true;
+            file2Data.reverse();
+            let sixStarPullsOverall = 0;
+            let misfitPullsOverall = 0;
+            const specialSixStar = '';
+            file2Data.forEach(pool => {
+                const poolName = pool.poolName;
+                if (poolName !== '第一滴雨' && poolName !== '于湖中央') {
+                    const results = pool.results;
+                    let specialSixStar = '';
+                    if (poolName === '星的栖居') {
+                        specialSixStar = '远旅';
+                    }
+                    else if (poolName === '剑与盔的撕鸣') {
+                        specialSixStar = '未锈铠';
+                    }
+                    else if (poolName === '望族与隐士') {
+                        specialSixStar = '苏芙比';
+                    }
+                    else if (poolName === '流行即世界') {
+                        specialSixStar = '梅兰妮';
+                    }
+                    else if (poolName === '牧羊犬如是说') {
+                        specialSixStar = '皮克勒斯';
+                    }
+                    else if (poolName === '深林的絮语') {
+                        specialSixStar = '槲寄生';
+                    }
+                    else if (poolName === '弩箭破空而至') {
+                        specialSixStar = '红弩箭';
+                    }
+                    else if (poolName === '仙子振翅入夜') {
+                        specialSixStar = '牙仙';
+                    }
+                    let sixStarPullsInPool = 0;
+                    let misfitPullsInPool = 0;
+                    results.forEach(result => {
+                        if (result.includes('6星')) {
+                            sixStarPullsInPool++;
+                            if (specialSixStar &&
+                                result.includes(specialSixStar) &&
+                                isSpecialSixStarNotWhale) {
+                                console.log(`正在分析`);
+                            }
+                            else {
+                                misfitPullsInPool++;
+                            }
+                        }
+                    });
+                    sixStarPullsOverall += sixStarPullsInPool;
+                    misfitPullsOverall += misfitPullsInPool;
+                }
+            });
+            const misfitCount = misfitPullsOverall;
+            const notMisfitCount = sixStarPullsOverall - misfitPullsOverall;
+            const firstPull = file2Data[0].results[0];
+            const lastPull = file2Data[file2Data.length - 1].results[0];
+            let isFirstMisfit = false;
+            let isLastMisfit = false;
+            if (lastPull && lastPull.includes) {
+                isFirstMisfit =
+                    firstPull.includes('6星') && !firstPull.includes(specialSixStar);
+                isLastMisfit =
+                    lastPull.includes('6星') && !lastPull.includes(specialSixStar);
+            }
+            else {
+                e.reply('未保存记录');
+                return false;
+            }
+            let overallMisfitProbability = 0;
+            if (isFirstMisfit && isLastMisfit) {
+                if (misfitCount <= notMisfitCount) {
+                    overallMisfitProbability =
+                        misfitCount / (sixStarPullsOverall - misfitCount + 1);
+                }
+                else {
+                    overallMisfitProbability = 1;
+                }
+            }
+            else if (isFirstMisfit && !isLastMisfit) {
+                if (misfitCount < notMisfitCount) {
+                    overallMisfitProbability =
+                        misfitCount / (sixStarPullsOverall - misfitCount);
+                }
+                else {
+                    overallMisfitProbability = 1;
+                }
+            }
+            else if (!isFirstMisfit && isLastMisfit) {
+                if (misfitCount < notMisfitCount) {
+                    overallMisfitProbability =
+                        misfitCount / (sixStarPullsOverall - misfitCount);
+                }
+            }
+            else {
+                if (misfitCount < notMisfitCount || misfitCount > notMisfitCount) {
+                    overallMisfitProbability =
+                        misfitCount / (sixStarPullsOverall - misfitCount);
+                }
+                else {
+                    overallMisfitProbability = 1;
+                }
+                overallMisfitProbability *= 100;
+                const textToPrint = `${overallMisfitProbability.toFixed(2)}%`;
+                const backgroundImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/dbd.jpg`;
+                const ttffontPath = `./application/alemon-plugin-1999/resources/assets/ttf/SourceHanSerifSC-VF.ttf`;
+                const outputImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/baodi.jpg`;
+                await addTextAndSpecialImagesToBackground(textToPrint, backgroundImagePath, ttffontPath, outputImagePath);
+                e.reply(getPathBuffer(outputImagePath));
+            }
+            async function generateTextImage(text, ttffontPath, width, height) {
+                const canvas = createCanvas(width, height);
+                const ctx = canvas.getContext('2d');
+                registerFont(ttffontPath, { family: 'MyFont' });
+                ctx.font = '264.67px MyFont';
+                ctx.fillStyle = '#545454';
+                ctx.textAlign = 'center';
+                ctx.fillText(text, width / 2, height / 2);
+                const buffer = canvas.toBuffer();
+                return buffer;
+            }
+            async function selectGradeImage(overallMisfitProbability) {
+                const gradeImageMap = {
+                    'SS': 'SS.png',
+                    'S': 'S.png',
+                    'A+': 'A+.png',
+                    'A': 'A.png',
+                    'B+': 'B+.png',
+                    'B': 'B.png',
+                    'C+': 'C+.png',
+                    'C': 'C.png'
+                };
+                let gradeImage;
+                if (overallMisfitProbability >= 0 && overallMisfitProbability < 10) {
+                    gradeImage = gradeImageMap['SS'];
+                }
+                else if (overallMisfitProbability >= 10 &&
+                    overallMisfitProbability < 20) {
+                    gradeImage = gradeImageMap['S'];
+                }
+                else if (overallMisfitProbability >= 20 &&
+                    overallMisfitProbability < 30) {
+                    gradeImage = gradeImageMap['A+'];
+                }
+                else if (overallMisfitProbability >= 30 &&
+                    overallMisfitProbability < 40) {
+                    gradeImage = gradeImageMap['A'];
+                }
+                else if (overallMisfitProbability >= 40 &&
+                    overallMisfitProbability < 50) {
+                    gradeImage = gradeImageMap['B+'];
+                }
+                else if (overallMisfitProbability >= 50 &&
+                    overallMisfitProbability < 60) {
+                    gradeImage = gradeImageMap['B'];
+                }
+                else if (overallMisfitProbability >= 60 &&
+                    overallMisfitProbability < 70) {
+                    gradeImage = gradeImageMap['C+'];
+                }
+                else if (overallMisfitProbability >= 70 &&
+                    overallMisfitProbability < 100) {
+                    gradeImage = gradeImageMap['C'];
+                }
+                else {
+                    gradeImage = gradeImageMap['C'];
+                }
+                return gradeImage;
+            }
+            async function addTextAndSpecialImagesToBackground(text, backgroundImagePath, fontPath, outputImagePath) {
+                try {
+                    const backgroundImage = await jimp.read(backgroundImagePath);
+                    const gradeImageFileName = await selectGradeImage(overallMisfitProbability);
+                    const gradeImagePath = path.join(`${process
+                        .cwd()
+                        .replace(/\\/g, '/')}/application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/评级`, gradeImageFileName);
+                    const gradeImage = await jimp.read(gradeImagePath);
+                    const gradeImageX = 966.2;
+                    const gradeImageY = 1583.7;
+                    backgroundImage.composite(gradeImage, gradeImageX, gradeImageY);
+                    const textImageBuffer = await generateTextImage(text, fontPath, 1069, 400);
+                    const textImage = await jimp.read(textImageBuffer);
+                    const textImageX = 217;
+                    const textImageY = 500;
+                    backgroundImage.composite(textImage, textImageX, textImageY);
+                    await backgroundImage.writeAsync(outputImagePath);
+                    console.log('图片合成成功！');
+                }
+                catch (error) {
+                    console.error('图片合成失败：', error);
+                }
             }
         }
     }
@@ -1777,105 +1777,6 @@ class fenxichoukaq extends plugin {
     }
 }
 
-class gonglue extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^共鸣攻略上$/,
-                    fnc: 'G1'
-                },
-                {
-                    reg: /^共鸣攻略中$/,
-                    fnc: 'G2'
-                },
-                {
-                    reg: /^共鸣攻略下$/,
-                    fnc: 'G3'
-                },
-                {
-                    reg: /^主线解谜$/,
-                    fnc: 'G4'
-                },
-                {
-                    reg: /^4-6电路解谜$/,
-                    fnc: 'G5'
-                },
-                {
-                    reg: /^3-12线路图$/,
-                    fnc: 'G6'
-                },
-                {
-                    reg: /^2-4送传单$/,
-                    fnc: 'G7'
-                },
-                {
-                    reg: /^旧齿与陈痕-20$/,
-                    fnc: 'G8'
-                },
-                {
-                    reg: /^旧齿与陈痕-19$/,
-                    fnc: 'G9'
-                },
-                {
-                    reg: /^Buff$/,
-                    fnc: 'G10'
-                }
-            ]
-        });
-    }
-    async G1(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略上.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G2(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略中.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G3(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略下.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G4(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/文字解谜.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G5(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/4-6电路解谜.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G6(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/3-12线路图.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G7(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/2-4送传单.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G8(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-20.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G9(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-19.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G10(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/Buff.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-}
-
 class chouka extends plugin {
     constructor() {
         super({
@@ -2047,6 +1948,105 @@ function getRandomFileFromFolder$2(folderPath) {
     const randomIndex = Math.floor(Math.random() * files.length);
     const randomFile = files[randomIndex];
     return `${folderPath}/${randomFile}`;
+}
+
+class gonglue extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^共鸣攻略上$/,
+                    fnc: 'G1'
+                },
+                {
+                    reg: /^共鸣攻略中$/,
+                    fnc: 'G2'
+                },
+                {
+                    reg: /^共鸣攻略下$/,
+                    fnc: 'G3'
+                },
+                {
+                    reg: /^主线解谜$/,
+                    fnc: 'G4'
+                },
+                {
+                    reg: /^4-6电路解谜$/,
+                    fnc: 'G5'
+                },
+                {
+                    reg: /^3-12线路图$/,
+                    fnc: 'G6'
+                },
+                {
+                    reg: /^2-4送传单$/,
+                    fnc: 'G7'
+                },
+                {
+                    reg: /^旧齿与陈痕-20$/,
+                    fnc: 'G8'
+                },
+                {
+                    reg: /^旧齿与陈痕-19$/,
+                    fnc: 'G9'
+                },
+                {
+                    reg: /^Buff$/,
+                    fnc: 'G10'
+                }
+            ]
+        });
+    }
+    async G1(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略上.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G2(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略中.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G3(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略下.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G4(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/文字解谜.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G5(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/4-6电路解谜.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G6(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/3-12线路图.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G7(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/2-4送传单.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G8(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-20.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G9(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-19.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G10(e) {
+        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/Buff.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
 }
 
 class up extends plugin {
@@ -2229,6 +2229,97 @@ function getRandomFileFromFolder$1(folderPath, specificImage, specificImageProba
     return `${folderPath}/${randomFile}`;
 }
 
+class entext extends plugin {
+    constructor() {
+        super({
+            dsc: '每日一句',
+            rule: [
+                {
+                    reg: '^/每日一句$',
+                    fnc: 'en'
+                }
+            ]
+        });
+    }
+    async en(e) {
+        const url = 'https://api.vvhan.com/api/en?type=sj';
+        try {
+            const response = await axios.get(url);
+            const res = response.data.data;
+            const zh = res.zh;
+            const en = res.en;
+            const pic = res.pic;
+            await e.reply(zh);
+            await e.reply(en);
+            const link = e.segment.link('', 'pic');
+            await e.reply(link);
+            return true;
+        }
+        catch (error) {
+            console.error('接口请求失败', error);
+            await e.reply('接口请求失败');
+            return false;
+        }
+    }
+}
+
+class show extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^\/1999帮助$/,
+                    fnc: 'help'
+                },
+                {
+                    reg: /^\/剧情$/,
+                    fnc: '剧情'
+                },
+                {
+                    reg: /^\/征集帮助$/,
+                    fnc: '征集帮助'
+                },
+                {
+                    reg: /^\/听力笔记$/,
+                    fnc: '听力笔记'
+                },
+                {
+                    reg: /^\/征集分析教程$/,
+                    fnc: '征集分析教程'
+                },
+                {
+                    reg: /^\/攻略$/,
+                    fnc: '攻略'
+                }
+            ]
+        });
+    }
+    async 剧情(e) {
+        e.replyByMid(e.msg_id, '以下为剧情目录\n只需要复制下方目录命令@Bot就可以获取该小节的中英对照剧情辣！\n/TH.01-1\n/TH.01-2');
+        return false;
+    }
+    async help(e) {
+        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/菜单.png`));
+        return false;
+    }
+    async 听力笔记(e) {
+        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/听力笔记.png`));
+        return false;
+    }
+    async 攻略(e) {
+        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/攻略.jpg`));
+        return false;
+    }
+    async 征集帮助(e) {
+        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/征集帮助.png`));
+        return false;
+    }
+    async 征集分析教程(e) {
+        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/征集分析教程.png`));
+        return false;
+    }
+}
+
 class up2 extends plugin {
     constructor() {
         super({
@@ -2407,96 +2498,6 @@ function getRandomFileFromFolder(folderPath, specificImage, specificImageProbabi
     const randomIndex = Math.floor(Math.random() * files.length);
     const randomFile = files[randomIndex];
     return `${folderPath}/${randomFile}`;
-}
-
-class entext extends plugin {
-    constructor() {
-        super({
-            dsc: '每日一句',
-            rule: [
-                {
-                    reg: '^/每日一句$',
-                    fnc: 'en'
-                }
-            ]
-        });
-    }
-    async en(e) {
-        const url = 'https://api.vvhan.com/api/en?type=sj';
-        try {
-            const response = await axios.get(url);
-            const res = response.data.data;
-            const zh = res.zh;
-            const en = res.en;
-            const pic = res.pic;
-            await e.reply(zh);
-            await e.reply(en);
-            await e.reply(pic);
-            return true;
-        }
-        catch (error) {
-            console.error('接口请求失败', error);
-            await e.reply('接口请求失败');
-            return false;
-        }
-    }
-}
-
-class show extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^\/1999帮助$/,
-                    fnc: 'help'
-                },
-                {
-                    reg: /^\/剧情$/,
-                    fnc: '剧情'
-                },
-                {
-                    reg: /^\/征集帮助$/,
-                    fnc: '征集帮助'
-                },
-                {
-                    reg: /^\/听力笔记$/,
-                    fnc: '听力笔记'
-                },
-                {
-                    reg: /^\/征集分析教程$/,
-                    fnc: '征集分析教程'
-                },
-                {
-                    reg: /^\/攻略$/,
-                    fnc: '攻略'
-                }
-            ]
-        });
-    }
-    async 剧情(e) {
-        e.replyByMid(e.msg_id, '以下为剧情目录\n只需要复制下方目录命令@Bot就可以获取该小节的中英对照剧情辣！\n/TH.01-1\n/TH.01-2');
-        return false;
-    }
-    async help(e) {
-        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/菜单.png`));
-        return false;
-    }
-    async 听力笔记(e) {
-        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/听力笔记.png`));
-        return false;
-    }
-    async 攻略(e) {
-        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/攻略.jpg`));
-        return false;
-    }
-    async 征集帮助(e) {
-        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/征集帮助.png`));
-        return false;
-    }
-    async 征集分析教程(e) {
-        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/征集分析教程.png`));
-        return false;
-    }
 }
 
 export { Box, c, chouka, entext, fenxichouka, fenxichouka1, fenxichouka2, fenxichoukaq, gonglue, show, showI, showImg, showImg2, showImg3, showJ, up, up2 };

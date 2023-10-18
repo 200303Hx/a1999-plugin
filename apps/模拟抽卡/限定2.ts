@@ -124,7 +124,7 @@ export class up2 extends plugin {
       await e.reply(
         '',
         getPathBuffer(
-          `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`
+          `./application/a1999-plugin/resources/assets/img/模拟抽卡/抽取中.gif`
         ),
         '抽取中.gif'
       )
@@ -196,18 +196,18 @@ async function 单抽Logic() {
   return { randomFolder, randomImage }
 }
 
-const backgroundImagePath = `/application/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`
+const backgroundImagePath = `/application/a1999-plugin/resources/assets/img/模拟抽卡/bg.png`
 const folderPaths = [
-  `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/6-lim2`,
-  `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/5-lim2`,
-  `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
-  `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
-  `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
+  `./application/a1999-plugin/resources/assets/img/模拟抽卡/6-lim2`,
+  `./application/a1999-plugin/resources/assets/img/模拟抽卡/5-lim2`,
+  `./application/a1999-plugin/resources/assets/img/模拟抽卡/4`,
+  `./application/a1999-plugin/resources/assets/img/模拟抽卡/3`,
+  `./application/a1999-plugin/resources/assets/img/模拟抽卡/2`
 ]
 
-const outputFolderPath = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`
-const dbFolderPath = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim2.json`
-const drawCountMapPath = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim2.json`
+const outputFolderPath = `./application/a1999-plugin/resources/assets/img/模拟抽卡/im`
+const dbFolderPath = `./application/a1999-plugin/db/模拟抽卡/drawCountMap-lim2.json`
+const drawCountMapPath = `./application/a1999-plugin/db/模拟抽卡/drawCountMap-lim2.json`
 // 背景图的宽度和高度
 const backgroundImageWidth = 1500
 const backgroundImageHeight = 800

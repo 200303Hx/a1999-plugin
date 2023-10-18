@@ -35,7 +35,7 @@ export class Box extends plugin {
     const match = e.msg.match(TK)
     const partOfUrl = match[1]
     const yamlData = { partOfUrl }
-    const yamlFileName = `./application/alemon-plugin-1999/config/TK.yaml`
+    const yamlFileName = `./application/a1999-plugin/config/TK.yaml`
     fs.writeFileSync(yamlFileName, JSON.stringify(yamlData, null, 2), 'utf-8')
     console.log('TK已保存')
     e.reply('TK已保存')
@@ -50,7 +50,7 @@ export class Box extends plugin {
     const img = 'http://' + data.data.message.attachments[0].url
     console.log(img)
 
-    const yamlFileName = `./application/alemon-plugin-1999/config/TK.yaml`
+    const yamlFileName = `./application/a1999-plugin/config/TK.yaml`
     const yamlData = fs.readFileSync(yamlFileName, 'utf-8')
     const parsedData = JSON.parse(yamlData)
     const TK = parsedData.partOfUrl

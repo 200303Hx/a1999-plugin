@@ -24,15 +24,15 @@ export class fenxichouka2 extends plugin {
 
   async fenxi2(e: AMessage) {
     const userId = e.user_id // 获取用户唯一标识
-    const imageFilePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/fenxi.jpg`
-    const extensionImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/pinjie.jpg` // 请替换为实际路径
+    const imageFilePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/fenxi.jpg`
+    const extensionImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/pinjie.jpg` // 请替换为实际路径
     Jimp.read(extensionImagePath, async (err, extensionImage) => {
       if (err) {
         console.error('Error reading the extension image:', err)
         return
       }
       // 设置自定义字体路径
-      const fontPath = `./application/alemon-plugin-1999/resources/assets/ttf/SourceHanSerifSC-VF.ttf`
+      const fontPath = `./application/a1999-plugin/resources/assets/ttf/SourceHanSerifSC-VF.ttf`
 
       // 注册自定义字体
       registerFont(fontPath, { family: 'CustomFont' })
@@ -43,7 +43,7 @@ export class fenxichouka2 extends plugin {
         .replace(
           /\\/g,
           '/'
-        )}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`
+        )}/application/a1999-plugin/db/抽卡分析/抽卡记录2${userId}.json`
 
       if (!existsSync(newFilePath)) {
         e.reply('记录不存在')
@@ -86,7 +86,7 @@ export class fenxichouka2 extends plugin {
       ctx.fillText(novicePoolData, 1003, 710)
 
       // 将 canvas 保存为文本图片
-      const textImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/text_image.png`
+      const textImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/text_image.png`
       const textImageStream = fs.createWriteStream(textImagePath)
       const textImageBuffer = canvas.toBuffer('image/png')
       textImageStream.write(textImageBuffer)
@@ -136,7 +136,7 @@ export class fenxichouka2 extends plugin {
             opacityDest: 1
           })
           // 保存修改后的图片
-          const outputImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg` // 请替换为实际路径
+          const outputImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg` // 请替换为实际路径
           backgroundImage2.write(outputImagePath, async writeErr => {
             if (writeErr) {
               console.error('Error saving the image:', writeErr)
@@ -147,7 +147,7 @@ export class fenxichouka2 extends plugin {
             // 确保没有错误后，再发送图片
             e.reply(
               getPathBuffer(
-                `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`
+                `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`
               )
             )
           })
@@ -160,7 +160,7 @@ export class fenxichouka2 extends plugin {
           })
 
           // 保存修改后的图片
-          const outputImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg` // 请替换为实际路径
+          const outputImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg` // 请替换为实际路径
           image.write(outputImagePath, async writeErr => {
             if (writeErr) {
               console.error('Error saving the image:', writeErr)
@@ -171,7 +171,7 @@ export class fenxichouka2 extends plugin {
             // 确保没有错误后，再发送图片
             e.reply(
               getPathBuffer(
-                `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`
+                `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`
               )
             )
           })

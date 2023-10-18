@@ -118,7 +118,7 @@ export class showImg extends plugin {
   async A1(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/喀嚓喀嚓.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/喀嚓喀嚓.jpg`
       )
     )
     return false
@@ -127,7 +127,7 @@ export class showImg extends plugin {
   async A2(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/柏林以东.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/柏林以东.jpg`
       )
     )
     return false
@@ -136,7 +136,7 @@ export class showImg extends plugin {
   async A3(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/五色月.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/五色月.jpg`
       )
     )
     return false
@@ -145,7 +145,7 @@ export class showImg extends plugin {
   async A4(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/玛丽莲.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/玛丽莲.jpg`
       )
     )
     return false
@@ -154,7 +154,7 @@ export class showImg extends plugin {
   async A5(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/帕米埃.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/帕米埃.jpg`
       )
     )
     return false
@@ -163,7 +163,7 @@ export class showImg extends plugin {
   async A6(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/坦南特.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/坦南特.jpg`
       )
     )
     return false
@@ -172,7 +172,7 @@ export class showImg extends plugin {
   async A7(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/玛蒂尔达.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/玛蒂尔达.jpg`
       )
     )
     return false
@@ -181,7 +181,7 @@ export class showImg extends plugin {
   async A8(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/夏利.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/夏利.jpg`
       )
     )
     return false
@@ -190,7 +190,7 @@ export class showImg extends plugin {
   async A9(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/婴儿蓝.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/婴儿蓝.jpg`
       )
     )
     return false
@@ -199,7 +199,7 @@ export class showImg extends plugin {
   async A10(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/讣告人.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/讣告人.jpg`
       )
     )
     return false
@@ -208,7 +208,7 @@ export class showImg extends plugin {
   async A11(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/气球派对.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/气球派对.jpg`
       )
     )
     return false
@@ -217,7 +217,7 @@ export class showImg extends plugin {
   async A12(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/十四行诗.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/十四行诗.jpg`
       )
     )
     return false
@@ -226,7 +226,7 @@ export class showImg extends plugin {
   async A13(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/X.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/X.jpg`
       )
     )
     return false
@@ -235,7 +235,7 @@ export class showImg extends plugin {
   async A14(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/未锈铠.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/未锈铠.jpg`
       )
     )
     return false
@@ -244,7 +244,7 @@ export class showImg extends plugin {
   async A15(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/槲寄生.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/槲寄生.jpg`
       )
     )
     return false
@@ -253,7 +253,7 @@ export class showImg extends plugin {
   async A16(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/泥鯭的士.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/泥鯭的士.jpg`
       )
     )
     return false
@@ -262,7 +262,7 @@ export class showImg extends plugin {
   async A17(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/苏芙比.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/苏芙比.jpg`
       )
     )
     return false
@@ -271,7 +271,7 @@ export class showImg extends plugin {
   async A18(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/百夫长.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/百夫长.jpg`
       )
     )
     return false
@@ -280,7 +280,7 @@ export class showImg extends plugin {
   async A19(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/兔毛手袋.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/兔毛手袋.jpg`
       )
     )
     return false
@@ -289,7 +289,7 @@ export class showImg extends plugin {
   async A20(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/红弩箭.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/红弩箭.jpg`
       )
     )
     return false
@@ -298,7 +298,7 @@ export class showImg extends plugin {
   async A21(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/星锑.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/星锑.jpg`
       )
     )
     return false
@@ -307,7 +307,7 @@ export class showImg extends plugin {
   async A22(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/远旅.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/远旅.jpg`
       )
     )
     return false
@@ -316,7 +316,7 @@ export class showImg extends plugin {
   async A23(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/温妮弗雷德.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/温妮弗雷德.jpg`
       )
     )
     return false
@@ -325,7 +325,7 @@ export class showImg extends plugin {
   async A24(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/新巴别塔.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/新巴别塔.jpg`
       )
     )
     return false
@@ -333,7 +333,7 @@ export class showImg extends plugin {
   async A25(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/梅兰妮.jpg`
+        `./application/a1999-plugin/resources/assets/img/图鉴/角色/梅兰妮.jpg`
       )
     )
     return false

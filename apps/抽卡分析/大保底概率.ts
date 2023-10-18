@@ -33,7 +33,7 @@ export class fenxichouka1 extends plugin {
         .replace(
           /\\/g,
           '/'
-        )}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`
+        )}/application/a1999-plugin/db/抽卡分析/抽卡记录${userId}.json`
 
       if (!existsSync(newFilePath)) {
         e.reply('记录不存在')
@@ -181,9 +181,9 @@ export class fenxichouka1 extends plugin {
 
         // 合成图片并发送
         const textToPrint = `${overallMisfitProbability.toFixed(2)}%`
-        const backgroundImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/dbd.jpg` // 替换为背景图片路径
-        const ttffontPath = `./application/alemon-plugin-1999/resources/assets/ttf/SourceHanSerifSC-VF.ttf` // 替换为外部字体文件的路径
-        const outputImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/baodi.jpg`
+        const backgroundImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/大保底/dbd.jpg` // 替换为背景图片路径
+        const ttffontPath = `./application/a1999-plugin/resources/assets/ttf/SourceHanSerifSC-VF.ttf` // 替换为外部字体文件的路径
+        const outputImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/大保底/baodi.jpg`
         await addTextAndSpecialImagesToBackground(
           textToPrint,
           backgroundImagePath,
@@ -296,7 +296,7 @@ export class fenxichouka1 extends plugin {
               .replace(
                 /\\/g,
                 '/'
-              )}/application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/评级`,
+              )}/application/a1999-plugin/resources/assets/img/抽卡分析/大保底/评级`,
             gradeImageFileName
           )
 

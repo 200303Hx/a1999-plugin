@@ -50,7 +50,7 @@ export class show extends plugin {
   async help(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/help/菜单.png`
+        `/application/a1999-plugin/resources/assets/img/help/菜单.png`
       )
     )
     return false
@@ -59,7 +59,7 @@ export class show extends plugin {
   async 听力笔记(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/help/听力笔记.png`
+        `/application/a1999-plugin/resources/assets/img/help/听力笔记.png`
       )
     )
     return false
@@ -67,7 +67,7 @@ export class show extends plugin {
   async 攻略(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/help/攻略.jpg`
+        `/application/a1999-plugin/resources/assets/img/help/攻略.jpg`
       )
     )
     return false
@@ -75,7 +75,7 @@ export class show extends plugin {
   async 征集帮助(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/help/征集帮助.png`
+        `/application/a1999-plugin/resources/assets/img/help/征集帮助.png`
       )
     )
 
@@ -85,7 +85,7 @@ export class show extends plugin {
   async 征集分析教程(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/help/征集分析教程.png`
+        `/application/a1999-plugin/resources/assets/img/help/征集分析教程.png`
       )
     )
 

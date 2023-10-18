@@ -56,7 +56,7 @@ export class gonglue extends plugin {
   async G1(e: AMessage): Promise<boolean> {
     await e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略上.png`
+        `/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略上.png`
       )
     )
     e.reply(`<@!${e.msg_id}> `)
@@ -66,7 +66,7 @@ export class gonglue extends plugin {
   async G2(e: AMessage): Promise<boolean> {
     await e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略中.png`
+        `/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略中.png`
       )
     )
     e.reply(`<@!${e.msg_id}> `)
@@ -75,7 +75,7 @@ export class gonglue extends plugin {
   async G3(e: AMessage): Promise<boolean> {
     await e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略下.png`
+        `/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略下.png`
       )
     )
     e.reply(`<@!${e.msg_id}> `)
@@ -84,7 +84,7 @@ export class gonglue extends plugin {
   async G4(e: AMessage): Promise<boolean> {
     await e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/攻略/文字解谜.jpg`
+        `/application/a1999-plugin/resources/assets/img/攻略/文字解谜.jpg`
       )
     )
     e.reply(`<@!${e.msg_id}> `)
@@ -93,7 +93,7 @@ export class gonglue extends plugin {
   async G5(e: AMessage): Promise<boolean> {
     await e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/攻略/4-6电路解谜.jpg`
+        `/application/a1999-plugin/resources/assets/img/攻略/4-6电路解谜.jpg`
       )
     )
     e.reply(`<@!${e.msg_id}> `)
@@ -102,7 +102,7 @@ export class gonglue extends plugin {
   async G6(e: AMessage): Promise<boolean> {
     await e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/攻略/3-12线路图.jpg`
+        `/application/a1999-plugin/resources/assets/img/攻略/3-12线路图.jpg`
       )
     )
     e.reply(`<@!${e.msg_id}> `)
@@ -111,7 +111,7 @@ export class gonglue extends plugin {
   async G7(e: AMessage): Promise<boolean> {
     await e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/攻略/2-4送传单.jpg`
+        `/application/a1999-plugin/resources/assets/img/攻略/2-4送传单.jpg`
       )
     )
     e.reply(`<@!${e.msg_id}> `)
@@ -120,7 +120,7 @@ export class gonglue extends plugin {
   async G8(e: AMessage): Promise<boolean> {
     await e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-20.jpg`
+        `/application/a1999-plugin/resources/assets/img/攻略/旧齿与陈痕-20.jpg`
       )
     )
     e.reply(`<@!${e.msg_id}> `)
@@ -129,7 +129,7 @@ export class gonglue extends plugin {
   async G9(e: AMessage): Promise<boolean> {
     await e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-19.jpg`
+        `/application/a1999-plugin/resources/assets/img/攻略/旧齿与陈痕-19.jpg`
       )
     )
     e.reply(`<@!${e.msg_id}> `)
@@ -139,7 +139,7 @@ export class gonglue extends plugin {
   async G10(e: AMessage): Promise<boolean> {
     await e.reply(
       getPathBuffer(
-        `/application/alemon-plugin-1999/resources/assets/img/攻略/Buff.jpg`
+        `/application/a1999-plugin/resources/assets/img/攻略/Buff.jpg`
       )
     )
     e.reply(`<@!${e.msg_id}> `)

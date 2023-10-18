@@ -123,7 +123,7 @@ export class showImg3 extends plugin {
   async C1(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/不腐猴爪.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/不腐猴爪.png`
       )
     )
 
@@ -133,7 +133,7 @@ export class showImg3 extends plugin {
   async C2(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/分别善恶之果.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/分别善恶之果.png`
       )
     )
 
@@ -143,7 +143,7 @@ export class showImg3 extends plugin {
   async C3(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/双头形骨架.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/双头形骨架.png`
       )
     )
 
@@ -153,7 +153,7 @@ export class showImg3 extends plugin {
   async C4(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/啮咬盒.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/啮咬盒.png`
       )
     )
 
@@ -163,7 +163,7 @@ export class showImg3 extends plugin {
   async C5(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/幸运咒语.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/幸运咒语.png`
       )
     )
     return false
@@ -172,7 +172,7 @@ export class showImg3 extends plugin {
   async C6(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/幼龙骨标本.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/幼龙骨标本.png`
       )
     )
     return false
@@ -181,7 +181,7 @@ export class showImg3 extends plugin {
   async C7(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/床下怪物.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/床下怪物.png`
       )
     )
     return false
@@ -190,7 +190,7 @@ export class showImg3 extends plugin {
   async C8(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/未知种根骨.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/未知种根骨.png`
       )
     )
     return false
@@ -199,7 +199,7 @@ export class showImg3 extends plugin {
   async C9(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/液化战栗.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/液化战栗.png`
       )
     )
     return false
@@ -208,7 +208,7 @@ export class showImg3 extends plugin {
   async C10(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/清扫咒.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/清扫咒.png`
       )
     )
     return false
@@ -217,7 +217,7 @@ export class showImg3 extends plugin {
   async C11(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/狂人絮语.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/狂人絮语.png`
       )
     )
     return false
@@ -226,7 +226,7 @@ export class showImg3 extends plugin {
   async C12(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/百灵百验鸟.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/百灵百验鸟.png`
       )
     )
     return false
@@ -235,7 +235,7 @@ export class showImg3 extends plugin {
   async C13(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/盐封曼德拉.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/盐封曼德拉.png`
       )
     )
     return false
@@ -244,7 +244,7 @@ export class showImg3 extends plugin {
   async C14(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/破碎骨片.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/破碎骨片.png`
       )
     )
     return false
@@ -253,7 +253,7 @@ export class showImg3 extends plugin {
   async C15(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/祝圣秘银.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/祝圣秘银.png`
       )
     )
     return false
@@ -262,7 +262,7 @@ export class showImg3 extends plugin {
   async C16(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/粗糙银锭.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/粗糙银锭.png`
       )
     )
     return false
@@ -271,7 +271,7 @@ export class showImg3 extends plugin {
   async C17(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/精磨苦盐.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/精磨苦盐.png`
       )
     )
     return false
@@ -280,7 +280,7 @@ export class showImg3 extends plugin {
   async C18(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/罗马金币.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/罗马金币.png`
       )
     )
     return false
@@ -289,7 +289,7 @@ export class showImg3 extends plugin {
   async C19(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/苦盐簇.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/苦盐簇.png`
       )
     )
     return false
@@ -298,7 +298,7 @@ export class showImg3 extends plugin {
   async C20(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/金爪灵摆.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/金爪灵摆.png`
       )
     )
     return false
@@ -307,7 +307,7 @@ export class showImg3 extends plugin {
   async C21(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/金羊毛.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/金羊毛.png`
       )
     )
     return false
@@ -316,7 +316,7 @@ export class showImg3 extends plugin {
   async C22(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/铂金通灵板.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/铂金通灵板.png`
       )
     )
     return false
@@ -325,7 +325,7 @@ export class showImg3 extends plugin {
   async C23(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/银光子弹.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/银光子弹.png`
       )
     )
     return false
@@ -334,7 +334,7 @@ export class showImg3 extends plugin {
   async C24(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/银矿原石.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/银矿原石.png`
       )
     )
     return false
@@ -343,7 +343,7 @@ export class showImg3 extends plugin {
   async C25(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/长青剑.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/长青剑.png`
       )
     )
     return false
@@ -351,7 +351,7 @@ export class showImg3 extends plugin {
   async C26(e: AMessage): Promise<boolean> {
     e.reply(
       getPathBuffer(
-        `./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/颤颤之齿.png`
+        `./application/a1999-plugin/resources/assets/img/图鉴/道具/颤颤之齿.png`
       )
     )
     return false
