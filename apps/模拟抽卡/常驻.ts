@@ -129,9 +129,23 @@ export class chouka extends plugin {
       }
 
       // 保存合成后的图片
-      const outputFilePath = `${outputFolderPath}/十连.jpg`
+      const outputFilePath = `${outputFolderPath}.jpg`
       await backgroundImage.writeAsync(outputFilePath)
-      console.log(`图片已保存至 ${outputFilePath}`)
+      // 读取合成后的图像
+      const shilian = await jimp.read(outputFilePath)
+
+      // 降低图像质量
+      shilian.quality(70) // 调整质量参数
+
+      // 调整图像尺寸
+      shilian.resize(1200, 600) // 调整图像宽度和高度
+
+      // 保存压缩后的图像
+      const compressedOutputFilePath = `${outputFolderPath}/十连.jpg`
+
+      await shilian.writeAsync(compressedOutputFilePath)
+
+      console.log(`图片已保存至 ${compressedOutputFilePath}`)
 
       console.log('图片合成完成！')
       await e.reply(
@@ -141,7 +155,7 @@ export class chouka extends plugin {
         ),
         '抽取中.gif'
       )
-      await e.reply(getPathBuffer(outputFilePath))
+      await e.reply(getPathBuffer(compressedOutputFilePath))
 
       if (folder6DrawCount > 0) {
         e.reply(

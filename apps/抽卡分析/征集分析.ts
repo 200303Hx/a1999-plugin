@@ -15,7 +15,7 @@ export class fenxichouka2 extends plugin {
     super({
       rule: [
         {
-          reg: /^征集分析/,
+          reg: /^\/征集分析$/,
           fnc: 'fenxi2'
         }
       ]

@@ -79,7 +79,7 @@ export class fenxichouka extends plugin {
     super({
       rule: [
         {
-          reg: /^征集记录\s+([\S]+)/,
+          reg: /^\/征集记录\s+([\S]+)$/,
           fnc: 'fenxi'
         }
       ]

@@ -79,7 +79,7 @@ export class fenxichoukaq extends plugin {
     super({
       rule: [
         {
-          reg: /^QQ征集记录\s+([\S]+)/,
+          reg: /^\/QQ征集记录\s+([\S]+)$/,
           fnc: 'fenxiq'
         }
       ]

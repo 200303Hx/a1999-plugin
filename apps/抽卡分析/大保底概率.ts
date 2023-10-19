@@ -16,7 +16,7 @@ export class fenxichouka1 extends plugin {
     super({
       rule: [
         {
-          reg: /^大保底概率/,
+          reg: /^\/大保底概率$/,
           fnc: 'fenxi1'
         }
       ]
@@ -178,6 +178,10 @@ export class fenxichouka1 extends plugin {
 
         // 歪卡的概率
         overallMisfitProbability *= 100
+        // 如果歪卡概率超过100%，将其限制为100%
+        if (overallMisfitProbability > 100) {
+          overallMisfitProbability = 100
+        }
 
         // 合成图片并发送
         const textToPrint = `${overallMisfitProbability.toFixed(2)}%`

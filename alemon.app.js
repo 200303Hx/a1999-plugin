@@ -1,10 +1,10 @@
 import { plugin, getPathBuffer } from 'alemonjs';
 import axios from 'axios';
 import fs, { existsSync } from 'fs';
-import _ from 'lodash';
+import { registerFont, createCanvas } from 'canvas';
 import jimp from 'jimp';
-import { createCanvas, registerFont } from 'canvas';
 import path from 'path';
+import _ from 'lodash';
 
 class c extends plugin {
     constructor() {
@@ -39,13 +39,134 @@ class showJ extends plugin {
         });
     }
     async J1(e) {
-        await e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-1.png`));
+        await e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/剧情/TH.01-1.png`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
     async J2(e) {
-        await e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/剧情/TH.01-2.png`));
+        await e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/剧情/TH.01-2.png`));
         e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+}
+
+class showI extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^\/day1-1$/,
+                    fnc: 'T1'
+                },
+                {
+                    reg: /^\/day1-2$/,
+                    fnc: 'T2'
+                },
+                {
+                    reg: /^\/day1-3$/,
+                    fnc: 'T3'
+                },
+                {
+                    reg: /^\/day2-1$/,
+                    fnc: 'T4'
+                },
+                {
+                    reg: /^\/day2-2$/,
+                    fnc: 'T5'
+                },
+                {
+                    reg: /^\/day2-3$/,
+                    fnc: 'T6'
+                },
+                {
+                    reg: /^\/day3-1$/,
+                    fnc: 'T7'
+                },
+                {
+                    reg: /^\/day3-2$/,
+                    fnc: 'T8'
+                },
+                {
+                    reg: /^\/day4-1$/,
+                    fnc: 'T9'
+                },
+                {
+                    reg: /^\/day4-2$/,
+                    fnc: 'T10'
+                },
+                {
+                    reg: /^\/day4-3$/,
+                    fnc: 'T11'
+                },
+                {
+                    reg: /^\/day4-4$/,
+                    fnc: 'T12'
+                },
+                {
+                    reg: /^\/day5-1$/,
+                    fnc: 'T13'
+                },
+                {
+                    reg: /^\/day5-2$/,
+                    fnc: 'T14'
+                }
+            ]
+        });
+    }
+    async T1(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day1-1.jpg`));
+        return false;
+    }
+    async T2(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day1-2.jpg`));
+        return false;
+    }
+    async T3(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day1-3.jpg`));
+        return false;
+    }
+    async T4(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day2-1.jpg`));
+        return false;
+    }
+    async T5(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day2-2.jpg`));
+        return false;
+    }
+    async T6(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day2-3.jpg`));
+        return false;
+    }
+    async T7(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day3-1.jpg`));
+        return false;
+    }
+    async T8(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day3-2.jpg`));
+        return false;
+    }
+    async T9(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-1.jpg`));
+        return false;
+    }
+    async T10(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-2.jpg`));
+        return false;
+    }
+    async T11(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-3.jpg`));
+        return false;
+    }
+    async T12(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-4.jpg`));
+        return false;
+    }
+    async T13(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day5-1.jpg`));
+        return false;
+    }
+    async T14(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day5-2.jpg`));
         return false;
     }
 }
@@ -70,7 +191,7 @@ class Box extends plugin {
         const match = e.msg.match(TK);
         const partOfUrl = match[1];
         const yamlData = { partOfUrl };
-        const yamlFileName = `./application/alemon-plugin-1999/config/TK.yaml`;
+        const yamlFileName = `./application/a1999-plugin/config/TK.yaml`;
         fs.writeFileSync(yamlFileName, JSON.stringify(yamlData, null, 2), 'utf-8');
         console.log('TK已保存');
         e.reply('TK已保存');
@@ -81,7 +202,7 @@ class Box extends plugin {
         const data = await global.clientApiByQQ.messageApi.message(channelID, messageID);
         const img = 'http://' + data.data.message.attachments[0].url;
         console.log(img);
-        const yamlFileName = `./application/alemon-plugin-1999/config/TK.yaml`;
+        const yamlFileName = `./application/a1999-plugin/config/TK.yaml`;
         const yamlData = fs.readFileSync(yamlFileName, 'utf-8');
         const parsedData = JSON.parse(yamlData);
         const TK = parsedData.partOfUrl;
@@ -294,253 +415,147 @@ class Box extends plugin {
     }
 }
 
-class showI extends plugin {
+class fenxichouka2 extends plugin {
     constructor() {
         super({
             rule: [
                 {
-                    reg: /^\/day1-1$/,
-                    fnc: 'T1'
-                },
-                {
-                    reg: /^\/day1-2$/,
-                    fnc: 'T2'
-                },
-                {
-                    reg: /^\/day1-3$/,
-                    fnc: 'T3'
-                },
-                {
-                    reg: /^\/day2-1$/,
-                    fnc: 'T4'
-                },
-                {
-                    reg: /^\/day2-2$/,
-                    fnc: 'T5'
-                },
-                {
-                    reg: /^\/day2-3$/,
-                    fnc: 'T6'
-                },
-                {
-                    reg: /^\/day3-1$/,
-                    fnc: 'T7'
-                },
-                {
-                    reg: /^\/day3-2$/,
-                    fnc: 'T8'
-                },
-                {
-                    reg: /^\/day4-1$/,
-                    fnc: 'T9'
-                },
-                {
-                    reg: /^\/day4-2$/,
-                    fnc: 'T10'
-                },
-                {
-                    reg: /^\/day4-3$/,
-                    fnc: 'T11'
-                },
-                {
-                    reg: /^\/day4-4$/,
-                    fnc: 'T12'
-                },
-                {
-                    reg: /^\/day5-1$/,
-                    fnc: 'T13'
-                },
-                {
-                    reg: /^\/day5-2$/,
-                    fnc: 'T14'
+                    reg: /^\/征集分析$/,
+                    fnc: 'fenxi2'
                 }
             ]
         });
     }
-    async T1(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day1-1.jpg`));
-        return false;
-    }
-    async T2(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day1-2.jpg`));
-        return false;
-    }
-    async T3(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day1-3.jpg`));
-        return false;
-    }
-    async T4(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day2-1.jpg`));
-        return false;
-    }
-    async T5(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day2-2.jpg`));
-        return false;
-    }
-    async T6(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day2-3.jpg`));
-        return false;
-    }
-    async T7(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day3-1.jpg`));
-        return false;
-    }
-    async T8(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day3-2.jpg`));
-        return false;
-    }
-    async T9(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day4-1.jpg`));
-        return false;
-    }
-    async T10(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day4-2.jpg`));
-        return false;
-    }
-    async T11(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day4-3.jpg`));
-        return false;
-    }
-    async T12(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day4-4.jpg`));
-        return false;
-    }
-    async T13(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day5-1.jpg`));
-        return false;
-    }
-    async T14(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/听力/day5-2.jpg`));
-        return false;
-    }
-}
-
-class showImg2 extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^夜色亵渎者$/,
-                    fnc: 'X1'
-                },
-                {
-                    reg: /^好奇心宝贝$/,
-                    fnc: 'X2'
-                },
-                {
-                    reg: /^必要的记录$/,
-                    fnc: 'X3'
-                },
-                {
-                    reg: /^掌声如雷鸣$/,
-                    fnc: 'X4'
-                },
-                {
-                    reg: /^第二次生命$/,
-                    fnc: 'X5'
-                },
-                {
-                    reg: /^美丽新世界$/,
-                    fnc: 'X6'
-                },
-                {
-                    reg: /^跳房子游戏$/,
-                    fnc: 'X7'
-                },
-                {
-                    reg: /^午后小憩$/,
-                    fnc: 'X8'
-                },
-                {
-                    reg: /^心驰神往$/,
-                    fnc: 'X9'
-                },
-                {
-                    reg: /^无束无拘$/,
-                    fnc: 'X10'
-                },
-                {
-                    reg: /^明日亦然$/,
-                    fnc: 'X11'
-                },
-                {
-                    reg: /^示我以真$/,
-                    fnc: 'X12'
-                },
-                {
-                    reg: /^笑语欢声$/,
-                    fnc: 'X13'
-                },
-                {
-                    reg: /^自由的心$/,
-                    fnc: 'X14'
-                },
-                {
-                    reg: /^远大前程$/,
-                    fnc: 'X15'
+    async fenxi2(e) {
+        const userId = e.user_id;
+        const imageFilePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/fenxi.jpg`;
+        const extensionImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/pinjie.jpg`;
+        jimp.read(extensionImagePath, async (err, extensionImage) => {
+            if (err) {
+                console.error('Error reading the extension image:', err);
+                return;
+            }
+            const fontPath = `./application/a1999-plugin/resources/assets/ttf/SourceHanSerifSC-VF.ttf`;
+            registerFont(fontPath, { family: 'CustomFont' });
+            const newFilePath = `${process
+                .cwd()
+                .replace(/\\/g, '/')}/application/a1999-plugin/db/抽卡分析/抽卡记录2${userId}.json`;
+            if (!existsSync(newFilePath)) {
+                e.reply('记录不存在');
+                return;
+            }
+            const data = fs.readFileSync(newFilePath, 'utf8');
+            const newFileData = JSON.parse(data);
+            const backgroundImageHeight = 2000;
+            const limitedPoolData = processGachaPoolData(newFileData, '限定池（其余卡池）');
+            const standardPoolData = processGachaPoolData(newFileData, '常驻池（于湖中央）');
+            const novicePoolData = processGachaPoolData(newFileData, '新手池（滴一滴雨）');
+            const canvas = createCanvas(1414, 10000);
+            const ctx = canvas.getContext('2d');
+            ctx.font = '56px CustomFont';
+            ctx.fillStyle = '#CA5B2A';
+            ctx.fillText(limitedPoolData, 138, 710);
+            ctx.fillText(standardPoolData, 575, 710);
+            ctx.fillText(novicePoolData, 1003, 710);
+            const textImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/text_image.png`;
+            const textImageStream = fs.createWriteStream(textImagePath);
+            const textImageBuffer = canvas.toBuffer('image/png');
+            textImageStream.write(textImageBuffer);
+            textImageStream.end();
+            jimp.read(imageFilePath, async (err, image) => {
+                if (err) {
+                    console.error('Error reading the background image:', err);
+                    return;
                 }
-            ]
+                const textImage = await jimp.read(canvas.toBuffer('image/png'));
+                const textMetrics = ctx.measureText(limitedPoolData);
+                textMetrics.width;
+                const textHeight = textMetrics.actualBoundingBoxAscent +
+                    textMetrics.actualBoundingBoxDescent;
+                const extensionImageHeight = 767;
+                const numExtensions = Math.ceil(textHeight / extensionImageHeight);
+                if (textHeight + 710 >= 2000) {
+                    const backgroundImage2Height = backgroundImageHeight + extensionImageHeight * (numExtensions - 1);
+                    const backgroundImage2 = new jimp(1414, backgroundImage2Height);
+                    backgroundImage2.composite(image, 0, 0);
+                    for (let i = 0; i < numExtensions; i++) {
+                        const extensionImageY = backgroundImageHeight + i * extensionImageHeight;
+                        backgroundImage2.composite(extensionImage, 0, extensionImageY);
+                    }
+                    backgroundImage2.composite(textImage, 0, 0, {
+                        mode: jimp.BLEND_SOURCE_OVER,
+                        opacitySource: 1,
+                        opacityDest: 1
+                    });
+                    const outputImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`;
+                    backgroundImage2.write(outputImagePath, async (writeErr) => {
+                        if (writeErr) {
+                            console.error('Error saving the image:', writeErr);
+                            return;
+                        }
+                        console.log('图片已保存：', outputImagePath);
+                        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`));
+                    });
+                }
+                else {
+                    image.composite(textImage, 0, 0, {
+                        mode: jimp.BLEND_SOURCE_OVER,
+                        opacitySource: 1,
+                        opacityDest: 1
+                    });
+                    const outputImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`;
+                    image.write(outputImagePath, async (writeErr) => {
+                        if (writeErr) {
+                            console.error('Error saving the image:', writeErr);
+                            return;
+                        }
+                        console.log('图片已保存：', outputImagePath);
+                        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`));
+                    });
+                }
+            });
+            function processGachaPoolData(data, poolName) {
+                const poolData = data.find(pool => pool.poolName === poolName);
+                if (poolData) {
+                    const results = poolData.results;
+                    let prevSixStarIndex = -1;
+                    let hasSixStar = false;
+                    let totalPulls = 0;
+                    let sixStarCount = 0;
+                    let analysisResultText = '';
+                    results.forEach((result, index) => {
+                        const characterName = result.split('(')[0];
+                        const star = Number(result.match(/\d+/));
+                        totalPulls++;
+                        if (star === 6) {
+                            sixStarCount++;
+                            const matchingSixStarName = characterName;
+                            if (matchingSixStarName) {
+                                analysisResultText += `${characterName}`;
+                                if (prevSixStarIndex !== 0) {
+                                    const interval = index - prevSixStarIndex;
+                                    analysisResultText += ` (${interval}抽)\n`;
+                                }
+                                prevSixStarIndex = index;
+                                hasSixStar = true;
+                            }
+                            else {
+                                analysisResultText += `${characterName}\n`;
+                            }
+                        }
+                    });
+                    if (!hasSixStar) {
+                        analysisResultText += `暂无六星\n`;
+                    }
+                    const sixStarProbability = (sixStarCount / totalPulls) * 100;
+                    analysisResultText += `总抽数:${totalPulls}\n概率:${sixStarProbability.toFixed(2)}%\n`;
+                    return analysisResultText;
+                }
+                else {
+                    return '无';
+                }
+            }
         });
-    }
-    async X1(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/夜色亵渎者.png`));
-        return false;
-    }
-    async X2(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/好奇心宝贝.png`));
-        return false;
-    }
-    async X3(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/必要的记录.png`));
-        return false;
-    }
-    async X4(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/掌声如雷鸣.png`));
-        return false;
-    }
-    async X5(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/第二次生命.png`));
-        return false;
-    }
-    async X6(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/美丽新世界.png`));
-        return false;
-    }
-    async X7(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/跳房子游戏.png`));
-        return false;
-    }
-    async X8(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/午后小憩.png`));
-        return false;
-    }
-    async X9(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/心驰神往.png`));
-        return false;
-    }
-    async X10(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/无束无拘.png`));
-        return false;
-    }
-    async X11(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/明日亦然.png`));
-        return false;
-    }
-    async X12(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/示我以真.png`));
-        return false;
-    }
-    async X13(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/笑语欢声.png`));
-        return false;
-    }
-    async X14(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/自由的心.png`));
-        return false;
-    }
-    async X15(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/心相/远大前程.png`));
-        return false;
     }
 }
 
@@ -652,104 +667,456 @@ class showImg extends plugin {
         });
     }
     async A1(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/喀嚓喀嚓.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/喀嚓喀嚓.jpg`));
         return false;
     }
     async A2(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/柏林以东.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/柏林以东.jpg`));
         return false;
     }
     async A3(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/五色月.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/五色月.jpg`));
         return false;
     }
     async A4(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/玛丽莲.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/玛丽莲.jpg`));
         return false;
     }
     async A5(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/帕米埃.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/帕米埃.jpg`));
         return false;
     }
     async A6(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/坦南特.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/坦南特.jpg`));
         return false;
     }
     async A7(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/玛蒂尔达.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/玛蒂尔达.jpg`));
         return false;
     }
     async A8(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/夏利.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/夏利.jpg`));
         return false;
     }
     async A9(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/婴儿蓝.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/婴儿蓝.jpg`));
         return false;
     }
     async A10(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/讣告人.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/讣告人.jpg`));
         return false;
     }
     async A11(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/气球派对.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/气球派对.jpg`));
         return false;
     }
     async A12(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/十四行诗.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/十四行诗.jpg`));
         return false;
     }
     async A13(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/X.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/X.jpg`));
         return false;
     }
     async A14(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/未锈铠.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/未锈铠.jpg`));
         return false;
     }
     async A15(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/槲寄生.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/槲寄生.jpg`));
         return false;
     }
     async A16(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/泥鯭的士.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/泥鯭的士.jpg`));
         return false;
     }
     async A17(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/苏芙比.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/苏芙比.jpg`));
         return false;
     }
     async A18(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/百夫长.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/百夫长.jpg`));
         return false;
     }
     async A19(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/兔毛手袋.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/兔毛手袋.jpg`));
         return false;
     }
     async A20(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/红弩箭.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/红弩箭.jpg`));
         return false;
     }
     async A21(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/星锑.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/星锑.jpg`));
         return false;
     }
     async A22(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/远旅.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/远旅.jpg`));
         return false;
     }
     async A23(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/温妮弗雷德.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/温妮弗雷德.jpg`));
         return false;
     }
     async A24(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/新巴别塔.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/新巴别塔.jpg`));
         return false;
     }
     async A25(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/角色/梅兰妮.jpg`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/角色/梅兰妮.jpg`));
         return false;
+    }
+}
+
+class showImg2 extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^夜色亵渎者$/,
+                    fnc: 'X1'
+                },
+                {
+                    reg: /^好奇心宝贝$/,
+                    fnc: 'X2'
+                },
+                {
+                    reg: /^必要的记录$/,
+                    fnc: 'X3'
+                },
+                {
+                    reg: /^掌声如雷鸣$/,
+                    fnc: 'X4'
+                },
+                {
+                    reg: /^第二次生命$/,
+                    fnc: 'X5'
+                },
+                {
+                    reg: /^美丽新世界$/,
+                    fnc: 'X6'
+                },
+                {
+                    reg: /^跳房子游戏$/,
+                    fnc: 'X7'
+                },
+                {
+                    reg: /^午后小憩$/,
+                    fnc: 'X8'
+                },
+                {
+                    reg: /^心驰神往$/,
+                    fnc: 'X9'
+                },
+                {
+                    reg: /^无束无拘$/,
+                    fnc: 'X10'
+                },
+                {
+                    reg: /^明日亦然$/,
+                    fnc: 'X11'
+                },
+                {
+                    reg: /^示我以真$/,
+                    fnc: 'X12'
+                },
+                {
+                    reg: /^笑语欢声$/,
+                    fnc: 'X13'
+                },
+                {
+                    reg: /^自由的心$/,
+                    fnc: 'X14'
+                },
+                {
+                    reg: /^远大前程$/,
+                    fnc: 'X15'
+                }
+            ]
+        });
+    }
+    async X1(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/夜色亵渎者.png`));
+        return false;
+    }
+    async X2(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/好奇心宝贝.png`));
+        return false;
+    }
+    async X3(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/必要的记录.png`));
+        return false;
+    }
+    async X4(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/掌声如雷鸣.png`));
+        return false;
+    }
+    async X5(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/第二次生命.png`));
+        return false;
+    }
+    async X6(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/美丽新世界.png`));
+        return false;
+    }
+    async X7(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/跳房子游戏.png`));
+        return false;
+    }
+    async X8(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/午后小憩.png`));
+        return false;
+    }
+    async X9(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/心驰神往.png`));
+        return false;
+    }
+    async X10(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/无束无拘.png`));
+        return false;
+    }
+    async X11(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/明日亦然.png`));
+        return false;
+    }
+    async X12(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/示我以真.png`));
+        return false;
+    }
+    async X13(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/笑语欢声.png`));
+        return false;
+    }
+    async X14(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/自由的心.png`));
+        return false;
+    }
+    async X15(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/远大前程.png`));
+        return false;
+    }
+}
+
+class fenxichouka1 extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^\/大保底概率$/,
+                    fnc: 'fenxi1'
+                }
+            ]
+        });
+    }
+    async fenxi1(e) {
+        const userId = e.user_id;
+        analyzeAndDisplayStats();
+        async function analyzeAndDisplayStats() {
+            const newFilePath = `${process
+                .cwd()
+                .replace(/\\/g, '/')}/application/a1999-plugin/db/抽卡分析/抽卡记录${userId}.json`;
+            if (!existsSync(newFilePath)) {
+                e.reply('记录不存在');
+                return;
+            }
+            const data = fs.readFileSync(newFilePath, 'utf8');
+            const file2Data = JSON.parse(data);
+            const isSpecialSixStarNotWhale = true;
+            file2Data.reverse();
+            let sixStarPullsOverall = 0;
+            let misfitPullsOverall = 0;
+            const specialSixStar = '';
+            file2Data.forEach(pool => {
+                const poolName = pool.poolName;
+                if (poolName !== '第一滴雨' && poolName !== '于湖中央') {
+                    const results = pool.results;
+                    let specialSixStar = '';
+                    if (poolName === '星的栖居') {
+                        specialSixStar = '远旅';
+                    }
+                    else if (poolName === '剑与盔的撕鸣') {
+                        specialSixStar = '未锈铠';
+                    }
+                    else if (poolName === '望族与隐士') {
+                        specialSixStar = '苏芙比';
+                    }
+                    else if (poolName === '流行即世界') {
+                        specialSixStar = '梅兰妮';
+                    }
+                    else if (poolName === '牧羊犬如是说') {
+                        specialSixStar = '皮克勒斯';
+                    }
+                    else if (poolName === '深林的絮语') {
+                        specialSixStar = '槲寄生';
+                    }
+                    else if (poolName === '弩箭破空而至') {
+                        specialSixStar = '红弩箭';
+                    }
+                    else if (poolName === '仙子振翅入夜') {
+                        specialSixStar = '牙仙';
+                    }
+                    let sixStarPullsInPool = 0;
+                    let misfitPullsInPool = 0;
+                    results.forEach(result => {
+                        if (result.includes('6星')) {
+                            sixStarPullsInPool++;
+                            if (specialSixStar &&
+                                result.includes(specialSixStar) &&
+                                isSpecialSixStarNotWhale) {
+                                console.log(`正在分析`);
+                            }
+                            else {
+                                misfitPullsInPool++;
+                            }
+                        }
+                    });
+                    sixStarPullsOverall += sixStarPullsInPool;
+                    misfitPullsOverall += misfitPullsInPool;
+                }
+            });
+            const misfitCount = misfitPullsOverall;
+            const notMisfitCount = sixStarPullsOverall - misfitPullsOverall;
+            const firstPull = file2Data[0].results[0];
+            const lastPull = file2Data[file2Data.length - 1].results[0];
+            let isFirstMisfit = false;
+            let isLastMisfit = false;
+            if (lastPull && lastPull.includes) {
+                isFirstMisfit =
+                    firstPull.includes('6星') && !firstPull.includes(specialSixStar);
+                isLastMisfit =
+                    lastPull.includes('6星') && !lastPull.includes(specialSixStar);
+            }
+            else {
+                e.reply('未保存记录');
+                return false;
+            }
+            let overallMisfitProbability = 0;
+            if (isFirstMisfit && isLastMisfit) {
+                if (misfitCount <= notMisfitCount) {
+                    overallMisfitProbability =
+                        misfitCount / (sixStarPullsOverall - misfitCount + 1);
+                }
+                else {
+                    overallMisfitProbability = 1;
+                }
+            }
+            else if (isFirstMisfit && !isLastMisfit) {
+                if (misfitCount < notMisfitCount) {
+                    overallMisfitProbability =
+                        misfitCount / (sixStarPullsOverall - misfitCount);
+                }
+                else {
+                    overallMisfitProbability = 1;
+                }
+            }
+            else if (!isFirstMisfit && isLastMisfit) {
+                if (misfitCount < notMisfitCount) {
+                    overallMisfitProbability =
+                        misfitCount / (sixStarPullsOverall - misfitCount);
+                }
+            }
+            else {
+                if (misfitCount < notMisfitCount || misfitCount > notMisfitCount) {
+                    overallMisfitProbability =
+                        misfitCount / (sixStarPullsOverall - misfitCount);
+                }
+                else {
+                    overallMisfitProbability = 1;
+                }
+                overallMisfitProbability *= 100;
+                if (overallMisfitProbability > 100) {
+                    overallMisfitProbability = 100;
+                }
+                const textToPrint = `${overallMisfitProbability.toFixed(2)}%`;
+                const backgroundImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/大保底/dbd.jpg`;
+                const ttffontPath = `./application/a1999-plugin/resources/assets/ttf/SourceHanSerifSC-VF.ttf`;
+                const outputImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/大保底/baodi.jpg`;
+                await addTextAndSpecialImagesToBackground(textToPrint, backgroundImagePath, ttffontPath, outputImagePath);
+                e.reply(getPathBuffer(outputImagePath));
+            }
+            async function generateTextImage(text, ttffontPath, width, height) {
+                const canvas = createCanvas(width, height);
+                const ctx = canvas.getContext('2d');
+                registerFont(ttffontPath, { family: 'MyFont' });
+                ctx.font = '264.67px MyFont';
+                ctx.fillStyle = '#545454';
+                ctx.textAlign = 'center';
+                ctx.fillText(text, width / 2, height / 2);
+                const buffer = canvas.toBuffer();
+                return buffer;
+            }
+            async function selectGradeImage(overallMisfitProbability) {
+                const gradeImageMap = {
+                    'SS': 'SS.png',
+                    'S': 'S.png',
+                    'A+': 'A+.png',
+                    'A': 'A.png',
+                    'B+': 'B+.png',
+                    'B': 'B.png',
+                    'C+': 'C+.png',
+                    'C': 'C.png'
+                };
+                let gradeImage;
+                if (overallMisfitProbability >= 0 && overallMisfitProbability < 10) {
+                    gradeImage = gradeImageMap['SS'];
+                }
+                else if (overallMisfitProbability >= 10 &&
+                    overallMisfitProbability < 20) {
+                    gradeImage = gradeImageMap['S'];
+                }
+                else if (overallMisfitProbability >= 20 &&
+                    overallMisfitProbability < 30) {
+                    gradeImage = gradeImageMap['A+'];
+                }
+                else if (overallMisfitProbability >= 30 &&
+                    overallMisfitProbability < 40) {
+                    gradeImage = gradeImageMap['A'];
+                }
+                else if (overallMisfitProbability >= 40 &&
+                    overallMisfitProbability < 50) {
+                    gradeImage = gradeImageMap['B+'];
+                }
+                else if (overallMisfitProbability >= 50 &&
+                    overallMisfitProbability < 60) {
+                    gradeImage = gradeImageMap['B'];
+                }
+                else if (overallMisfitProbability >= 60 &&
+                    overallMisfitProbability < 70) {
+                    gradeImage = gradeImageMap['C+'];
+                }
+                else if (overallMisfitProbability >= 70 &&
+                    overallMisfitProbability < 100) {
+                    gradeImage = gradeImageMap['C'];
+                }
+                else {
+                    gradeImage = gradeImageMap['C'];
+                }
+                return gradeImage;
+            }
+            async function addTextAndSpecialImagesToBackground(text, backgroundImagePath, fontPath, outputImagePath) {
+                try {
+                    const backgroundImage = await jimp.read(backgroundImagePath);
+                    const gradeImageFileName = await selectGradeImage(overallMisfitProbability);
+                    const gradeImagePath = path.join(`${process
+                        .cwd()
+                        .replace(/\\/g, '/')}/application/a1999-plugin/resources/assets/img/抽卡分析/大保底/评级`, gradeImageFileName);
+                    const gradeImage = await jimp.read(gradeImagePath);
+                    const gradeImageX = 966.2;
+                    const gradeImageY = 1583.7;
+                    backgroundImage.composite(gradeImage, gradeImageX, gradeImageY);
+                    const textImageBuffer = await generateTextImage(text, fontPath, 1069, 400);
+                    const textImage = await jimp.read(textImageBuffer);
+                    const textImageX = 217;
+                    const textImageY = 500;
+                    backgroundImage.composite(textImage, textImageX, textImageY);
+                    await backgroundImage.writeAsync(outputImagePath);
+                    console.log('图片合成成功！');
+                }
+                catch (error) {
+                    console.error('图片合成失败：', error);
+                }
+            }
+        }
     }
 }
 
@@ -865,107 +1232,107 @@ class showImg3 extends plugin {
         });
     }
     async C1(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/不腐猴爪.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/不腐猴爪.png`));
         return false;
     }
     async C2(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/分别善恶之果.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/分别善恶之果.png`));
         return false;
     }
     async C3(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/双头形骨架.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/双头形骨架.png`));
         return false;
     }
     async C4(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/啮咬盒.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/啮咬盒.png`));
         return false;
     }
     async C5(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/幸运咒语.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/幸运咒语.png`));
         return false;
     }
     async C6(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/幼龙骨标本.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/幼龙骨标本.png`));
         return false;
     }
     async C7(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/床下怪物.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/床下怪物.png`));
         return false;
     }
     async C8(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/未知种根骨.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/未知种根骨.png`));
         return false;
     }
     async C9(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/液化战栗.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/液化战栗.png`));
         return false;
     }
     async C10(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/清扫咒.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/清扫咒.png`));
         return false;
     }
     async C11(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/狂人絮语.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/狂人絮语.png`));
         return false;
     }
     async C12(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/百灵百验鸟.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/百灵百验鸟.png`));
         return false;
     }
     async C13(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/盐封曼德拉.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/盐封曼德拉.png`));
         return false;
     }
     async C14(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/破碎骨片.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/破碎骨片.png`));
         return false;
     }
     async C15(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/祝圣秘银.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/祝圣秘银.png`));
         return false;
     }
     async C16(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/粗糙银锭.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/粗糙银锭.png`));
         return false;
     }
     async C17(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/精磨苦盐.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/精磨苦盐.png`));
         return false;
     }
     async C18(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/罗马金币.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/罗马金币.png`));
         return false;
     }
     async C19(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/苦盐簇.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/苦盐簇.png`));
         return false;
     }
     async C20(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/金爪灵摆.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/金爪灵摆.png`));
         return false;
     }
     async C21(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/金羊毛.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/金羊毛.png`));
         return false;
     }
     async C22(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/铂金通灵板.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/铂金通灵板.png`));
         return false;
     }
     async C23(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/银光子弹.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/银光子弹.png`));
         return false;
     }
     async C24(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/银矿原石.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/银矿原石.png`));
         return false;
     }
     async C25(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/长青剑.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/长青剑.png`));
         return false;
     }
     async C26(e) {
-        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/图鉴/道具/颤颤之齿.png`));
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/颤颤之齿.png`));
         return false;
     }
 }
@@ -1039,7 +1406,7 @@ class fenxichouka extends plugin {
         super({
             rule: [
                 {
-                    reg: /^征集记录\s+([\S]+)/,
+                    reg: /^\/征集记录\s+([\S]+)$/,
                     fnc: 'fenxi'
                 }
             ]
@@ -1053,13 +1420,13 @@ class fenxichouka extends plugin {
             const completeUrl = `https://game-re-service.sl916.com/query/summon?${partOfUrl}`;
             const decodedUrl = completeUrl.replace(/&amp;/g, '&');
             const userId = e.user_id;
-            const jsonFileName = `./application/alemon-plugin-1999/db/抽卡分析/${userId}.json`;
+            const jsonFileName = `./application/a1999-plugin/db/抽卡分析/${userId}.json`;
             try {
                 const response = await axios.get(decodedUrl);
                 const html = response.data;
                 fs.writeFileSync(jsonFileName, JSON.stringify(html), 'utf-8');
                 console.log('JSON文件保存成功！');
-                const filePath = `./application/alemon-plugin-1999/db/抽卡分析/${userId}.json`;
+                const filePath = `./application/a1999-plugin/db/抽卡分析/${userId}.json`;
                 try {
                     const jsonData = fs.readFileSync(filePath, 'utf-8');
                     const data = JSON.parse(jsonData);
@@ -1095,7 +1462,7 @@ class fenxichouka extends plugin {
                     const jsonResult = JSON.stringify(result, null, 2);
                     const saveFilePath = `${process
                         .cwd()
-                        .replace(/\\/g, '/')}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`;
+                        .replace(/\\/g, '/')}/application/a1999-plugin/db/抽卡分析/抽卡记录${userId}.json`;
                     fs.writeFileSync(saveFilePath, jsonResult, 'utf-8');
                     try {
                         const jsonData = fs.readFileSync(filePath, 'utf-8');
@@ -1179,7 +1546,7 @@ class fenxichouka extends plugin {
                         const jsonResult = JSON.stringify(result, null, 2);
                         const saveFilePath = `${process
                             .cwd()
-                            .replace(/\\/g, '/')}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`;
+                            .replace(/\\/g, '/')}/application/a1999-plugin/db/抽卡分析/抽卡记录2${userId}.json`;
                         fs.writeFileSync(saveFilePath, jsonResult, 'utf-8');
                         e.reply('记录已保存！');
                     }
@@ -1198,370 +1565,6 @@ class fenxichouka extends plugin {
                 console.error('保存JSON文件出错:', error);
             }
         }
-    }
-}
-
-class fenxichouka1 extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^大保底概率/,
-                    fnc: 'fenxi1'
-                }
-            ]
-        });
-    }
-    async fenxi1(e) {
-        const userId = e.user_id;
-        analyzeAndDisplayStats();
-        async function analyzeAndDisplayStats() {
-            const newFilePath = `${process
-                .cwd()
-                .replace(/\\/g, '/')}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`;
-            if (!existsSync(newFilePath)) {
-                e.reply('记录不存在');
-                return;
-            }
-            const data = fs.readFileSync(newFilePath, 'utf8');
-            const file2Data = JSON.parse(data);
-            const isSpecialSixStarNotWhale = true;
-            file2Data.reverse();
-            let sixStarPullsOverall = 0;
-            let misfitPullsOverall = 0;
-            const specialSixStar = '';
-            file2Data.forEach(pool => {
-                const poolName = pool.poolName;
-                if (poolName !== '第一滴雨' && poolName !== '于湖中央') {
-                    const results = pool.results;
-                    let specialSixStar = '';
-                    if (poolName === '星的栖居') {
-                        specialSixStar = '远旅';
-                    }
-                    else if (poolName === '剑与盔的撕鸣') {
-                        specialSixStar = '未锈铠';
-                    }
-                    else if (poolName === '望族与隐士') {
-                        specialSixStar = '苏芙比';
-                    }
-                    else if (poolName === '流行即世界') {
-                        specialSixStar = '梅兰妮';
-                    }
-                    else if (poolName === '牧羊犬如是说') {
-                        specialSixStar = '皮克勒斯';
-                    }
-                    else if (poolName === '深林的絮语') {
-                        specialSixStar = '槲寄生';
-                    }
-                    else if (poolName === '弩箭破空而至') {
-                        specialSixStar = '红弩箭';
-                    }
-                    else if (poolName === '仙子振翅入夜') {
-                        specialSixStar = '牙仙';
-                    }
-                    let sixStarPullsInPool = 0;
-                    let misfitPullsInPool = 0;
-                    results.forEach(result => {
-                        if (result.includes('6星')) {
-                            sixStarPullsInPool++;
-                            if (specialSixStar &&
-                                result.includes(specialSixStar) &&
-                                isSpecialSixStarNotWhale) {
-                                console.log(`正在分析`);
-                            }
-                            else {
-                                misfitPullsInPool++;
-                            }
-                        }
-                    });
-                    sixStarPullsOverall += sixStarPullsInPool;
-                    misfitPullsOverall += misfitPullsInPool;
-                }
-            });
-            const misfitCount = misfitPullsOverall;
-            const notMisfitCount = sixStarPullsOverall - misfitPullsOverall;
-            const firstPull = file2Data[0].results[0];
-            const lastPull = file2Data[file2Data.length - 1].results[0];
-            let isFirstMisfit = false;
-            let isLastMisfit = false;
-            if (lastPull && lastPull.includes) {
-                isFirstMisfit =
-                    firstPull.includes('6星') && !firstPull.includes(specialSixStar);
-                isLastMisfit =
-                    lastPull.includes('6星') && !lastPull.includes(specialSixStar);
-            }
-            else {
-                e.reply('未保存记录');
-                return false;
-            }
-            let overallMisfitProbability = 0;
-            if (isFirstMisfit && isLastMisfit) {
-                if (misfitCount <= notMisfitCount) {
-                    overallMisfitProbability =
-                        misfitCount / (sixStarPullsOverall - misfitCount + 1);
-                }
-                else {
-                    overallMisfitProbability = 1;
-                }
-            }
-            else if (isFirstMisfit && !isLastMisfit) {
-                if (misfitCount < notMisfitCount) {
-                    overallMisfitProbability =
-                        misfitCount / (sixStarPullsOverall - misfitCount);
-                }
-                else {
-                    overallMisfitProbability = 1;
-                }
-            }
-            else if (!isFirstMisfit && isLastMisfit) {
-                if (misfitCount < notMisfitCount) {
-                    overallMisfitProbability =
-                        misfitCount / (sixStarPullsOverall - misfitCount);
-                }
-            }
-            else {
-                if (misfitCount < notMisfitCount || misfitCount > notMisfitCount) {
-                    overallMisfitProbability =
-                        misfitCount / (sixStarPullsOverall - misfitCount);
-                }
-                else {
-                    overallMisfitProbability = 1;
-                }
-                overallMisfitProbability *= 100;
-                const textToPrint = `${overallMisfitProbability.toFixed(2)}%`;
-                const backgroundImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/dbd.jpg`;
-                const ttffontPath = `./application/alemon-plugin-1999/resources/assets/ttf/SourceHanSerifSC-VF.ttf`;
-                const outputImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/baodi.jpg`;
-                await addTextAndSpecialImagesToBackground(textToPrint, backgroundImagePath, ttffontPath, outputImagePath);
-                e.reply(getPathBuffer(outputImagePath));
-            }
-            async function generateTextImage(text, ttffontPath, width, height) {
-                const canvas = createCanvas(width, height);
-                const ctx = canvas.getContext('2d');
-                registerFont(ttffontPath, { family: 'MyFont' });
-                ctx.font = '264.67px MyFont';
-                ctx.fillStyle = '#545454';
-                ctx.textAlign = 'center';
-                ctx.fillText(text, width / 2, height / 2);
-                const buffer = canvas.toBuffer();
-                return buffer;
-            }
-            async function selectGradeImage(overallMisfitProbability) {
-                const gradeImageMap = {
-                    'SS': 'SS.png',
-                    'S': 'S.png',
-                    'A+': 'A+.png',
-                    'A': 'A.png',
-                    'B+': 'B+.png',
-                    'B': 'B.png',
-                    'C+': 'C+.png',
-                    'C': 'C.png'
-                };
-                let gradeImage;
-                if (overallMisfitProbability >= 0 && overallMisfitProbability < 10) {
-                    gradeImage = gradeImageMap['SS'];
-                }
-                else if (overallMisfitProbability >= 10 &&
-                    overallMisfitProbability < 20) {
-                    gradeImage = gradeImageMap['S'];
-                }
-                else if (overallMisfitProbability >= 20 &&
-                    overallMisfitProbability < 30) {
-                    gradeImage = gradeImageMap['A+'];
-                }
-                else if (overallMisfitProbability >= 30 &&
-                    overallMisfitProbability < 40) {
-                    gradeImage = gradeImageMap['A'];
-                }
-                else if (overallMisfitProbability >= 40 &&
-                    overallMisfitProbability < 50) {
-                    gradeImage = gradeImageMap['B+'];
-                }
-                else if (overallMisfitProbability >= 50 &&
-                    overallMisfitProbability < 60) {
-                    gradeImage = gradeImageMap['B'];
-                }
-                else if (overallMisfitProbability >= 60 &&
-                    overallMisfitProbability < 70) {
-                    gradeImage = gradeImageMap['C+'];
-                }
-                else if (overallMisfitProbability >= 70 &&
-                    overallMisfitProbability < 100) {
-                    gradeImage = gradeImageMap['C'];
-                }
-                else {
-                    gradeImage = gradeImageMap['C'];
-                }
-                return gradeImage;
-            }
-            async function addTextAndSpecialImagesToBackground(text, backgroundImagePath, fontPath, outputImagePath) {
-                try {
-                    const backgroundImage = await jimp.read(backgroundImagePath);
-                    const gradeImageFileName = await selectGradeImage(overallMisfitProbability);
-                    const gradeImagePath = path.join(`${process
-                        .cwd()
-                        .replace(/\\/g, '/')}/application/alemon-plugin-1999/resources/assets/img/抽卡分析/大保底/评级`, gradeImageFileName);
-                    const gradeImage = await jimp.read(gradeImagePath);
-                    const gradeImageX = 966.2;
-                    const gradeImageY = 1583.7;
-                    backgroundImage.composite(gradeImage, gradeImageX, gradeImageY);
-                    const textImageBuffer = await generateTextImage(text, fontPath, 1069, 400);
-                    const textImage = await jimp.read(textImageBuffer);
-                    const textImageX = 217;
-                    const textImageY = 500;
-                    backgroundImage.composite(textImage, textImageX, textImageY);
-                    await backgroundImage.writeAsync(outputImagePath);
-                    console.log('图片合成成功！');
-                }
-                catch (error) {
-                    console.error('图片合成失败：', error);
-                }
-            }
-        }
-    }
-}
-
-class fenxichouka2 extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^征集分析/,
-                    fnc: 'fenxi2'
-                }
-            ]
-        });
-    }
-    async fenxi2(e) {
-        const userId = e.user_id;
-        const imageFilePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/fenxi.jpg`;
-        const extensionImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/pinjie.jpg`;
-        jimp.read(extensionImagePath, async (err, extensionImage) => {
-            if (err) {
-                console.error('Error reading the extension image:', err);
-                return;
-            }
-            const fontPath = `./application/alemon-plugin-1999/resources/assets/ttf/SourceHanSerifSC-VF.ttf`;
-            registerFont(fontPath, { family: 'CustomFont' });
-            const newFilePath = `${process
-                .cwd()
-                .replace(/\\/g, '/')}/application/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`;
-            if (!existsSync(newFilePath)) {
-                e.reply('记录不存在');
-                return;
-            }
-            const data = fs.readFileSync(newFilePath, 'utf8');
-            const newFileData = JSON.parse(data);
-            const backgroundImageHeight = 2000;
-            const limitedPoolData = processGachaPoolData(newFileData, '限定池（其余卡池）');
-            const standardPoolData = processGachaPoolData(newFileData, '常驻池（于湖中央）');
-            const novicePoolData = processGachaPoolData(newFileData, '新手池（滴一滴雨）');
-            const canvas = createCanvas(1414, 10000);
-            const ctx = canvas.getContext('2d');
-            ctx.font = '56px CustomFont';
-            ctx.fillStyle = '#CA5B2A';
-            ctx.fillText(limitedPoolData, 138, 710);
-            ctx.fillText(standardPoolData, 575, 710);
-            ctx.fillText(novicePoolData, 1003, 710);
-            const textImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/text_image.png`;
-            const textImageStream = fs.createWriteStream(textImagePath);
-            const textImageBuffer = canvas.toBuffer('image/png');
-            textImageStream.write(textImageBuffer);
-            textImageStream.end();
-            jimp.read(imageFilePath, async (err, image) => {
-                if (err) {
-                    console.error('Error reading the background image:', err);
-                    return;
-                }
-                const textImage = await jimp.read(canvas.toBuffer('image/png'));
-                const textMetrics = ctx.measureText(limitedPoolData);
-                textMetrics.width;
-                const textHeight = textMetrics.actualBoundingBoxAscent +
-                    textMetrics.actualBoundingBoxDescent;
-                const extensionImageHeight = 767;
-                const numExtensions = Math.ceil(textHeight / extensionImageHeight);
-                if (textHeight + 710 >= 2000) {
-                    const backgroundImage2Height = backgroundImageHeight + extensionImageHeight * (numExtensions - 1);
-                    const backgroundImage2 = new jimp(1414, backgroundImage2Height);
-                    backgroundImage2.composite(image, 0, 0);
-                    for (let i = 0; i < numExtensions; i++) {
-                        const extensionImageY = backgroundImageHeight + i * extensionImageHeight;
-                        backgroundImage2.composite(extensionImage, 0, extensionImageY);
-                    }
-                    backgroundImage2.composite(textImage, 0, 0, {
-                        mode: jimp.BLEND_SOURCE_OVER,
-                        opacitySource: 1,
-                        opacityDest: 1
-                    });
-                    const outputImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`;
-                    backgroundImage2.write(outputImagePath, async (writeErr) => {
-                        if (writeErr) {
-                            console.error('Error saving the image:', writeErr);
-                            return;
-                        }
-                        console.log('图片已保存：', outputImagePath);
-                        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`));
-                    });
-                }
-                else {
-                    image.composite(textImage, 0, 0, {
-                        mode: jimp.BLEND_SOURCE_OVER,
-                        opacitySource: 1,
-                        opacityDest: 1
-                    });
-                    const outputImagePath = `./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`;
-                    image.write(outputImagePath, async (writeErr) => {
-                        if (writeErr) {
-                            console.error('Error saving the image:', writeErr);
-                            return;
-                        }
-                        console.log('图片已保存：', outputImagePath);
-                        e.reply(getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`));
-                    });
-                }
-            });
-            function processGachaPoolData(data, poolName) {
-                const poolData = data.find(pool => pool.poolName === poolName);
-                if (poolData) {
-                    const results = poolData.results;
-                    let prevSixStarIndex = -1;
-                    let hasSixStar = false;
-                    let totalPulls = 0;
-                    let sixStarCount = 0;
-                    let analysisResultText = '';
-                    results.forEach((result, index) => {
-                        const characterName = result.split('(')[0];
-                        const star = Number(result.match(/\d+/));
-                        totalPulls++;
-                        if (star === 6) {
-                            sixStarCount++;
-                            const matchingSixStarName = characterName;
-                            if (matchingSixStarName) {
-                                analysisResultText += `${characterName}`;
-                                if (prevSixStarIndex !== 0) {
-                                    const interval = index - prevSixStarIndex;
-                                    analysisResultText += ` (${interval}抽)\n`;
-                                }
-                                prevSixStarIndex = index;
-                                hasSixStar = true;
-                            }
-                            else {
-                                analysisResultText += `${characterName}\n`;
-                            }
-                        }
-                    });
-                    if (!hasSixStar) {
-                        analysisResultText += `暂无六星\n`;
-                    }
-                    const sixStarProbability = (sixStarCount / totalPulls) * 100;
-                    analysisResultText += `总抽数:${totalPulls}\n概率:${sixStarProbability.toFixed(2)}%\n`;
-                    return analysisResultText;
-                }
-                else {
-                    return '无';
-                }
-            }
-        });
     }
 }
 
@@ -1634,7 +1637,7 @@ class fenxichoukaq extends plugin {
         super({
             rule: [
                 {
-                    reg: /^QQ征集记录\s+([\S]+)/,
+                    reg: /^\/QQ征集记录\s+([\S]+)$/,
                     fnc: 'fenxiq'
                 }
             ]
@@ -1648,13 +1651,13 @@ class fenxichoukaq extends plugin {
             const completeUrl = `https://game-re-qq-service.sl916.com/query/summon?${partOfUrl}`;
             const decodedUrl = completeUrl.replace(/&amp;/g, '&');
             const userId = e.msg_id;
-            const jsonFileName = `./application/alemon-plugin-1999/db/抽卡分析/${userId}.json`;
+            const jsonFileName = `./application/a1999-plugin/db/抽卡分析/${userId}.json`;
             try {
                 const response = await axios.get(decodedUrl);
                 const html = response.data;
                 fs.writeFileSync(jsonFileName, JSON.stringify(html), 'utf-8');
                 console.log('JSON文件保存成功！');
-                const filePath = `./application/alemon-plugin-1999/db/抽卡分析/${userId}.json`;
+                const filePath = `./application/a1999-plugin/db/抽卡分析/${userId}.json`;
                 try {
                     const jsonData = fs.readFileSync(filePath, 'utf-8');
                     const data = JSON.parse(jsonData);
@@ -1684,7 +1687,7 @@ class fenxichoukaq extends plugin {
                     }
                     const replyMessage = result.join('\n');
                     const jsonResult = JSON.stringify(result, null, 2);
-                    const saveFilePath = `./application/alemon-plugin-1999/db/抽卡分析/抽卡记录${userId}.json`;
+                    const saveFilePath = `./application/a1999-plugin/db/抽卡分析/抽卡记录${userId}.json`;
                     fs.writeFileSync(saveFilePath, jsonResult, 'utf-8');
                     try {
                         const jsonData = fs.readFileSync(filePath, 'utf-8');
@@ -1755,7 +1758,7 @@ class fenxichoukaq extends plugin {
                         }
                         const replyMessage = result.join('\n');
                         const jsonResult = JSON.stringify(result, null, 2);
-                        const saveFilePath = `./application/alemon-plugin-1999/db/抽卡分析/抽卡记录2${userId}.json`;
+                        const saveFilePath = `./application/a1999-plugin/db/抽卡分析/抽卡记录2${userId}.json`;
                         fs.writeFileSync(saveFilePath, jsonResult, 'utf-8');
                         e.reply('记录已保存！');
                     }
@@ -1869,12 +1872,17 @@ class chouka extends plugin {
                 const [x, y] = positions[i];
                 backgroundImage.composite(image, x, y);
             }
-            const outputFilePath = `${outputFolderPath$2}/十连.jpg`;
+            const outputFilePath = `${outputFolderPath$2}.jpg`;
             await backgroundImage.writeAsync(outputFilePath);
-            console.log(`图片已保存至 ${outputFilePath}`);
+            const shilian = await jimp.read(outputFilePath);
+            shilian.quality(70);
+            shilian.resize(1200, 600);
+            const compressedOutputFilePath = `${outputFolderPath$2}/十连.jpg`;
+            await shilian.writeAsync(compressedOutputFilePath);
+            console.log(`图片已保存至 ${compressedOutputFilePath}`);
             console.log('图片合成完成！');
-            await e.reply('', getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
-            await e.reply(getPathBuffer(outputFilePath));
+            await e.reply('', getPathBuffer(`./application/a1999-plugin/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
+            await e.reply(getPathBuffer(compressedOutputFilePath));
             if (folder6DrawCount > 0) {
                 e.reply(`<@!${userId}>，当前卡池：于湖中央\n抽到了6星，所用抽数：${folder6DrawCount} 抽`);
             }
@@ -1919,17 +1927,17 @@ async function 单抽Logic$2(e) {
     const randomImage = getRandomFileFromFolder$2(randomFolder);
     return { randomFolder, randomImage };
 }
-const backgroundImagePath$2 = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`;
+const backgroundImagePath$2 = `./application/a1999-plugin/resources/assets/img/模拟抽卡/bg.png`;
 const folderPaths$2 = [
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/6`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/5`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/6`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/5`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/4`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/3`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/2`
 ];
-const outputFolderPath$2 = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`;
-const dbFolderPath$2 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap.json`;
-const drawCountMapPath$2 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap.json`;
+const outputFolderPath$2 = `./application/a1999-plugin/resources/assets/img/模拟抽卡/im`;
+const dbFolderPath$2 = `./application/a1999-plugin/db/模拟抽卡/drawCountMap.json`;
+const drawCountMapPath$2 = `./application/a1999-plugin/db/模拟抽卡/drawCountMap.json`;
 const backgroundImageWidth$2 = 1500;
 const backgroundImageHeight$2 = 800;
 function getRandomOption$2(options) {
@@ -1998,52 +2006,52 @@ class gonglue extends plugin {
         });
     }
     async G1(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略上.png`));
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略上.png`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
     async G2(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略中.png`));
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略中.png`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
     async G3(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/共鸣攻略下.png`));
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略下.png`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
     async G4(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/文字解谜.jpg`));
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/文字解谜.jpg`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
     async G5(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/4-6电路解谜.jpg`));
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/4-6电路解谜.jpg`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
     async G6(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/3-12线路图.jpg`));
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/3-12线路图.jpg`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
     async G7(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/2-4送传单.jpg`));
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/2-4送传单.jpg`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
     async G8(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-20.jpg`));
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/旧齿与陈痕-20.jpg`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
     async G9(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/旧齿与陈痕-19.jpg`));
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/旧齿与陈痕-19.jpg`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
     async G10(e) {
-        await e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/攻略/Buff.jpg`));
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/Buff.jpg`));
         e.reply(`<@!${e.msg_id}> `);
         return false;
     }
@@ -2135,12 +2143,17 @@ class up extends plugin {
                 const [x, y] = positions[i];
                 backgroundImage.composite(image, x, y);
             }
-            const outputFilePath = `${outputFolderPath$1}/十连.jpg`;
-            await e.reply('', getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
+            const outputFilePath = `${outputFolderPath$1}.jpg`;
             await backgroundImage.writeAsync(outputFilePath);
-            console.log(`图片已保存至 ${outputFilePath}`);
+            const shilian = await jimp.read(outputFilePath);
+            shilian.quality(70);
+            shilian.resize(1200, 600);
+            const compressedOutputFilePath = `${outputFolderPath$1}/十连up.jpg`;
+            await shilian.writeAsync(compressedOutputFilePath);
+            console.log(`图片已保存至 ${compressedOutputFilePath}`);
+            await e.reply('', getPathBuffer(`./application/a1999-plugin/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
             console.log('图片合成完成！');
-            await e.reply(getPathBuffer(outputFilePath));
+            await e.reply(getPathBuffer(compressedOutputFilePath));
             if (folder6DrawCount > 0) {
                 e.reply(`<@!${userId}>，当前卡池：自由摇摆\n抽到了6星，所用抽数：${folder6DrawCount} 抽`);
             }
@@ -2195,17 +2208,17 @@ async function 单抽Logic$1() {
     const randomImage = getRandomFileFromFolder$1(randomFolder.folderPath, randomFolder.specificImage, randomFolder.specificImageProbability);
     return { randomFolder, randomImage };
 }
-const backgroundImagePath$1 = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`;
+const backgroundImagePath$1 = `./application/a1999-plugin/resources/assets/img/模拟抽卡/bg.png`;
 const folderPaths$1 = [
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/6-lim1`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/5-lim1`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/6-lim1`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/5-lim1`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/4`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/3`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/2`
 ];
-const outputFolderPath$1 = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`;
-const dbFolderPath$1 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`;
-const drawCountMapPath$1 = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim1.json`;
+const outputFolderPath$1 = `./application/a1999-plugin/resources/assets/img/模拟抽卡/im`;
+const dbFolderPath$1 = `./application/a1999-plugin/db/模拟抽卡/drawCountMap-lim1.json`;
+const drawCountMapPath$1 = `./application/a1999-plugin/db/模拟抽卡/drawCountMap-lim1.json`;
 const backgroundImageWidth$1 = 1500;
 const backgroundImageHeight$1 = 800;
 function getRandomOption$1(options) {
@@ -2229,97 +2242,6 @@ function getRandomFileFromFolder$1(folderPath, specificImage, specificImageProba
     return `${folderPath}/${randomFile}`;
 }
 
-class entext extends plugin {
-    constructor() {
-        super({
-            dsc: '每日一句',
-            rule: [
-                {
-                    reg: '^/每日一句$',
-                    fnc: 'en'
-                }
-            ]
-        });
-    }
-    async en(e) {
-        const url = 'https://api.vvhan.com/api/en?type=sj';
-        try {
-            const response = await axios.get(url);
-            const res = response.data.data;
-            const zh = res.zh;
-            const en = res.en;
-            const pic = res.pic;
-            await e.reply(zh);
-            await e.reply(en);
-            const link = e.segment.link('', 'pic');
-            await e.reply(link);
-            return true;
-        }
-        catch (error) {
-            console.error('接口请求失败', error);
-            await e.reply('接口请求失败');
-            return false;
-        }
-    }
-}
-
-class show extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^\/1999帮助$/,
-                    fnc: 'help'
-                },
-                {
-                    reg: /^\/剧情$/,
-                    fnc: '剧情'
-                },
-                {
-                    reg: /^\/征集帮助$/,
-                    fnc: '征集帮助'
-                },
-                {
-                    reg: /^\/听力笔记$/,
-                    fnc: '听力笔记'
-                },
-                {
-                    reg: /^\/征集分析教程$/,
-                    fnc: '征集分析教程'
-                },
-                {
-                    reg: /^\/攻略$/,
-                    fnc: '攻略'
-                }
-            ]
-        });
-    }
-    async 剧情(e) {
-        e.replyByMid(e.msg_id, '以下为剧情目录\n只需要复制下方目录命令@Bot就可以获取该小节的中英对照剧情辣！\n/TH.01-1\n/TH.01-2');
-        return false;
-    }
-    async help(e) {
-        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/菜单.png`));
-        return false;
-    }
-    async 听力笔记(e) {
-        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/听力笔记.png`));
-        return false;
-    }
-    async 攻略(e) {
-        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/攻略.jpg`));
-        return false;
-    }
-    async 征集帮助(e) {
-        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/征集帮助.png`));
-        return false;
-    }
-    async 征集分析教程(e) {
-        e.reply(getPathBuffer(`/application/alemon-plugin-1999/resources/assets/img/help/征集分析教程.png`));
-        return false;
-    }
-}
-
 class up2 extends plugin {
     constructor() {
         super({
@@ -2341,7 +2263,7 @@ class up2 extends plugin {
             const userId = e.user_id;
             const { randomFolder, randomImage } = await 单抽Logic();
             const image = await jimp.read(randomImage);
-            const outputFilePath = `${outputFolderPath}/single_draw.jpg-up2`;
+            const outputFilePath = `${outputFolderPath}/single_draw.jpg`;
             await image.writeAsync(outputFilePath);
             drawCountMap[userId] = drawCountMap[userId] || [];
             drawCountMap[userId].push(randomImage);
@@ -2352,13 +2274,13 @@ class up2 extends plugin {
                 drawCountMap[userId] = previousFolder6Draws;
                 saveDrawCountMap(drawCountMap);
                 await e.reply(getPathBuffer(outputFilePath));
-                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n抽到了6星，所用抽数 ${previousDrawCount} 抽`);
+                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n抽到了6星，所用抽数 ${previousDrawCount} 抽`);
                 console.log(`单抽图片已保存至 ${outputFilePath}`);
             }
             else {
                 saveDrawCountMap(drawCountMap);
                 await e.reply(getPathBuffer(outputFilePath));
-                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n目前已经抽了 ${drawCountMap[userId].length} 次。`);
+                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n目前已经抽了 ${drawCountMap[userId].length} 次。`);
                 console.log(`单抽图片已保存至 ${outputFilePath}`);
             }
         }
@@ -2406,17 +2328,22 @@ class up2 extends plugin {
                 const [x, y] = positions[i];
                 backgroundImage.composite(image, x, y);
             }
-            const outputFilePath = `${outputFolderPath}/十连up2.jpg`;
-            await e.reply('', getPathBuffer(`./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
+            const outputFilePath = `${outputFolderPath}.jpg`;
             await backgroundImage.writeAsync(outputFilePath);
-            console.log(`图片已保存至 ${outputFilePath}`);
+            const shilian = await jimp.read(outputFilePath);
+            shilian.quality(70);
+            shilian.resize(1200, 600);
+            const compressedOutputFilePath = `${outputFolderPath}/十连up2.jpg`;
+            await shilian.writeAsync(compressedOutputFilePath);
+            console.log(`图片已保存至 ${compressedOutputFilePath}`);
+            await e.reply('', getPathBuffer(`./application/a1999-plugin/resources/assets/img/模拟抽卡/抽取中.gif`), '抽取中.gif');
             console.log('图片合成完成！');
-            await e.reply(getPathBuffer(outputFilePath));
+            await e.reply(getPathBuffer(compressedOutputFilePath));
             if (folder6DrawCount > 0) {
-                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n抽到了6星，所用抽数：${folder6DrawCount} 抽`);
+                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n抽到了6星，所用抽数：${folder6DrawCount} 抽`);
             }
             else {
-                e.reply(`<@!${userId}>，当前卡池：仙子振翅入夜\n目前已经抽了 ${drawCountMap[userId].length} 次`);
+                e.reply(`<@!${userId}>，当前卡池：自由摇摆\n目前已经抽了 ${drawCountMap[userId].length} 次`);
             }
         }
         catch (error) {
@@ -2449,13 +2376,13 @@ async function 单抽Logic() {
         {
             folderPath: folderPaths[0],
             probability: 0.015,
-            specificImage: `${folderPaths[0]}/6-14.png`,
+            specificImage: `${folderPaths[0]}/6-6.png`,
             specificImageProbability: 0.5
         },
         {
             folderPath: folderPaths[1],
             probability: 0.085,
-            specificImage: `${folderPaths[1]}/5-15.png`,
+            specificImage: `${folderPaths[1]}/5-8.png`,
             specificImageProbability: 0.5
         },
         { folderPath: folderPaths[2], probability: 0.4 },
@@ -2466,17 +2393,17 @@ async function 单抽Logic() {
     const randomImage = getRandomFileFromFolder(randomFolder.folderPath, randomFolder.specificImage, randomFolder.specificImageProbability);
     return { randomFolder, randomImage };
 }
-const backgroundImagePath = `/application/alemon-plugin-1999/resources/assets/img/模拟抽卡/bg.png`;
+const backgroundImagePath = `./application/a1999-plugin/resources/assets/img/模拟抽卡/bg.png`;
 const folderPaths = [
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/6-lim2`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/5-lim2`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/4`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/3`,
-    `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/2`
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/6-lim1`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/5-lim1`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/4`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/3`,
+    `./application/a1999-plugin/resources/assets/img/模拟抽卡/2`
 ];
-const outputFolderPath = `./application/alemon-plugin-1999/resources/assets/img/模拟抽卡/im`;
-const dbFolderPath = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim2.json`;
-const drawCountMapPath = `./application/alemon-plugin-1999/db/模拟抽卡/drawCountMap-lim2.json`;
+const outputFolderPath = `./application/a1999-plugin/resources/assets/img/模拟抽卡/im`;
+const dbFolderPath = `./application/a1999-plugin/db/模拟抽卡/drawCountMap-lim1.json`;
+const drawCountMapPath = `./application/a1999-plugin/db/模拟抽卡/drawCountMap-lim1.json`;
 const backgroundImageWidth = 1500;
 const backgroundImageHeight = 800;
 function getRandomOption(options) {
@@ -2498,6 +2425,94 @@ function getRandomFileFromFolder(folderPath, specificImage, specificImageProbabi
     const randomIndex = Math.floor(Math.random() * files.length);
     const randomFile = files[randomIndex];
     return `${folderPath}/${randomFile}`;
+}
+
+class show extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^\/1999帮助$/,
+                    fnc: 'help'
+                },
+                {
+                    reg: /^\/剧情$/,
+                    fnc: '剧情'
+                },
+                {
+                    reg: /^\/征集帮助$/,
+                    fnc: '征集帮助'
+                },
+                {
+                    reg: /^\/听力笔记$/,
+                    fnc: '听力笔记'
+                },
+                {
+                    reg: /^\/征集分析教程$/,
+                    fnc: '征集分析教程'
+                },
+                {
+                    reg: /^\/攻略$/,
+                    fnc: '攻略'
+                }
+            ]
+        });
+    }
+    async 剧情(e) {
+        e.replyByMid(e.msg_id, '以下为剧情目录\n只需要复制下方目录命令@Bot就可以获取该小节的中英对照剧情辣！\n/TH.01-1\n/TH.01-2');
+        return false;
+    }
+    async help(e) {
+        e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/help/菜单.png`));
+        return false;
+    }
+    async 听力笔记(e) {
+        e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/help/听力笔记.png`));
+        return false;
+    }
+    async 攻略(e) {
+        e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/help/攻略.jpg`));
+        return false;
+    }
+    async 征集帮助(e) {
+        e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/help/征集帮助.png`));
+        return false;
+    }
+    async 征集分析教程(e) {
+        e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/help/征集分析教程.png`));
+        return false;
+    }
+}
+
+class entext extends plugin {
+    constructor() {
+        super({
+            dsc: '每日一句',
+            rule: [
+                {
+                    reg: '^/每日一句$',
+                    fnc: 'en'
+                }
+            ]
+        });
+    }
+    async en(e) {
+        const url = 'https://api.vvhan.com/api/en?type=sj';
+        try {
+            const response = await axios.get(url);
+            const res = response.data.data;
+            const zh = res.zh;
+            const en = res.en;
+            await e.reply(zh);
+            await e.reply(en);
+            return true;
+        }
+        catch (error) {
+            console.error('接口请求失败', error);
+            await e.reply('接口请求失败');
+            return false;
+        }
+    }
 }
 
 export { Box, c, chouka, entext, fenxichouka, fenxichouka1, fenxichouka2, fenxichoukaq, gonglue, show, showI, showImg, showImg2, showImg3, showJ, up, up2 };

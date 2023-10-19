@@ -35,11 +35,8 @@ export class entext extends plugin {
       const res = response.data.data
       const zh = res.zh
       const en = res.en
-      const pic = res.pic
       await e.reply(zh)
       await e.reply(en)
-      const link = e.segment.link('', 'pic')
-      await e.reply(link)
 
       return true
     } catch (error) {
