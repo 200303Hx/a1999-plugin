@@ -40,8 +40,7 @@ export class show extends plugin {
   }
 
   async 剧情(e: AMessage): Promise<boolean> {
-    e.replyByMid(
-      e.msg_id,
+    e.reply(
       '以下为剧情目录\n只需要复制下方目录命令@Bot就可以获取该小节的中英对照剧情辣！\n/TH.01-1\n/TH.01-2'
     )
     return false

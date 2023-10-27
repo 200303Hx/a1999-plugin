@@ -1,8 +1,8 @@
 import { plugin, getPathBuffer } from 'alemonjs';
 import axios from 'axios';
 import fs, { existsSync } from 'fs';
-import { registerFont, createCanvas } from 'canvas';
 import jimp from 'jimp';
+import { createCanvas, registerFont } from 'canvas';
 import path from 'path';
 import _ from 'lodash';
 
@@ -20,154 +20,6 @@ class c extends plugin {
     async c(e) {
         const a = e.msg.channel_id;
         e.reply(a);
-    }
-}
-
-class showJ extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^\/TH.01-1$/,
-                    fnc: 'J1'
-                },
-                {
-                    reg: /^\/TH.01-2$/,
-                    fnc: 'J2'
-                }
-            ]
-        });
-    }
-    async J1(e) {
-        await e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/剧情/TH.01-1.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async J2(e) {
-        await e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/剧情/TH.01-2.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-}
-
-class showI extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^\/day1-1$/,
-                    fnc: 'T1'
-                },
-                {
-                    reg: /^\/day1-2$/,
-                    fnc: 'T2'
-                },
-                {
-                    reg: /^\/day1-3$/,
-                    fnc: 'T3'
-                },
-                {
-                    reg: /^\/day2-1$/,
-                    fnc: 'T4'
-                },
-                {
-                    reg: /^\/day2-2$/,
-                    fnc: 'T5'
-                },
-                {
-                    reg: /^\/day2-3$/,
-                    fnc: 'T6'
-                },
-                {
-                    reg: /^\/day3-1$/,
-                    fnc: 'T7'
-                },
-                {
-                    reg: /^\/day3-2$/,
-                    fnc: 'T8'
-                },
-                {
-                    reg: /^\/day4-1$/,
-                    fnc: 'T9'
-                },
-                {
-                    reg: /^\/day4-2$/,
-                    fnc: 'T10'
-                },
-                {
-                    reg: /^\/day4-3$/,
-                    fnc: 'T11'
-                },
-                {
-                    reg: /^\/day4-4$/,
-                    fnc: 'T12'
-                },
-                {
-                    reg: /^\/day5-1$/,
-                    fnc: 'T13'
-                },
-                {
-                    reg: /^\/day5-2$/,
-                    fnc: 'T14'
-                }
-            ]
-        });
-    }
-    async T1(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day1-1.jpg`));
-        return false;
-    }
-    async T2(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day1-2.jpg`));
-        return false;
-    }
-    async T3(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day1-3.jpg`));
-        return false;
-    }
-    async T4(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day2-1.jpg`));
-        return false;
-    }
-    async T5(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day2-2.jpg`));
-        return false;
-    }
-    async T6(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day2-3.jpg`));
-        return false;
-    }
-    async T7(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day3-1.jpg`));
-        return false;
-    }
-    async T8(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day3-2.jpg`));
-        return false;
-    }
-    async T9(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-1.jpg`));
-        return false;
-    }
-    async T10(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-2.jpg`));
-        return false;
-    }
-    async T11(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-3.jpg`));
-        return false;
-    }
-    async T12(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-4.jpg`));
-        return false;
-    }
-    async T13(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day5-1.jpg`));
-        return false;
-    }
-    async T14(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day5-2.jpg`));
-        return false;
     }
 }
 
@@ -415,147 +267,280 @@ class Box extends plugin {
     }
 }
 
-class fenxichouka2 extends plugin {
+class showJ extends plugin {
     constructor() {
         super({
             rule: [
                 {
-                    reg: /^\/征集分析$/,
-                    fnc: 'fenxi2'
+                    reg: /^\/TH.01-1$/,
+                    fnc: 'J1'
+                },
+                {
+                    reg: /^\/TH.01-2$/,
+                    fnc: 'J2'
                 }
             ]
         });
     }
-    async fenxi2(e) {
-        const userId = e.user_id;
-        const imageFilePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/fenxi.jpg`;
-        const extensionImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/pinjie.jpg`;
-        jimp.read(extensionImagePath, async (err, extensionImage) => {
-            if (err) {
-                console.error('Error reading the extension image:', err);
-                return;
-            }
-            const fontPath = `./application/a1999-plugin/resources/assets/ttf/SourceHanSerifSC-VF.ttf`;
-            registerFont(fontPath, { family: 'CustomFont' });
-            const newFilePath = `${process
-                .cwd()
-                .replace(/\\/g, '/')}/application/a1999-plugin/db/抽卡分析/抽卡记录2${userId}.json`;
-            if (!existsSync(newFilePath)) {
-                e.reply('记录不存在');
-                return;
-            }
-            const data = fs.readFileSync(newFilePath, 'utf8');
-            const newFileData = JSON.parse(data);
-            const backgroundImageHeight = 2000;
-            const limitedPoolData = processGachaPoolData(newFileData, '限定池（其余卡池）');
-            const standardPoolData = processGachaPoolData(newFileData, '常驻池（于湖中央）');
-            const novicePoolData = processGachaPoolData(newFileData, '新手池（滴一滴雨）');
-            const canvas = createCanvas(1414, 10000);
-            const ctx = canvas.getContext('2d');
-            ctx.font = '56px CustomFont';
-            ctx.fillStyle = '#CA5B2A';
-            ctx.fillText(limitedPoolData, 138, 710);
-            ctx.fillText(standardPoolData, 575, 710);
-            ctx.fillText(novicePoolData, 1003, 710);
-            const textImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/text_image.png`;
-            const textImageStream = fs.createWriteStream(textImagePath);
-            const textImageBuffer = canvas.toBuffer('image/png');
-            textImageStream.write(textImageBuffer);
-            textImageStream.end();
-            jimp.read(imageFilePath, async (err, image) => {
-                if (err) {
-                    console.error('Error reading the background image:', err);
-                    return;
+    async J1(e) {
+        await e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/剧情/TH.01-1.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async J2(e) {
+        await e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/剧情/TH.01-2.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+}
+
+class showImg2 extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^夜色亵渎者$/,
+                    fnc: 'X1'
+                },
+                {
+                    reg: /^好奇心宝贝$/,
+                    fnc: 'X2'
+                },
+                {
+                    reg: /^必要的记录$/,
+                    fnc: 'X3'
+                },
+                {
+                    reg: /^掌声如雷鸣$/,
+                    fnc: 'X4'
+                },
+                {
+                    reg: /^第二次生命$/,
+                    fnc: 'X5'
+                },
+                {
+                    reg: /^美丽新世界$/,
+                    fnc: 'X6'
+                },
+                {
+                    reg: /^跳房子游戏$/,
+                    fnc: 'X7'
+                },
+                {
+                    reg: /^午后小憩$/,
+                    fnc: 'X8'
+                },
+                {
+                    reg: /^心驰神往$/,
+                    fnc: 'X9'
+                },
+                {
+                    reg: /^无束无拘$/,
+                    fnc: 'X10'
+                },
+                {
+                    reg: /^明日亦然$/,
+                    fnc: 'X11'
+                },
+                {
+                    reg: /^示我以真$/,
+                    fnc: 'X12'
+                },
+                {
+                    reg: /^笑语欢声$/,
+                    fnc: 'X13'
+                },
+                {
+                    reg: /^自由的心$/,
+                    fnc: 'X14'
+                },
+                {
+                    reg: /^远大前程$/,
+                    fnc: 'X15'
                 }
-                const textImage = await jimp.read(canvas.toBuffer('image/png'));
-                const textMetrics = ctx.measureText(limitedPoolData);
-                textMetrics.width;
-                const textHeight = textMetrics.actualBoundingBoxAscent +
-                    textMetrics.actualBoundingBoxDescent;
-                const extensionImageHeight = 767;
-                const numExtensions = Math.ceil(textHeight / extensionImageHeight);
-                if (textHeight + 710 >= 2000) {
-                    const backgroundImage2Height = backgroundImageHeight + extensionImageHeight * (numExtensions - 1);
-                    const backgroundImage2 = new jimp(1414, backgroundImage2Height);
-                    backgroundImage2.composite(image, 0, 0);
-                    for (let i = 0; i < numExtensions; i++) {
-                        const extensionImageY = backgroundImageHeight + i * extensionImageHeight;
-                        backgroundImage2.composite(extensionImage, 0, extensionImageY);
-                    }
-                    backgroundImage2.composite(textImage, 0, 0, {
-                        mode: jimp.BLEND_SOURCE_OVER,
-                        opacitySource: 1,
-                        opacityDest: 1
-                    });
-                    const outputImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`;
-                    backgroundImage2.write(outputImagePath, async (writeErr) => {
-                        if (writeErr) {
-                            console.error('Error saving the image:', writeErr);
-                            return;
-                        }
-                        console.log('图片已保存：', outputImagePath);
-                        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`));
-                    });
-                }
-                else {
-                    image.composite(textImage, 0, 0, {
-                        mode: jimp.BLEND_SOURCE_OVER,
-                        opacitySource: 1,
-                        opacityDest: 1
-                    });
-                    const outputImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`;
-                    image.write(outputImagePath, async (writeErr) => {
-                        if (writeErr) {
-                            console.error('Error saving the image:', writeErr);
-                            return;
-                        }
-                        console.log('图片已保存：', outputImagePath);
-                        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`));
-                    });
-                }
-            });
-            function processGachaPoolData(data, poolName) {
-                const poolData = data.find(pool => pool.poolName === poolName);
-                if (poolData) {
-                    const results = poolData.results;
-                    let prevSixStarIndex = -1;
-                    let hasSixStar = false;
-                    let totalPulls = 0;
-                    let sixStarCount = 0;
-                    let analysisResultText = '';
-                    results.forEach((result, index) => {
-                        const characterName = result.split('(')[0];
-                        const star = Number(result.match(/\d+/));
-                        totalPulls++;
-                        if (star === 6) {
-                            sixStarCount++;
-                            const matchingSixStarName = characterName;
-                            if (matchingSixStarName) {
-                                analysisResultText += `${characterName}`;
-                                if (prevSixStarIndex !== 0) {
-                                    const interval = index - prevSixStarIndex;
-                                    analysisResultText += ` (${interval}抽)\n`;
-                                }
-                                prevSixStarIndex = index;
-                                hasSixStar = true;
-                            }
-                            else {
-                                analysisResultText += `${characterName}\n`;
-                            }
-                        }
-                    });
-                    if (!hasSixStar) {
-                        analysisResultText += `暂无六星\n`;
-                    }
-                    const sixStarProbability = (sixStarCount / totalPulls) * 100;
-                    analysisResultText += `总抽数:${totalPulls}\n概率:${sixStarProbability.toFixed(2)}%\n`;
-                    return analysisResultText;
-                }
-                else {
-                    return '无';
-                }
-            }
+            ]
         });
+    }
+    async X1(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/夜色亵渎者.png`));
+        return false;
+    }
+    async X2(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/好奇心宝贝.png`));
+        return false;
+    }
+    async X3(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/必要的记录.png`));
+        return false;
+    }
+    async X4(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/掌声如雷鸣.png`));
+        return false;
+    }
+    async X5(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/第二次生命.png`));
+        return false;
+    }
+    async X6(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/美丽新世界.png`));
+        return false;
+    }
+    async X7(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/跳房子游戏.png`));
+        return false;
+    }
+    async X8(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/午后小憩.png`));
+        return false;
+    }
+    async X9(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/心驰神往.png`));
+        return false;
+    }
+    async X10(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/无束无拘.png`));
+        return false;
+    }
+    async X11(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/明日亦然.png`));
+        return false;
+    }
+    async X12(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/示我以真.png`));
+        return false;
+    }
+    async X13(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/笑语欢声.png`));
+        return false;
+    }
+    async X14(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/自由的心.png`));
+        return false;
+    }
+    async X15(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/远大前程.png`));
+        return false;
+    }
+}
+
+class showI extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^\/day1-1$/,
+                    fnc: 'T1'
+                },
+                {
+                    reg: /^\/day1-2$/,
+                    fnc: 'T2'
+                },
+                {
+                    reg: /^\/day1-3$/,
+                    fnc: 'T3'
+                },
+                {
+                    reg: /^\/day2-1$/,
+                    fnc: 'T4'
+                },
+                {
+                    reg: /^\/day2-2$/,
+                    fnc: 'T5'
+                },
+                {
+                    reg: /^\/day2-3$/,
+                    fnc: 'T6'
+                },
+                {
+                    reg: /^\/day3-1$/,
+                    fnc: 'T7'
+                },
+                {
+                    reg: /^\/day3-2$/,
+                    fnc: 'T8'
+                },
+                {
+                    reg: /^\/day4-1$/,
+                    fnc: 'T9'
+                },
+                {
+                    reg: /^\/day4-2$/,
+                    fnc: 'T10'
+                },
+                {
+                    reg: /^\/day4-3$/,
+                    fnc: 'T11'
+                },
+                {
+                    reg: /^\/day4-4$/,
+                    fnc: 'T12'
+                },
+                {
+                    reg: /^\/day5-1$/,
+                    fnc: 'T13'
+                },
+                {
+                    reg: /^\/day5-2$/,
+                    fnc: 'T14'
+                }
+            ]
+        });
+    }
+    async T1(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day1-1.jpg`));
+        return false;
+    }
+    async T2(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day1-2.jpg`));
+        return false;
+    }
+    async T3(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day1-3.jpg`));
+        return false;
+    }
+    async T4(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day2-1.jpg`));
+        return false;
+    }
+    async T5(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day2-2.jpg`));
+        return false;
+    }
+    async T6(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day2-3.jpg`));
+        return false;
+    }
+    async T7(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day3-1.jpg`));
+        return false;
+    }
+    async T8(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day3-2.jpg`));
+        return false;
+    }
+    async T9(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-1.jpg`));
+        return false;
+    }
+    async T10(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-2.jpg`));
+        return false;
+    }
+    async T11(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-3.jpg`));
+        return false;
+    }
+    async T12(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day4-4.jpg`));
+        return false;
+    }
+    async T13(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day5-1.jpg`));
+        return false;
+    }
+    async T14(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/听力/day5-2.jpg`));
+        return false;
     }
 }
 
@@ -768,131 +753,219 @@ class showImg extends plugin {
     }
 }
 
-class showImg2 extends plugin {
+class showImg3 extends plugin {
     constructor() {
         super({
             rule: [
                 {
-                    reg: /^夜色亵渎者$/,
-                    fnc: 'X1'
+                    reg: /^不腐猴爪$/,
+                    fnc: 'C1'
                 },
                 {
-                    reg: /^好奇心宝贝$/,
-                    fnc: 'X2'
+                    reg: /^分别善恶之果$/,
+                    fnc: 'C2'
                 },
                 {
-                    reg: /^必要的记录$/,
-                    fnc: 'X3'
+                    reg: /^双头形骨架$/,
+                    fnc: 'C3'
                 },
                 {
-                    reg: /^掌声如雷鸣$/,
-                    fnc: 'X4'
+                    reg: /^啮咬盒$/,
+                    fnc: 'C4'
                 },
                 {
-                    reg: /^第二次生命$/,
-                    fnc: 'X5'
+                    reg: /^幸运咒语$/,
+                    fnc: 'C5'
                 },
                 {
-                    reg: /^美丽新世界$/,
-                    fnc: 'X6'
+                    reg: /^幼龙骨标本$/,
+                    fnc: 'C6'
                 },
                 {
-                    reg: /^跳房子游戏$/,
-                    fnc: 'X7'
+                    reg: /^床下怪物$/,
+                    fnc: 'C7'
                 },
                 {
-                    reg: /^午后小憩$/,
-                    fnc: 'X8'
+                    reg: /^未知种根骨$/,
+                    fnc: 'C8'
                 },
                 {
-                    reg: /^心驰神往$/,
-                    fnc: 'X9'
+                    reg: /^液化战栗$/,
+                    fnc: 'C9'
                 },
                 {
-                    reg: /^无束无拘$/,
-                    fnc: 'X10'
+                    reg: /^清扫咒$/,
+                    fnc: 'C10'
                 },
                 {
-                    reg: /^明日亦然$/,
-                    fnc: 'X11'
+                    reg: /^狂人絮语$/,
+                    fnc: 'C11'
                 },
                 {
-                    reg: /^示我以真$/,
-                    fnc: 'X12'
+                    reg: /^百灵百验鸟$/,
+                    fnc: 'C12'
                 },
                 {
-                    reg: /^笑语欢声$/,
-                    fnc: 'X13'
+                    reg: /^盐封曼德拉$/,
+                    fnc: 'C13'
                 },
                 {
-                    reg: /^自由的心$/,
-                    fnc: 'X14'
+                    reg: /^破碎骨片$/,
+                    fnc: 'C14'
                 },
                 {
-                    reg: /^远大前程$/,
-                    fnc: 'X15'
+                    reg: /^祝圣秘银$/,
+                    fnc: 'C15'
+                },
+                {
+                    reg: /^粗糙银锭$/,
+                    fnc: 'C16'
+                },
+                {
+                    reg: /^精磨苦盐$/,
+                    fnc: 'C17'
+                },
+                {
+                    reg: /^罗马金币$/,
+                    fnc: 'C18'
+                },
+                {
+                    reg: /^苦盐簇$/,
+                    fnc: 'C19'
+                },
+                {
+                    reg: /^金爪灵摆$/,
+                    fnc: 'C20'
+                },
+                {
+                    reg: /^金羊毛$/,
+                    fnc: 'C21'
+                },
+                {
+                    reg: /^铂金通灵板$/,
+                    fnc: 'C22'
+                },
+                {
+                    reg: /^银光子弹$/,
+                    fnc: 'C23'
+                },
+                {
+                    reg: /^银矿原石$/,
+                    fnc: 'C24'
+                },
+                {
+                    reg: /^长青剑$/,
+                    fnc: 'C25'
+                },
+                {
+                    reg: /^颤颤之齿$/,
+                    fnc: 'C26'
                 }
             ]
         });
     }
-    async X1(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/夜色亵渎者.png`));
+    async C1(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/不腐猴爪.png`));
         return false;
     }
-    async X2(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/好奇心宝贝.png`));
+    async C2(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/分别善恶之果.png`));
         return false;
     }
-    async X3(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/必要的记录.png`));
+    async C3(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/双头形骨架.png`));
         return false;
     }
-    async X4(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/掌声如雷鸣.png`));
+    async C4(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/啮咬盒.png`));
         return false;
     }
-    async X5(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/第二次生命.png`));
+    async C5(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/幸运咒语.png`));
         return false;
     }
-    async X6(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/美丽新世界.png`));
+    async C6(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/幼龙骨标本.png`));
         return false;
     }
-    async X7(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/跳房子游戏.png`));
+    async C7(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/床下怪物.png`));
         return false;
     }
-    async X8(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/午后小憩.png`));
+    async C8(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/未知种根骨.png`));
         return false;
     }
-    async X9(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/心驰神往.png`));
+    async C9(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/液化战栗.png`));
         return false;
     }
-    async X10(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/无束无拘.png`));
+    async C10(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/清扫咒.png`));
         return false;
     }
-    async X11(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/明日亦然.png`));
+    async C11(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/狂人絮语.png`));
         return false;
     }
-    async X12(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/示我以真.png`));
+    async C12(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/百灵百验鸟.png`));
         return false;
     }
-    async X13(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/笑语欢声.png`));
+    async C13(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/盐封曼德拉.png`));
         return false;
     }
-    async X14(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/自由的心.png`));
+    async C14(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/破碎骨片.png`));
         return false;
     }
-    async X15(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/心相/远大前程.png`));
+    async C15(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/祝圣秘银.png`));
+        return false;
+    }
+    async C16(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/粗糙银锭.png`));
+        return false;
+    }
+    async C17(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/精磨苦盐.png`));
+        return false;
+    }
+    async C18(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/罗马金币.png`));
+        return false;
+    }
+    async C19(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/苦盐簇.png`));
+        return false;
+    }
+    async C20(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/金爪灵摆.png`));
+        return false;
+    }
+    async C21(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/金羊毛.png`));
+        return false;
+    }
+    async C22(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/铂金通灵板.png`));
+        return false;
+    }
+    async C23(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/银光子弹.png`));
+        return false;
+    }
+    async C24(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/银矿原石.png`));
+        return false;
+    }
+    async C25(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/长青剑.png`));
+        return false;
+    }
+    async C26(e) {
+        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/颤颤之齿.png`));
         return false;
     }
 }
@@ -1120,220 +1193,147 @@ class fenxichouka1 extends plugin {
     }
 }
 
-class showImg3 extends plugin {
+class fenxichouka2 extends plugin {
     constructor() {
         super({
             rule: [
                 {
-                    reg: /^不腐猴爪$/,
-                    fnc: 'C1'
-                },
-                {
-                    reg: /^分别善恶之果$/,
-                    fnc: 'C2'
-                },
-                {
-                    reg: /^双头形骨架$/,
-                    fnc: 'C3'
-                },
-                {
-                    reg: /^啮咬盒$/,
-                    fnc: 'C4'
-                },
-                {
-                    reg: /^幸运咒语$/,
-                    fnc: 'C5'
-                },
-                {
-                    reg: /^幼龙骨标本$/,
-                    fnc: 'C6'
-                },
-                {
-                    reg: /^床下怪物$/,
-                    fnc: 'C7'
-                },
-                {
-                    reg: /^未知种根骨$/,
-                    fnc: 'C8'
-                },
-                {
-                    reg: /^液化战栗$/,
-                    fnc: 'C9'
-                },
-                {
-                    reg: /^清扫咒$/,
-                    fnc: 'C10'
-                },
-                {
-                    reg: /^狂人絮语$/,
-                    fnc: 'C11'
-                },
-                {
-                    reg: /^百灵百验鸟$/,
-                    fnc: 'C12'
-                },
-                {
-                    reg: /^盐封曼德拉$/,
-                    fnc: 'C13'
-                },
-                {
-                    reg: /^破碎骨片$/,
-                    fnc: 'C14'
-                },
-                {
-                    reg: /^祝圣秘银$/,
-                    fnc: 'C15'
-                },
-                {
-                    reg: /^粗糙银锭$/,
-                    fnc: 'C16'
-                },
-                {
-                    reg: /^精磨苦盐$/,
-                    fnc: 'C17'
-                },
-                {
-                    reg: /^罗马金币$/,
-                    fnc: 'C18'
-                },
-                {
-                    reg: /^苦盐簇$/,
-                    fnc: 'C19'
-                },
-                {
-                    reg: /^金爪灵摆$/,
-                    fnc: 'C20'
-                },
-                {
-                    reg: /^金羊毛$/,
-                    fnc: 'C21'
-                },
-                {
-                    reg: /^铂金通灵板$/,
-                    fnc: 'C22'
-                },
-                {
-                    reg: /^银光子弹$/,
-                    fnc: 'C23'
-                },
-                {
-                    reg: /^银矿原石$/,
-                    fnc: 'C24'
-                },
-                {
-                    reg: /^长青剑$/,
-                    fnc: 'C25'
-                },
-                {
-                    reg: /^颤颤之齿$/,
-                    fnc: 'C26'
+                    reg: /^\/征集分析$/,
+                    fnc: 'fenxi2'
                 }
             ]
         });
     }
-    async C1(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/不腐猴爪.png`));
-        return false;
-    }
-    async C2(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/分别善恶之果.png`));
-        return false;
-    }
-    async C3(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/双头形骨架.png`));
-        return false;
-    }
-    async C4(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/啮咬盒.png`));
-        return false;
-    }
-    async C5(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/幸运咒语.png`));
-        return false;
-    }
-    async C6(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/幼龙骨标本.png`));
-        return false;
-    }
-    async C7(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/床下怪物.png`));
-        return false;
-    }
-    async C8(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/未知种根骨.png`));
-        return false;
-    }
-    async C9(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/液化战栗.png`));
-        return false;
-    }
-    async C10(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/清扫咒.png`));
-        return false;
-    }
-    async C11(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/狂人絮语.png`));
-        return false;
-    }
-    async C12(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/百灵百验鸟.png`));
-        return false;
-    }
-    async C13(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/盐封曼德拉.png`));
-        return false;
-    }
-    async C14(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/破碎骨片.png`));
-        return false;
-    }
-    async C15(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/祝圣秘银.png`));
-        return false;
-    }
-    async C16(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/粗糙银锭.png`));
-        return false;
-    }
-    async C17(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/精磨苦盐.png`));
-        return false;
-    }
-    async C18(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/罗马金币.png`));
-        return false;
-    }
-    async C19(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/苦盐簇.png`));
-        return false;
-    }
-    async C20(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/金爪灵摆.png`));
-        return false;
-    }
-    async C21(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/金羊毛.png`));
-        return false;
-    }
-    async C22(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/铂金通灵板.png`));
-        return false;
-    }
-    async C23(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/银光子弹.png`));
-        return false;
-    }
-    async C24(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/银矿原石.png`));
-        return false;
-    }
-    async C25(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/长青剑.png`));
-        return false;
-    }
-    async C26(e) {
-        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/图鉴/道具/颤颤之齿.png`));
-        return false;
+    async fenxi2(e) {
+        const userId = e.user_id;
+        const imageFilePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/fenxi.jpg`;
+        const extensionImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/pinjie.jpg`;
+        jimp.read(extensionImagePath, async (err, extensionImage) => {
+            if (err) {
+                console.error('Error reading the extension image:', err);
+                return;
+            }
+            const fontPath = `./application/a1999-plugin/resources/assets/ttf/SourceHanSerifSC-VF.ttf`;
+            registerFont(fontPath, { family: 'CustomFont' });
+            const newFilePath = `${process
+                .cwd()
+                .replace(/\\/g, '/')}/application/a1999-plugin/db/抽卡分析/抽卡记录2${userId}.json`;
+            if (!existsSync(newFilePath)) {
+                e.reply('记录不存在');
+                return;
+            }
+            const data = fs.readFileSync(newFilePath, 'utf8');
+            const newFileData = JSON.parse(data);
+            const backgroundImageHeight = 2000;
+            const limitedPoolData = processGachaPoolData(newFileData, '限定池（其余卡池）');
+            const standardPoolData = processGachaPoolData(newFileData, '常驻池（于湖中央）');
+            const novicePoolData = processGachaPoolData(newFileData, '新手池（滴一滴雨）');
+            const canvas = createCanvas(1414, 10000);
+            const ctx = canvas.getContext('2d');
+            ctx.font = '56px CustomFont';
+            ctx.fillStyle = '#CA5B2A';
+            ctx.fillText(limitedPoolData, 138, 710);
+            ctx.fillText(standardPoolData, 575, 710);
+            ctx.fillText(novicePoolData, 1003, 710);
+            const textImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/text_image.png`;
+            const textImageStream = fs.createWriteStream(textImagePath);
+            const textImageBuffer = canvas.toBuffer('image/png');
+            textImageStream.write(textImageBuffer);
+            textImageStream.end();
+            jimp.read(imageFilePath, async (err, image) => {
+                if (err) {
+                    console.error('Error reading the background image:', err);
+                    return;
+                }
+                const textImage = await jimp.read(canvas.toBuffer('image/png'));
+                const textMetrics = ctx.measureText(limitedPoolData);
+                textMetrics.width;
+                const textHeight = textMetrics.actualBoundingBoxAscent +
+                    textMetrics.actualBoundingBoxDescent;
+                const extensionImageHeight = 767;
+                const numExtensions = Math.ceil(textHeight / extensionImageHeight);
+                if (textHeight + 710 >= 2000) {
+                    const backgroundImage2Height = backgroundImageHeight + extensionImageHeight * (numExtensions - 1);
+                    const backgroundImage2 = new jimp(1414, backgroundImage2Height);
+                    backgroundImage2.composite(image, 0, 0);
+                    for (let i = 0; i < numExtensions; i++) {
+                        const extensionImageY = backgroundImageHeight + i * extensionImageHeight;
+                        backgroundImage2.composite(extensionImage, 0, extensionImageY);
+                    }
+                    backgroundImage2.composite(textImage, 0, 0, {
+                        mode: jimp.BLEND_SOURCE_OVER,
+                        opacitySource: 1,
+                        opacityDest: 1
+                    });
+                    const outputImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`;
+                    backgroundImage2.write(outputImagePath, async (writeErr) => {
+                        if (writeErr) {
+                            console.error('Error saving the image:', writeErr);
+                            return;
+                        }
+                        console.log('图片已保存：', outputImagePath);
+                        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`));
+                    });
+                }
+                else {
+                    image.composite(textImage, 0, 0, {
+                        mode: jimp.BLEND_SOURCE_OVER,
+                        opacitySource: 1,
+                        opacityDest: 1
+                    });
+                    const outputImagePath = `./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`;
+                    image.write(outputImagePath, async (writeErr) => {
+                        if (writeErr) {
+                            console.error('Error saving the image:', writeErr);
+                            return;
+                        }
+                        console.log('图片已保存：', outputImagePath);
+                        e.reply(getPathBuffer(`./application/a1999-plugin/resources/assets/img/抽卡分析/分析/choukafenxi.jpg`));
+                    });
+                }
+            });
+            function processGachaPoolData(data, poolName) {
+                const poolData = data.find(pool => pool.poolName === poolName);
+                if (poolData) {
+                    const results = poolData.results;
+                    let prevSixStarIndex = -1;
+                    let hasSixStar = false;
+                    let totalPulls = 0;
+                    let sixStarCount = 0;
+                    let analysisResultText = '';
+                    results.forEach((result, index) => {
+                        const characterName = result.split('(')[0];
+                        const star = Number(result.match(/\d+/));
+                        totalPulls++;
+                        if (star === 6) {
+                            sixStarCount++;
+                            const matchingSixStarName = characterName;
+                            if (matchingSixStarName) {
+                                analysisResultText += `${characterName}`;
+                                if (prevSixStarIndex !== 0) {
+                                    const interval = index - prevSixStarIndex;
+                                    analysisResultText += ` (${interval}抽)\n`;
+                                }
+                                prevSixStarIndex = index;
+                                hasSixStar = true;
+                            }
+                            else {
+                                analysisResultText += `${characterName}\n`;
+                            }
+                        }
+                    });
+                    if (!hasSixStar) {
+                        analysisResultText += `暂无六星\n`;
+                    }
+                    const sixStarProbability = (sixStarCount / totalPulls) * 100;
+                    analysisResultText += `总抽数:${totalPulls}\n概率:${sixStarProbability.toFixed(2)}%\n`;
+                    return analysisResultText;
+                }
+                else {
+                    return '无';
+                }
+            }
+        });
     }
 }
 
@@ -1780,6 +1780,105 @@ class fenxichoukaq extends plugin {
     }
 }
 
+class gonglue extends plugin {
+    constructor() {
+        super({
+            rule: [
+                {
+                    reg: /^共鸣攻略上$/,
+                    fnc: 'G1'
+                },
+                {
+                    reg: /^共鸣攻略中$/,
+                    fnc: 'G2'
+                },
+                {
+                    reg: /^共鸣攻略下$/,
+                    fnc: 'G3'
+                },
+                {
+                    reg: /^主线解谜$/,
+                    fnc: 'G4'
+                },
+                {
+                    reg: /^4-6电路解谜$/,
+                    fnc: 'G5'
+                },
+                {
+                    reg: /^3-12线路图$/,
+                    fnc: 'G6'
+                },
+                {
+                    reg: /^2-4送传单$/,
+                    fnc: 'G7'
+                },
+                {
+                    reg: /^旧齿与陈痕-20$/,
+                    fnc: 'G8'
+                },
+                {
+                    reg: /^旧齿与陈痕-19$/,
+                    fnc: 'G9'
+                },
+                {
+                    reg: /^Buff$/,
+                    fnc: 'G10'
+                }
+            ]
+        });
+    }
+    async G1(e) {
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略上.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G2(e) {
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略中.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G3(e) {
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略下.png`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G4(e) {
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/文字解谜.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G5(e) {
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/4-6电路解谜.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G6(e) {
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/3-12线路图.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G7(e) {
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/2-4送传单.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G8(e) {
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/旧齿与陈痕-20.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G9(e) {
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/旧齿与陈痕-19.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+    async G10(e) {
+        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/Buff.jpg`));
+        e.reply(`<@!${e.msg_id}> `);
+        return false;
+    }
+}
+
 class chouka extends plugin {
     constructor() {
         super({
@@ -1956,105 +2055,6 @@ function getRandomFileFromFolder$2(folderPath) {
     const randomIndex = Math.floor(Math.random() * files.length);
     const randomFile = files[randomIndex];
     return `${folderPath}/${randomFile}`;
-}
-
-class gonglue extends plugin {
-    constructor() {
-        super({
-            rule: [
-                {
-                    reg: /^共鸣攻略上$/,
-                    fnc: 'G1'
-                },
-                {
-                    reg: /^共鸣攻略中$/,
-                    fnc: 'G2'
-                },
-                {
-                    reg: /^共鸣攻略下$/,
-                    fnc: 'G3'
-                },
-                {
-                    reg: /^主线解谜$/,
-                    fnc: 'G4'
-                },
-                {
-                    reg: /^4-6电路解谜$/,
-                    fnc: 'G5'
-                },
-                {
-                    reg: /^3-12线路图$/,
-                    fnc: 'G6'
-                },
-                {
-                    reg: /^2-4送传单$/,
-                    fnc: 'G7'
-                },
-                {
-                    reg: /^旧齿与陈痕-20$/,
-                    fnc: 'G8'
-                },
-                {
-                    reg: /^旧齿与陈痕-19$/,
-                    fnc: 'G9'
-                },
-                {
-                    reg: /^Buff$/,
-                    fnc: 'G10'
-                }
-            ]
-        });
-    }
-    async G1(e) {
-        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略上.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G2(e) {
-        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略中.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G3(e) {
-        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/共鸣攻略下.png`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G4(e) {
-        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/文字解谜.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G5(e) {
-        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/4-6电路解谜.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G6(e) {
-        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/3-12线路图.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G7(e) {
-        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/2-4送传单.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G8(e) {
-        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/旧齿与陈痕-20.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G9(e) {
-        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/旧齿与陈痕-19.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
-    async G10(e) {
-        await e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/攻略/Buff.jpg`));
-        e.reply(`<@!${e.msg_id}> `);
-        return false;
-    }
 }
 
 class up extends plugin {
@@ -2427,6 +2427,37 @@ function getRandomFileFromFolder(folderPath, specificImage, specificImageProbabi
     return `${folderPath}/${randomFile}`;
 }
 
+class entext extends plugin {
+    constructor() {
+        super({
+            dsc: '每日一句',
+            rule: [
+                {
+                    reg: '^/每日一句$',
+                    fnc: 'en'
+                }
+            ]
+        });
+    }
+    async en(e) {
+        const url = 'https://api.vvhan.com/api/en?type=sj';
+        try {
+            const response = await axios.get(url);
+            const res = response.data.data;
+            const zh = res.zh;
+            const en = res.en;
+            await e.reply(zh);
+            await e.reply(en);
+            return true;
+        }
+        catch (error) {
+            console.error('接口请求失败', error);
+            await e.reply('接口请求失败');
+            return false;
+        }
+    }
+}
+
 class show extends plugin {
     constructor() {
         super({
@@ -2459,7 +2490,7 @@ class show extends plugin {
         });
     }
     async 剧情(e) {
-        e.replyByMid(e.msg_id, '以下为剧情目录\n只需要复制下方目录命令@Bot就可以获取该小节的中英对照剧情辣！\n/TH.01-1\n/TH.01-2');
+        e.reply('以下为剧情目录\n只需要复制下方目录命令@Bot就可以获取该小节的中英对照剧情辣！\n/TH.01-1\n/TH.01-2');
         return false;
     }
     async help(e) {
@@ -2481,37 +2512,6 @@ class show extends plugin {
     async 征集分析教程(e) {
         e.reply(getPathBuffer(`/application/a1999-plugin/resources/assets/img/help/征集分析教程.png`));
         return false;
-    }
-}
-
-class entext extends plugin {
-    constructor() {
-        super({
-            dsc: '每日一句',
-            rule: [
-                {
-                    reg: '^/每日一句$',
-                    fnc: 'en'
-                }
-            ]
-        });
-    }
-    async en(e) {
-        const url = 'https://api.vvhan.com/api/en?type=sj';
-        try {
-            const response = await axios.get(url);
-            const res = response.data.data;
-            const zh = res.zh;
-            const en = res.en;
-            await e.reply(zh);
-            await e.reply(en);
-            return true;
-        }
-        catch (error) {
-            console.error('接口请求失败', error);
-            await e.reply('接口请求失败');
-            return false;
-        }
     }
 }
 
