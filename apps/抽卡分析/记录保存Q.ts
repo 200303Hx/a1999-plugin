@@ -96,7 +96,7 @@ export class fenxichoukaq extends plugin {
       const completeUrl = `https://game-re-qq-service.sl916.com/query/summon?${partOfUrl}`
       const decodedUrl = completeUrl.replace(/&amp;/g, '&')
       const userId = e.msg_id // 获取用户唯一标识
-      const jsonFileName = `./application/a1999-plugin/db/抽卡分析/${userId}.json` // 以用户UID为后缀的JSON文件名
+      const jsonFileName = `./plugins/a1999-plugin/db/抽卡分析/${userId}.json` // 以用户UID为后缀的JSON文件名
 
       // 发送GET请求获取网页内容
       try {
@@ -106,7 +106,7 @@ export class fenxichoukaq extends plugin {
         fs.writeFileSync(jsonFileName, JSON.stringify(html), 'utf-8')
         console.log('JSON文件保存成功！')
 
-        const filePath = `./application/a1999-plugin/db/抽卡分析/${userId}.json`
+        const filePath = `./plugins/a1999-plugin/db/抽卡分析/${userId}.json`
         //抽卡记录1
         try {
           // 从文件中读取JSON数据
@@ -171,7 +171,7 @@ export class fenxichoukaq extends plugin {
           const jsonResult = JSON.stringify(result, null, 2)
 
           // 保存 JSON 字符串到文件
-          const saveFilePath = `./application/a1999-plugin/db/抽卡分析/抽卡记录${userId}.json`
+          const saveFilePath = `./plugins/a1999-plugin/db/抽卡分析/抽卡记录${userId}.json`
           fs.writeFileSync(saveFilePath, jsonResult, 'utf-8')
           //抽卡记录2
           try {
@@ -308,7 +308,7 @@ export class fenxichoukaq extends plugin {
             const jsonResult = JSON.stringify(result, null, 2)
 
             // 保存 JSON 字符串到文件
-            const saveFilePath = `./application/a1999-plugin/db/抽卡分析/抽卡记录2${userId}.json`
+            const saveFilePath = `./plugins/a1999-plugin/db/抽卡分析/抽卡记录2${userId}.json`
             fs.writeFileSync(saveFilePath, jsonResult, 'utf-8')
 
             // 发送回复消息

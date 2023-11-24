@@ -71,127 +71,127 @@ export class showI extends plugin {
     })
   }
 
-  async T1(e: AMessage): Promise<boolean> {
+  async T1(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day1-1.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day1-1.jpg`
       )
     )
     return false
   }
 
-  async T2(e: AMessage): Promise<boolean> {
+  async T2(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day1-2.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day1-2.jpg`
       )
     )
     return false
   }
 
-  async T3(e: AMessage): Promise<boolean> {
+  async T3(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day1-3.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day1-3.jpg`
       )
     )
     return false
   }
 
-  async T4(e: AMessage): Promise<boolean> {
+  async T4(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day2-1.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day2-1.jpg`
       )
     )
     return false
   }
 
-  async T5(e: AMessage): Promise<boolean> {
+  async T5(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day2-2.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day2-2.jpg`
       )
     )
     return false
   }
 
-  async T6(e: AMessage): Promise<boolean> {
+  async T6(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day2-3.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day2-3.jpg`
       )
     )
     return false
   }
 
-  async T7(e: AMessage): Promise<boolean> {
+  async T7(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day3-1.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day3-1.jpg`
       )
     )
     return false
   }
 
-  async T8(e: AMessage): Promise<boolean> {
+  async T8(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day3-2.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day3-2.jpg`
       )
     )
     return false
   }
 
-  async T9(e: AMessage): Promise<boolean> {
+  async T9(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day4-1.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day4-1.jpg`
       )
     )
     return false
   }
 
-  async T10(e: AMessage): Promise<boolean> {
+  async T10(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day4-2.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day4-2.jpg`
       )
     )
     return false
   }
 
-  async T11(e: AMessage): Promise<boolean> {
+  async T11(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day4-3.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day4-3.jpg`
       )
     )
     return false
   }
 
-  async T12(e: AMessage): Promise<boolean> {
+  async T12(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day4-4.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day4-4.jpg`
       )
     )
     return false
   }
 
-  async T13(e: AMessage): Promise<boolean> {
+  async T13(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day5-1.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day5-1.jpg`
       )
     )
     return false
   }
 
-  async T14(e: AMessage): Promise<boolean> {
+  async T14(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/听力/day5-2.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/听力/day5-2.jpg`
       )
     )
     return false

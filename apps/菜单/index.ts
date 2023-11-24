@@ -39,52 +39,48 @@ export class show extends plugin {
     })
   }
 
-  async 剧情(e: AMessage): Promise<boolean> {
+  async 剧情(e) {
     e.reply(
       '以下为剧情目录\n只需要复制下方目录命令@Bot就可以获取该小节的中英对照剧情辣！\n/TH.01-1\n/TH.01-2'
     )
     return false
   }
 
-  async help(e: AMessage): Promise<boolean> {
+  async help(e) {
     e.reply(
-      getPathBuffer(
-        `/application/a1999-plugin/resources/assets/img/help/菜单.png`
-      )
+      getPathBuffer(`/plugins/a1999-plugin/resources/assets/img/help/菜单.png`)
     )
     return false
   }
 
-  async 听力笔记(e: AMessage): Promise<boolean> {
+  async 听力笔记(e) {
     e.reply(
       getPathBuffer(
-        `/application/a1999-plugin/resources/assets/img/help/听力笔记.png`
+        `/plugins/a1999-plugin/resources/assets/img/help/听力笔记.png`
       )
     )
     return false
   }
-  async 攻略(e: AMessage): Promise<boolean> {
+  async 攻略(e) {
     e.reply(
-      getPathBuffer(
-        `/application/a1999-plugin/resources/assets/img/help/攻略.jpg`
-      )
+      getPathBuffer(`/plugins/a1999-plugin/resources/assets/img/help/攻略.jpg`)
     )
     return false
   }
-  async 征集帮助(e: AMessage): Promise<boolean> {
+  async 征集帮助(e) {
     e.reply(
       getPathBuffer(
-        `/application/a1999-plugin/resources/assets/img/help/征集帮助.png`
+        `/plugins/a1999-plugin/resources/assets/img/help/征集帮助.png`
       )
     )
 
     return false
   }
 
-  async 征集分析教程(e: AMessage): Promise<boolean> {
+  async 征集分析教程(e) {
     e.reply(
       getPathBuffer(
-        `/application/a1999-plugin/resources/assets/img/help/征集分析教程.png`
+        `/plugins/a1999-plugin/resources/assets/img/help/征集分析教程.png`
       )
     )
 

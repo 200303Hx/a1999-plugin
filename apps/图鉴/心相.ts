@@ -75,136 +75,136 @@ export class showImg2 extends plugin {
   }
 
   //心相图鉴
-  async X1(e: AMessage): Promise<boolean> {
+  async X1(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/夜色亵渎者.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/夜色亵渎者.png`
       )
     )
     return false
   }
 
-  async X2(e: AMessage): Promise<boolean> {
+  async X2(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/好奇心宝贝.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/好奇心宝贝.png`
       )
     )
     return false
   }
 
-  async X3(e: AMessage): Promise<boolean> {
+  async X3(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/必要的记录.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/必要的记录.png`
       )
     )
     return false
   }
 
-  async X4(e: AMessage): Promise<boolean> {
+  async X4(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/掌声如雷鸣.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/掌声如雷鸣.png`
       )
     )
     return false
   }
 
-  async X5(e: AMessage): Promise<boolean> {
+  async X5(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/第二次生命.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/第二次生命.png`
       )
     )
     return false
   }
 
-  async X6(e: AMessage): Promise<boolean> {
+  async X6(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/美丽新世界.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/美丽新世界.png`
       )
     )
     return false
   }
 
-  async X7(e: AMessage): Promise<boolean> {
+  async X7(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/跳房子游戏.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/跳房子游戏.png`
       )
     )
     return false
   }
 
-  async X8(e: AMessage): Promise<boolean> {
+  async X8(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/午后小憩.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/午后小憩.png`
       )
     )
     return false
   }
 
-  async X9(e: AMessage): Promise<boolean> {
+  async X9(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/心驰神往.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/心驰神往.png`
       )
     )
     return false
   }
 
-  async X10(e: AMessage): Promise<boolean> {
+  async X10(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/无束无拘.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/无束无拘.png`
       )
     )
     return false
   }
 
-  async X11(e: AMessage): Promise<boolean> {
+  async X11(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/明日亦然.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/明日亦然.png`
       )
     )
     return false
   }
 
-  async X12(e: AMessage): Promise<boolean> {
+  async X12(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/示我以真.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/示我以真.png`
       )
     )
     return false
   }
 
-  async X13(e: AMessage): Promise<boolean> {
+  async X13(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/笑语欢声.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/笑语欢声.png`
       )
     )
     return false
   }
 
-  async X14(e: AMessage): Promise<boolean> {
+  async X14(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/自由的心.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/自由的心.png`
       )
     )
     return false
   }
 
-  async X15(e: AMessage): Promise<boolean> {
+  async X15(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/心相/远大前程.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/心相/远大前程.png`
       )
     )
     return false

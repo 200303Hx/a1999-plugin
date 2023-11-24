@@ -115,225 +115,225 @@ export class showImg extends plugin {
   }
 
   //角色图鉴
-  async A1(e: AMessage): Promise<boolean> {
+  async A1(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/喀嚓喀嚓.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/喀嚓喀嚓.jpg`
       )
     )
     return false
   }
 
-  async A2(e: AMessage): Promise<boolean> {
+  async A2(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/柏林以东.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/柏林以东.jpg`
       )
     )
     return false
   }
 
-  async A3(e: AMessage): Promise<boolean> {
+  async A3(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/五色月.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/五色月.jpg`
       )
     )
     return false
   }
 
-  async A4(e: AMessage): Promise<boolean> {
+  async A4(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/玛丽莲.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/玛丽莲.jpg`
       )
     )
     return false
   }
 
-  async A5(e: AMessage): Promise<boolean> {
+  async A5(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/帕米埃.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/帕米埃.jpg`
       )
     )
     return false
   }
 
-  async A6(e: AMessage): Promise<boolean> {
+  async A6(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/坦南特.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/坦南特.jpg`
       )
     )
     return false
   }
 
-  async A7(e: AMessage): Promise<boolean> {
+  async A7(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/玛蒂尔达.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/玛蒂尔达.jpg`
       )
     )
     return false
   }
 
-  async A8(e: AMessage): Promise<boolean> {
+  async A8(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/夏利.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/夏利.jpg`
       )
     )
     return false
   }
 
-  async A9(e: AMessage): Promise<boolean> {
+  async A9(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/婴儿蓝.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/婴儿蓝.jpg`
       )
     )
     return false
   }
 
-  async A10(e: AMessage): Promise<boolean> {
+  async A10(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/讣告人.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/讣告人.jpg`
       )
     )
     return false
   }
 
-  async A11(e: AMessage): Promise<boolean> {
+  async A11(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/气球派对.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/气球派对.jpg`
       )
     )
     return false
   }
 
-  async A12(e: AMessage): Promise<boolean> {
+  async A12(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/十四行诗.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/十四行诗.jpg`
       )
     )
     return false
   }
 
-  async A13(e: AMessage): Promise<boolean> {
+  async A13(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/X.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/X.jpg`
       )
     )
     return false
   }
 
-  async A14(e: AMessage): Promise<boolean> {
+  async A14(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/未锈铠.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/未锈铠.jpg`
       )
     )
     return false
   }
 
-  async A15(e: AMessage): Promise<boolean> {
+  async A15(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/槲寄生.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/槲寄生.jpg`
       )
     )
     return false
   }
 
-  async A16(e: AMessage): Promise<boolean> {
+  async A16(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/泥鯭的士.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/泥鯭的士.jpg`
       )
     )
     return false
   }
 
-  async A17(e: AMessage): Promise<boolean> {
+  async A17(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/苏芙比.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/苏芙比.jpg`
       )
     )
     return false
   }
 
-  async A18(e: AMessage): Promise<boolean> {
+  async A18(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/百夫长.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/百夫长.jpg`
       )
     )
     return false
   }
 
-  async A19(e: AMessage): Promise<boolean> {
+  async A19(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/兔毛手袋.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/兔毛手袋.jpg`
       )
     )
     return false
   }
 
-  async A20(e: AMessage): Promise<boolean> {
+  async A20(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/红弩箭.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/红弩箭.jpg`
       )
     )
     return false
   }
 
-  async A21(e: AMessage): Promise<boolean> {
+  async A21(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/星锑.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/星锑.jpg`
       )
     )
     return false
   }
 
-  async A22(e: AMessage): Promise<boolean> {
+  async A22(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/远旅.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/远旅.jpg`
       )
     )
     return false
   }
 
-  async A23(e: AMessage): Promise<boolean> {
+  async A23(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/温妮弗雷德.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/温妮弗雷德.jpg`
       )
     )
     return false
   }
 
-  async A24(e: AMessage): Promise<boolean> {
+  async A24(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/新巴别塔.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/新巴别塔.jpg`
       )
     )
     return false
   }
-  async A25(e: AMessage): Promise<boolean> {
+  async A25(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/角色/梅兰妮.jpg`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/角色/梅兰妮.jpg`
       )
     )
     return false

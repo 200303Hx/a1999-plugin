@@ -22,20 +22,20 @@ export class showJ extends plugin {
     })
   }
 
-  async J1(e: AMessage): Promise<boolean> {
+  async J1(e) {
     await e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/剧情/TH.01-1.png`
+        `./plugins/a1999-plugin/resources/assets/img/剧情/TH.01-1.png`
       )
     )
     e.reply(`<@!${e.msg_id}> `)
     return false
   }
 
-  async J2(e: AMessage): Promise<boolean> {
+  async J2(e) {
     await e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/剧情/TH.01-2.png`
+        `./plugins/a1999-plugin/resources/assets/img/剧情/TH.01-2.png`
       )
     )
     e.reply(`<@!${e.msg_id}> `)

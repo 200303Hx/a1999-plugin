@@ -23,7 +23,7 @@ export class fenxichouka1 extends plugin {
     })
   }
 
-  async fenxi1(e: AMessage) {
+  async fenxi1(e) {
     const userId = e.user_id // 获取用户唯一标识
     analyzeAndDisplayStats()
 

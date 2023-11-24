@@ -120,238 +120,238 @@ export class showImg3 extends plugin {
   }
 
   //道具图鉴
-  async C1(e: AMessage): Promise<boolean> {
+  async C1(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/不腐猴爪.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/不腐猴爪.png`
       )
     )
 
     return false
   }
 
-  async C2(e: AMessage): Promise<boolean> {
+  async C2(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/分别善恶之果.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/分别善恶之果.png`
       )
     )
 
     return false
   }
 
-  async C3(e: AMessage): Promise<boolean> {
+  async C3(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/双头形骨架.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/双头形骨架.png`
       )
     )
 
     return false
   }
 
-  async C4(e: AMessage): Promise<boolean> {
+  async C4(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/啮咬盒.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/啮咬盒.png`
       )
     )
 
     return false
   }
 
-  async C5(e: AMessage): Promise<boolean> {
+  async C5(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/幸运咒语.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/幸运咒语.png`
       )
     )
     return false
   }
 
-  async C6(e: AMessage): Promise<boolean> {
+  async C6(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/幼龙骨标本.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/幼龙骨标本.png`
       )
     )
     return false
   }
 
-  async C7(e: AMessage): Promise<boolean> {
+  async C7(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/床下怪物.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/床下怪物.png`
       )
     )
     return false
   }
 
-  async C8(e: AMessage): Promise<boolean> {
+  async C8(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/未知种根骨.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/未知种根骨.png`
       )
     )
     return false
   }
 
-  async C9(e: AMessage): Promise<boolean> {
+  async C9(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/液化战栗.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/液化战栗.png`
       )
     )
     return false
   }
 
-  async C10(e: AMessage): Promise<boolean> {
+  async C10(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/清扫咒.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/清扫咒.png`
       )
     )
     return false
   }
 
-  async C11(e: AMessage): Promise<boolean> {
+  async C11(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/狂人絮语.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/狂人絮语.png`
       )
     )
     return false
   }
 
-  async C12(e: AMessage): Promise<boolean> {
+  async C12(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/百灵百验鸟.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/百灵百验鸟.png`
       )
     )
     return false
   }
 
-  async C13(e: AMessage): Promise<boolean> {
+  async C13(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/盐封曼德拉.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/盐封曼德拉.png`
       )
     )
     return false
   }
 
-  async C14(e: AMessage): Promise<boolean> {
+  async C14(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/破碎骨片.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/破碎骨片.png`
       )
     )
     return false
   }
 
-  async C15(e: AMessage): Promise<boolean> {
+  async C15(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/祝圣秘银.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/祝圣秘银.png`
       )
     )
     return false
   }
 
-  async C16(e: AMessage): Promise<boolean> {
+  async C16(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/粗糙银锭.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/粗糙银锭.png`
       )
     )
     return false
   }
 
-  async C17(e: AMessage): Promise<boolean> {
+  async C17(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/精磨苦盐.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/精磨苦盐.png`
       )
     )
     return false
   }
 
-  async C18(e: AMessage): Promise<boolean> {
+  async C18(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/罗马金币.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/罗马金币.png`
       )
     )
     return false
   }
 
-  async C19(e: AMessage): Promise<boolean> {
+  async C19(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/苦盐簇.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/苦盐簇.png`
       )
     )
     return false
   }
 
-  async C20(e: AMessage): Promise<boolean> {
+  async C20(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/金爪灵摆.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/金爪灵摆.png`
       )
     )
     return false
   }
 
-  async C21(e: AMessage): Promise<boolean> {
+  async C21(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/金羊毛.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/金羊毛.png`
       )
     )
     return false
   }
 
-  async C22(e: AMessage): Promise<boolean> {
+  async C22(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/铂金通灵板.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/铂金通灵板.png`
       )
     )
     return false
   }
 
-  async C23(e: AMessage): Promise<boolean> {
+  async C23(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/银光子弹.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/银光子弹.png`
       )
     )
     return false
   }
 
-  async C24(e: AMessage): Promise<boolean> {
+  async C24(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/银矿原石.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/银矿原石.png`
       )
     )
     return false
   }
 
-  async C25(e: AMessage): Promise<boolean> {
+  async C25(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/长青剑.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/长青剑.png`
       )
     )
     return false
   }
-  async C26(e: AMessage): Promise<boolean> {
+  async C26(e) {
     e.reply(
       getPathBuffer(
-        `./application/a1999-plugin/resources/assets/img/图鉴/道具/颤颤之齿.png`
+        `./plugins/a1999-plugin/resources/assets/img/图鉴/道具/颤颤之齿.png`
       )
     )
     return false
