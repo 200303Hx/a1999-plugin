@@ -151,7 +151,7 @@ export class chouka extends plugin {
       await e.reply(
         '',
         getPathBuffer(
-          `./application/a1999-plugin/resources/assets/img/模拟抽卡/抽取中.gif`
+          `./plugins/a1999-plugin/resources/assets/img/模拟抽卡/抽取中.gif`
         ),
         '抽取中.gif'
       )
@@ -207,18 +207,18 @@ async function 单抽Logic(e) {
   return { randomFolder, randomImage }
 }
 
-const backgroundImagePath = `./application/a1999-plugin/resources/assets/img/模拟抽卡/bg.png`
+const backgroundImagePath = `./plugins/a1999-plugin/resources/assets/img/模拟抽卡/bg.png`
 const folderPaths = [
-  `./application/a1999-plugin/resources/assets/img/模拟抽卡/6`,
-  `./application/a1999-plugin/resources/assets/img/模拟抽卡/5`,
-  `./application/a1999-plugin/resources/assets/img/模拟抽卡/4`,
-  `./application/a1999-plugin/resources/assets/img/模拟抽卡/3`,
-  `./application/a1999-plugin/resources/assets/img/模拟抽卡/2`
+  `./plugins/a1999-plugin/resources/assets/img/模拟抽卡/6`,
+  `./plugins/a1999-plugin/resources/assets/img/模拟抽卡/5`,
+  `./plugins/a1999-plugin/resources/assets/img/模拟抽卡/4`,
+  `./plugins/a1999-plugin/resources/assets/img/模拟抽卡/3`,
+  `./plugins/a1999-plugin/resources/assets/img/模拟抽卡/2`
 ]
 
-const outputFolderPath = `./application/a1999-plugin/resources/assets/img/模拟抽卡/im`
-const dbFolderPath = `./application/a1999-plugin/db/模拟抽卡/drawCountMap.json`
-const drawCountMapPath = `./application/a1999-plugin/db/模拟抽卡/drawCountMap.json`
+const outputFolderPath = `./plugins/a1999-plugin/resources/assets/img/模拟抽卡/im`
+const dbFolderPath = `./plugins/a1999-plugin/db/模拟抽卡/drawCountMap.json`
+const drawCountMapPath = `./plugins/a1999-plugin/db/模拟抽卡/drawCountMap.json`
 // 背景图的宽度和高度
 const backgroundImageWidth = 1500
 const backgroundImageHeight = 800
